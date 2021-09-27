@@ -51,7 +51,7 @@
                   </span>
               </div>
             </div>
-            <a href="/Register" class="text-base text-white text-right font-roboto leading-normal hover:underline mb-6">belum punya akun?</a>
+            <a href="/register" class="text-base text-white text-right font-roboto leading-normal hover:underline mb-6">belum punya akun?</a>
             <a
             href="/"
               class="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4 mb-20"

@@ -26,7 +26,7 @@
             </div>
             <textarea name="" id="" cols="10" rows="3" placeholder="Ceritakan Tentangmu" class="border p-2 mt-3 w-full"></textarea>
             <div class="flex space-x-5 mt-3">
-            <a href="/Login" class="text-2xl text-white text-left font-roboto leading-normal hover:underline p-2  w-1/4">Login Saja</a>
+            <a href="/login" class="text-2xl text-white text-left font-roboto leading-normal hover:underline p-2  w-1/4">Login Saja</a>
             <input type="submit" value="Submit" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold border p-2  w-3/4">
             </div >
 
