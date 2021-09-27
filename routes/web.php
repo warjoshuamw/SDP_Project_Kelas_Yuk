@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('Login', 'EssentialController@GoToLogin');
+Route::get('Register', 'EssentialController@GoToRegister');
 
 Route::prefix('murid')->group(function () {
     Route::get('/', 'muridController@goToKelas');
