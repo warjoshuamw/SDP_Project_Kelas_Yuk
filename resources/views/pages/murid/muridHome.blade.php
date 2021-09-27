@@ -1,6 +1,6 @@
-@extends('layout_murid.layout_murid')
-@section('')
-    
+@extends('layout.layout_murid')
+@section('navbar')
+    @include('pages.essential.navbar')
 @endsection
 @section('content')
 
