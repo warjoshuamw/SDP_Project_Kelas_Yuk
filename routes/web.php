@@ -24,5 +24,5 @@ Route::prefix('murid')->group(function () {
 });
 
 Route::prefix('guru')->group(function () {
-    Route::get('/', 'muridController@goToKelas');
+    Route::get('/', 'GuruController@goToKelas');
 });

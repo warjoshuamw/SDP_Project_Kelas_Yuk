@@ -8,11 +8,18 @@
     <title>Kelas Yuk</title>
 </head>
 <body class="" id="body">
-    <div class="min-h-screen flex flex-col justify-between bg-ocean-light dark:bg-ocean-dark dark:text-white bg-opacity-50">
-        @yield('navbar')
-        @yield('content')
-        @yield('footer')
+    <div class="bg-ocean-light dark:bg-ocean-dark dark:text-white bg-opacity-50 flex flex-col items-center ">
+        <div class="min-h-screen  flex flex-col justify-between lg:w-5/6">
+            <div class="z-20">
+                @yield('navbar')
+            </div>
+            <div class="z-10">
+                @yield('content')
+            </div>
+            <div class="z-10">
+                @yield('footer')
+            </div>
+        </div>
     </div>
-
 </body>
 </html>
