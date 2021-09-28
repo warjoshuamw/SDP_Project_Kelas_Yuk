@@ -10,7 +10,84 @@
 
 @section('main')
 
-<div class="bg-gradient-to-r from-blue-400 via-purple-500 to-white-500 flex h-screen">
+<div class="flex justify-center h-screen items-center bg-gradient-to-r from-blue-800 to-blue-300 ">
+    <div class='flex max-w-sm w-full h-2/3 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+        <h3 class="text-2xl font-bold mb-4">Kelas Yuk</h3>
+    <!-- This is the input component -->
+    <div class="relative h-10 input-component mb-5">
+        <input
+          id="email"
+          type="email"
+          name="Email"
+          class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
+        />
+        <label for="address" class="absolute left-2 transition-all bg-white px-1">
+          Email
+        </label>
+      </div>
+      <div class="relative h-10 input-component mb-5">
+        <input
+          id="password"
+          type="password"
+          name="password"
+          class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
+        />
+        <label for="address" class="absolute left-2 transition-all bg-white px-1">
+          Password
+        </label>
+      </div>
+
+      <a href="/register" class="text-base text-black text-right font-roboto leading-normal hover:underline mb-3">belum punya akun?</a>
+            <a
+            href="/"
+              class="bg-blue-400 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4"
+            >
+              Login
+          </a>
+
+    </div>
+</div>
+
+<style>
+label {
+  top: 0%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: rgba(37, 99, 235, 1);
+}
+.empty input:not(:focus) + label {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+}
+input:not(:focus) + label {
+  color: rgba(70, 70, 70, 1);
+}
+input {
+  border-width: 1px;
+}
+input:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 1);
+}
+</style>
+<script>
+    document.getElementById('email').value = 'john.doe@mail.com'
+    document.getElementById('email').focus()
+    const allInputs = document.querySelectorAll('input');
+    for(const input of allInputs) {
+        input.addEventListener('input', () => {
+            const val = input.value
+            if(!val) {
+                input.parentElement.classList.add('empty')
+            } else {
+                input.parentElement.classList.remove('empty')
+            }
+        })
+    }
+</script>
+
+{{-- <div class="bg-gradient-to-r from-blue-400 via-purple-500 to-white-500 flex h-screen">
     <div class="justify-center flex-col flex ml-auto mr-auto items-center w-full lg:w-2/3 md:w-3/5">
       <h1 class="font-bold text-4xl my-10 text-white"> Kelas Yuk! </h1>
       <h1 class="font-bold text-2xl my-10 text-white"> Halaman Login </h1>
@@ -60,7 +137,7 @@
           </a>
           </form>
   </div>
-  </div>
+  </div> --}}
 
 
 @endsection
