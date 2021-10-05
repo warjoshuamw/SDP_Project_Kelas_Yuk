@@ -9,21 +9,26 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>@yield('title')</title>
 
 </head>
 <body>
-    <div>
-    @yield('header')
+    <div class="bg-ocean-light dark:bg-ocean-dark dark:text-white bg-opacity-50 flex flex-col items-center ">
+        <div class="min-h-screen flex flex-col justify-between lg:w-5/6">
+            <div class="z-20">
+                @yield('navbar')
+            </div>
+            <div class="z-10">
+                @yield('main')
+            </div>
+            <div class="z-10">
+                @yield('footer')
+            </div>
+        </div>
     </div>
-
-     @yield('main')
-    
-
-
-    @yield('footer')</div>
-    <div>
-
-
+    <div class="z-0 fixed top-0 left-0 z-0 h-screen w-screen">
+        @yield('background')
+    </div>
 </body>
 </html>

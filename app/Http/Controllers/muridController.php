@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class muridController extends Controller
+class MuridController extends Controller
 {
     //Routing untuk
     public function goToKelas(Request $request)

@@ -14,4 +14,9 @@ class EssentialController extends Controller
     {
         return view("pages.essential.Register");
     }
+    public function goToLandingPage(Request $request)
+    {
+        $param = [];
+        return view('pages.essential.landing',$param);
+    }
 }

@@ -1,8 +1,8 @@
 <div class="flex justify-between items-center py-4 mx-2 md:px-10 border-b-2 border-blue-500 dark:border-blue-700">
     <div id="logo" class="flex">
-        <img src="" alt="_">
-        <div class="mx-2 px-2">
-            Logo Disini
+        <img src="" alt=".">
+        <div class="mx-2 px-2 font-serif">
+            Kelas Yuk
         </div>
     </div>
     <div id="content" class="h-full hidden md:block">

@@ -10,9 +10,9 @@
 
 @section('main')
 
-<div class="flex justify-center h-screen items-center bg-gradient-to-r from-blue-800 to-blue-300 ">
-    <div class='flex max-w-sm w-full h-4/5 justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
-        <h3 class="text-2xl font-bold mb-4">Kelas Yuk</h3>
+<div class="flex justify-center h-screen items-center text-center">
+    <div class='flex max-w-sm w-full justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+        <h3 class="text-2xl font-bold mb-4 font-serif text-ocean-dark">Kelas Yuk</h3>
     <!-- This is the input component -->
     <div class="relative h-10 input-component mb-5">
       <input
@@ -71,7 +71,7 @@
           Password
         </label>
       </div>
-      <div class="relative h-10 input-component mb-5">
+      <div class="relative h-10 input-component mb-1">
         <input
           id="konfirmasi_password"
           type="password"
@@ -82,11 +82,10 @@
           Konfirmasi Password
         </label>
       </div>
+      <a href="/login" class="text-sm text-black text-left font-roboto leading-normal hover:underline ">Kembali Ke Login</a>
       <div class="flex space-x-5 mt-3">
-        <a href="/login" class="text-base text-black text-left font-roboto leading-normal hover:underline p-2  w-1/3">Login Saja</a>
-        <input type="submit" value="Submit" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold border p-2  w-2/3">
+        <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold border p-2  w-2/3">
         </div >
-
     </div>
 </div>
 
