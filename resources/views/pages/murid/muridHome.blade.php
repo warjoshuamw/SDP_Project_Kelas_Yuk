@@ -51,8 +51,20 @@
             <div class="lg:col-span-2">
             <div class=" border-solid border-2 border-blue-500 p-3 mb-10">
                 <div>
-                <label for="full_name">kamu login sebagai</label>
-                <input type="text" name="full_name" id="full_name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                    <div class="mb-5 text-left text-base">kamu login sebagai</div>
+
+                <div class="grid grid-flow-col grid-cols-5">
+                    <div class="col-span-1 justify-center item-center"><img class="mx-auto w-auto bg-center justify-center" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow"></div>
+                    <div class="col-span-4 grid-rows-2">
+                        <div class="row-span-1">
+                            <h3 name="full_name" id="full_name" class="h-10 mt-1 font-bold rounded px-4 w-full text-left " value="">Andrian Sugianto Putra</h3>
+                        </div>
+                        <div class="row-span-1">
+                            <h3 name="full_name" id="full_name" class="h-10 rounded px-4 w-full text-left" value="">Andriansugiantoputra@gmail.com</h3>
+                        </div>
+                    </div>
+                </div>
+
                 </div>
             </div>
             {{-- bawah --}}
