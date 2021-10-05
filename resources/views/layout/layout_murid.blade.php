@@ -13,7 +13,7 @@
             <div class="z-20">
                 @yield('navbar')
             </div>
-            <div class="z-10">
+            <div class="z-10 flex-grow">
                 @yield('content')
             </div>
             <div class="z-10">
