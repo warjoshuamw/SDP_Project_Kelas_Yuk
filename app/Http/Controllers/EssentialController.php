@@ -10,6 +10,19 @@ class EssentialController extends Controller
     {
         return view("pages.essential.login");
     }
+    public function GoToDoLogin(Request $request)
+    {
+        $email=$request->input('Email');
+        $password=$request->input('password');
+
+        // dd($data_pegawai);
+        if($email=="guru@gmail.com" && $password=="guru"){
+            return view('pages.guru.guruHome');
+        }else if($email=="murid@gmail.com" && $password=="murid"){
+
+            return view("pages.murid.muridHome");
+        }
+    }
     public function GoToRegister()
     {
         return view("pages.essential.Register");

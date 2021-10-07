@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <span class="ml-3 text-base font-medium text-gray-900 ">
-                <a href="/guru"><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700bg-indigo-600 hover:bg-indigo-700">Log Out</button></a>
+                <a href="/login"><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700bg-indigo-600 hover:bg-indigo-700">Log Out</button></a>
                 </span>
               </nav>
             </div>

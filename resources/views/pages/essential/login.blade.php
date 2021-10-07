@@ -11,9 +11,9 @@
 @section('main')
 
 <div class="flex justify-center h-screen items-center text-center">
-    <div class='flex max-w-sm w-full justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
+    <form action="/dologin" class='flex max-w-sm w-full justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5' >
+        @csrf
         <h3 class="text-2xl font-bold mb-4 font-serif text-ocean-dark">Kelas Yuk</h3>
-
         <div class="relative h-10 input-component mb-5">
             <input
             id="email"
@@ -38,9 +38,11 @@
             Password
             </label>
         </div>
+
         <a href="/register" class="text-base text-black text-right font-roboto leading-normal hover:underline mb-3">belum punya akun?</a>
-        <a href="/" class="bg-blue-500 hover:bg-blue-700 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4">Login</a>
-    </div>
+        <button type="submit" name="login" class="bg-blue-500 hover:bg-blue-700 py-4 text-center px-17 md:px-12 md:py-4 text-white rounded leading-tight text-xl md:text-base font-sans mt-4">Login</button>
+
+        </form>
 </div>
 
 <style>

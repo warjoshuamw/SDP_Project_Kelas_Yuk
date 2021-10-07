@@ -5,7 +5,7 @@
             Kelas Yuk
         </div>
         <div>
-            <button class="py-3 px-6 text-white rounded-lg bg-secondary-red hover:bg-secondary-red-hover shadow-lg block md:inline-block">Mulai Disini</button>
+            <a href="/login"><button class="py-3 px-6 text-white rounded-lg bg-secondary-red hover:bg-secondary-red-hover shadow-lg block md:inline-block">Mulai Disini</button></a>
         </div>
     </div>
 @endsection
