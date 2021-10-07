@@ -28,7 +28,6 @@ Route::prefix('murid')->group(function () {
         Route::get('/{id}/home', function ($id) {
             return view('pages.kelas.murid');
         });
-
     });
 });
 
@@ -41,6 +40,9 @@ Route::prefix('guru')->group(function () {
         });
         Route::get('/{id}/tugas', function ($id) {
             return view('pages.kelas.guruBeriTugas');
+        });
+        Route::get('/{id}/tugas/{idTugas}', function ($id, $idTugas) {
+            return view('pages.kelas.guruLihatTugas');
         });
     });
 });
