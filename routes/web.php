@@ -28,5 +28,8 @@ Route::prefix('guru')->group(function () {
         Route::get('/{id}/home', function ($id) {
             return view('pages.kelas.guru');
         });
+        Route::get('/{id}/tugas', function ($id) {
+            return view('pages.kelas.guruBeriTugas');
+        });
     });
 });
