@@ -9,7 +9,7 @@
     </div>
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto">
         @for ($i = 0; $i < 1; $i++)
-                @include('components.kelasCard')
+            @include('components.kelasCard',['url'=>'/guru/kelas/1/home'])
         @endfor
     </div>
 </div>
