@@ -16,9 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'EssentialController@goToLandingPage');
 Route::get('login', 'EssentialController@GoToLogin');
 Route::get('register', 'EssentialController@GoToRegister');
+Route::get('cobagila', function () {
+    return view('pages.essential.cobasidebar');
+});
 
 Route::prefix('murid')->group(function () {
     Route::get('/', 'MuridController@goToKelas');
+    Route::prefix('/kelas')->group(function () {
+        // Route::get('/buat', ''); //buat kelas
+        Route::get('/{id}/home', function ($id) {
+            return view('pages.kelas.murid');
+        });
+
+    });
 });
 
 Route::prefix('guru')->group(function () {
