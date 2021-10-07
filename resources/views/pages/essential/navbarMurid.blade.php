@@ -34,7 +34,7 @@
                 </span>
             </div>
         </div>
-        <button class="px-4 py-2 rounded-md text-sm font-medium border-0 hover:shadow-md focus:outline-none focus:ring transition text-white dark:bg-blue-700 dark:hover:bg-blue-800 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300 hidden md:block">Log Out</button>
+        <a href="/login"><button class="px-4 py-2 rounded-md text-sm font-medium border-0 hover:shadow-md focus:outline-none focus:ring transition text-white dark:bg-blue-700 dark:hover:bg-blue-800 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300 hidden md:block">Log Out</button></a>
     </div>
     <button type="button" onclick="openMobile()" class="bg-ocean-primary  dark:bg-ocean-secondary rounded-md p-2 inline-flex items-center justify-center text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" aria-expanded="false">
         <span class="sr-only">Open menu</span>
