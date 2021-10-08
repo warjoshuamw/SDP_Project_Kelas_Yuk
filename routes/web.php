@@ -28,6 +28,15 @@ Route::prefix('murid')->group(function () {
         Route::get('/{id}/home', function ($id) {
             return view('pages.murid.murid');
         });
+        Route::get('/{id}/tugas', function ($id) {
+            return view('pages.murid.muridLihatDaftarTugas');
+        });
+        Route::get('/{id}/tugas/{idTugas}', function ($id, $idTugas) {
+            return view('pages.murid.muridLihatTugas');
+        });
+        Route::get('/{id}/daftarnilai', function ($id) {
+            return view('pages.murid.nilaiMurid');
+        });
     });
 });
 
