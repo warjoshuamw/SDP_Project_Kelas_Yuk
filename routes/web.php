@@ -26,7 +26,7 @@ Route::prefix('murid')->group(function () {
     Route::prefix('/kelas')->group(function () {
         // Route::get('/buat', ''); //buat kelas
         Route::get('/{id}/home', function ($id) {
-            return view('pages.kelas.murid');
+            return view('pages.murid.murid');
         });
     });
 });
@@ -36,13 +36,16 @@ Route::prefix('guru')->group(function () {
     Route::prefix('/kelas')->group(function () {
         // Route::get('/buat', ''); //buat kelas
         Route::get('/{id}/home', function ($id) {
-            return view('pages.kelas.guru');
+            return view('pages.guru.guruFeed');
         });
         Route::get('/{id}/tugas', function ($id) {
-            return view('pages.kelas.guruBeriTugas');
+            return view('pages.guru.guruBeriTugas');
         });
         Route::get('/{id}/tugas/{idTugas}', function ($id, $idTugas) {
-            return view('pages.kelas.guruLihatTugas');
+            return view('pages.guru.guruLihatTugas');
+        });
+        Route::get('/{id}/penilaian', function ($id, $idTugas) {
+            return view('pages.guru.guruLihatTugas');
         });
     });
 });

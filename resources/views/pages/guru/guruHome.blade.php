@@ -1,6 +1,6 @@
 @extends('layout.layout_guru')
 @section('navbar')
-    @include('pages.essential.navbarGuru')
+    @include('pages.essential.navbarGuruDalamKelas')
 @endsection
 @section('content')
 <div class="flex flex-col md:flex-row gap-2">
