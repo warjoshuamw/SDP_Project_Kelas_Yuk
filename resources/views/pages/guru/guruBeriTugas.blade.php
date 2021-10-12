@@ -9,7 +9,7 @@
     </div>
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center">
         @for ($i = 0; $i < 9;$i++)
-            @include('components.tugasCard')
+            @include('components.tugasCard',['url'=>'/guru/kelas/1/tugas/{{$i}}'])
         @endfor
     </div>
 </div>

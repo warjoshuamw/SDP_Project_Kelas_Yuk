@@ -16,8 +16,8 @@
 
 <style>
     dialog[open] {
-    animation: appear .15s cubic-bezier(0, 1.8, 1, 1.8);
-  }
+        animation: appear .15s cubic-bezier(0, 1.8, 1, 1.8);
+    }
 
     dialog::backdrop {
       background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));
@@ -36,7 +36,7 @@
       transform: translateX(0);
     }
   }
-  </style>
+</style>
 
 <dialog id="myModal" class="w-11/12 md:w-1/2 p-5  bg-white rounded-md ">
     <div class="flex flex-col w-full h-auto ">
