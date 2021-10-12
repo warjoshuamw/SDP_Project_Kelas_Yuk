@@ -9,25 +9,33 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
          </svg>
+         <a href="/guru/">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
+         </a>
     </button>
     <button class="flex mx-2 hidden md:block">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
          </svg>
+         <a href="/guru/kelas/1/home">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Feed</p>
+         </a>
     </button>
     <button class="flex mx-2 hidden md:block">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
          </svg>
+         <a href="/guru/kelas/1/tugas">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Tugas</p>
+         </a>
     </button>
     <button class="flex mx-2 hidden md:block">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
          </svg>
+         <a href="/guru/kelas/1/penilaian">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Penilaian</p>
+         </a>
     </button>
 
     <div class="flex flex-row flex-wrap gap-4 items-center">

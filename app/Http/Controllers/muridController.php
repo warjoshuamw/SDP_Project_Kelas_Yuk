@@ -11,4 +11,8 @@ class MuridController extends Controller
     {
         return view('pages.murid.muridHome');
     }
+    public function goToDo(Request $request)
+    {
+        return view('pages.murid.muridToDo');
+    }
 }

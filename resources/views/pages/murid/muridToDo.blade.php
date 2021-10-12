@@ -1,8 +1,17 @@
 @extends('layout.layout_murid')
 @section('navbar')
-    @include('pages.essential.navbarMuridDalamKelas')
+    @include('pages.essential.navbarMurid')
 @endsection
 @section('content')
+
+<label class="block text-left flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center" style="max-width: 400px;">
+
+    <select class="form-select block w-full mt-1">
+        <option>All Class</option>
+        <option>Class 1</option>
+    </select>
+  </label>
+
 <div class="flex flex-col md:flex-row gap-2">
 
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center">

@@ -23,6 +23,7 @@ Route::get('cobagila', function () {
 
 Route::prefix('murid')->group(function () {
     Route::get('/', 'MuridController@goToKelas');
+    Route::get('/todo', 'MuridController@goToDo');
     Route::prefix('/kelas')->group(function () {
         // Route::get('/buat', ''); //buat kelas
         Route::get('/{id}/home', function ($id) {
