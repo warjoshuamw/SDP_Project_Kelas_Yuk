@@ -3,12 +3,13 @@
     @include('pages.essential.navbarMurid')
 @endsection
 @section('content')
-<div><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700bg-indigo-600 hover:bg-indigo-700"onclick="document.getElementById('myModal').showModal()">Tambah kelas</button></div>
-<div class="flex flex-col md:flex-row gap-2">
+<div><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded"onclick="document.getElementById('myModal').showModal()">Tambah kelas</button></div>
 
+<div class="flex flex-col md:flex-row gap-2">
+    
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto">
         @for ($i = 0; $i < 1; $i++)
-                @include('components.kelasCard',['url'=>'/murid/kelas/1/home'])
+            @include('components.kelasCard',['url'=>'/murid/kelas/1/home'])
         @endfor
     </div>
 </div>

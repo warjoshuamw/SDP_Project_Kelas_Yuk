@@ -1,30 +1,29 @@
+
+
+
 <div class="flex justify-between items-center py-4 mx-2 md:px-10 border-b-2 border-blue-500 dark:border-blue-700">
     <div id="logo" class="flex">
-        <img src="" alt="_">
-        <div class="mx-2 px-2">
-            Logo Disini
+        <img src="" alt=".">
+        <div class="mx-2 px-2 font-serif">
+            Logo disini
         </div>
     </div>
-    <div id="content" class="h-full hidden md:block">
-        <button class="flex hover:shadow-md mx-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-             </svg>
-             <a href="/murid/">
-             <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
-             </a>
-        </button>
-    </div>
-    <div id="content" class="h-full hidden md:block">
-        <button class="flex hover:shadow-md mx-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-             </svg>
-             <a href="/murid/todo">
-             <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >To Do</p>
-             </a>
-        </button>
-    </div>
+    <button class="flex mx-2 hidden md:flex">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+         </svg>
+         <a href="/murid/">
+         <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
+         </a>
+    </button>
+    <button class="flex mx-2 hidden md:flex">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+         </svg>
+         <a href="/murid/todo">
+         <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >To Do</p>
+         </a>
+    </button>
 
     <div class="flex flex-row flex-wrap gap-4 items-center">
         <div id class=" h-full flex flex-col justify-center items-center hidden md:block">
@@ -46,9 +45,9 @@
                 </span>
             </div>
         </div>
-        <a href="/login"><button class="px-4 py-2 rounded-md text-sm font-medium border-0 hover:shadow-md focus:outline-none focus:ring transition text-white dark:bg-blue-700 dark:hover:bg-blue-800 bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300 hidden md:block">Log Out</button></a>
+        <a href="/login"><button class="px-4 py-2 rounded-md text-sm font-medium border-0 hover:shadow-md focus:outline-none focus:ring transition text-white dark:bg-secondary-red-hover  dark:hover:bg-secondary-red bg-secondary-red hover:bg-secondary-red-hover hidden md:block">Log Out</button></a>
     </div>
-    <button type="button" onclick="openMobile()" class="bg-ocean-primary  dark:bg-ocean-secondary rounded-md p-2 inline-flex items-center justify-center text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" aria-expanded="false">
+    <button type="button" onclick="openMobile()" class="bg-secondary-red dark:bg-secondary-red-hover rounded-md p-2 inline-flex items-center justify-center text-white focus:outline-none  md:hidden" aria-expanded="false">
         <span class="sr-only">Open menu</span>
         <!-- Heroicon name: outline/menu -->
         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -56,12 +55,12 @@
         </svg>
     </button>
     <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden" id="mobile_burger">
-        <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-ocean-primary  dark:bg-ocean-secondary divide-y-2 divide-gray-50">
+        <div class="rounded-lg backdrop-filter backdrop-blur-2xl bg-opacity-25 shadow-lg ring-1 ring-black ring-opacity-5 bg-ocean-light  dark:bg-ocean-dark divide-y-2 divide-gray-50">
           <div class="pt-5 pb-6 px-5" >
             <div class="flex items-center justify-between">
               <span class="text-base font-medium text-white px-2">Logo Mobile</span>
               <div class="-mr-2">
-                <button type="button" onclick="closeMobile()" class="bg-ocean-primary dark:bg-ocean-secondary rounded-md p-2 inline-flex items-center justify-center text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <button type="button" onclick="closeMobile()" class="bg-secondary-red dark:bg-secondary-red-hover rounded-md p-2 inline-flex items-center justify-center text-white focus:outline-none md:hidden">
                   <span class="sr-only">Close menu</span>
                   <!-- Heroicon name: outline/x -->
                   {{-- TODO-> add img --}}
@@ -77,7 +76,7 @@
                 <a href="/home" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                   <!-- Heroicon name: outline/cursor-click -->
                   {{-- TODO-> add img --}}
-                  <span class="ml-3 text-base font-medium text-gray-900">
+                  <span class="ml-3 text-base font-medium">
                     Home
                   </span>
                 </a>
@@ -101,7 +100,7 @@
                     </div>
                 </div>
                 <span class="ml-3 text-base font-medium text-gray-900 ">
-                <a href="/login"><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700bg-indigo-600 hover:bg-indigo-700">Log Out</button></a>
+                <a href="/login"><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-secondary-red dark:bg-secondary-red-hover">Log Out</button></a>
                 </span>
               </nav>
             </div>
@@ -155,3 +154,21 @@
         }
     }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
