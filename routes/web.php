@@ -35,6 +35,12 @@ Route::prefix('murid')->group(function () {
         Route::get('/{id}/tugas/{idTugas}', function ($id, $idTugas) {
             return view('pages.murid.muridLihatTugas');
         });
+        Route::get('/{id}/quiz', function ($id) {
+            return view('pages.murid.muridLihatDaftarTugas');
+        });
+        Route::get('/{id}/quiz/{idTugas}', function ($id, $idTugas) {
+            return view('pages.murid.muridQuiz');
+        });
         Route::get('/{id}/daftarnilai', function ($id) {
             return view('pages.murid.nilaiMurid');
         });
