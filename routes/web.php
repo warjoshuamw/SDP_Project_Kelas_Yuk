@@ -36,7 +36,7 @@ Route::prefix('murid')->group(function () {
             return view('pages.murid.muridLihatTugas');
         });
         Route::get('/{id}/quiz', function ($id) {
-            return view('pages.murid.muridLihatDaftarTugas');
+            return view('pages.murid.muridLihatDaftarQuiz');
         });
         Route::get('/{id}/quiz/{idTugas}', function ($id, $idTugas) {
             return view('pages.murid.muridQuiz');

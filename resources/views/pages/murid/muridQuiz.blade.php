@@ -3,9 +3,9 @@
     @include('pages.essential.navbarMuridDalamKelas')
 @endsection
 @section('content')
-<div class="flex flex-col md:flex-row gap-2">
+<div class="flex w-full flex-col justify-center  md:flex-row gap-2">
 
-    <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center">
+    <div class="flex flex-col w-3/4 my-2 m-2 ">
         @for ($i = 0; $i < 3;$i++)
 
             @if ($i%2==0)
@@ -15,12 +15,13 @@
             @endif
 
         @endfor
+        <button class="self-end px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-secondary-red dark:bg-secondary-red-hover" >Submit</button>
     </div>
 </div>
 
 <script>
 
-var textarea = document.querySelector('textarea');
+    var textarea = document.querySelector('textarea');
 
 textarea.addEventListener('keydown', autosize);
 
