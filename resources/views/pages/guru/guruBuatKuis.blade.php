@@ -49,7 +49,9 @@
                           <a href="#" class="block px-4 py-2 text-sm text-gray-800 border-b hover:bg-gray-200 z-50">Uraian</a>
                         </div>
                     </div>
-                    <button class="h-12 w-12 text-white rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block rounded-full text-3xl mr-auto"><img src="{{url('/asset/save.png')}}" class="mx-auto" alt=""></button>
+                    <a href="/guru/kelas/1/kuis">
+                        <button class="h-12 w-12 text-white rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block rounded-full text-3xl mr-auto"><img src="{{url('/asset/save.png')}}" class="mx-auto" alt=""></button>
+                    </a>
                 </div>
             </div>
             <div class="flex-grow md:ml-2 z-40">

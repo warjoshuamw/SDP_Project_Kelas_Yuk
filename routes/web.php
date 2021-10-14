@@ -64,7 +64,16 @@ Route::prefix('guru')->group(function () {
             return view('pages.guru.guruPenilaian');
         });
         Route::get('/{id}/kuis', function ($id) {
+            return view('pages.guru.guruKuis');
+        });
+        Route::get('/{id}/kuis/buat', function ($id) {
             return view('pages.guru.guruBuatKuis');
+        });
+        Route::get('/{id}/kuis/{idKuis}', function ($id) {
+            return view('pages.guru.guruLihatKuis');
+        });
+        Route::get('/{id}/kuis/{idKuis}/{idMurid}', function ($id) {
+            return view('pages.guru.guruLihatKuisMurid');
         });
     });
 });
