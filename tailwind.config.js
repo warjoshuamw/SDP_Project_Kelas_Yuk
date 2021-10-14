@@ -8,13 +8,15 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                "ocean-primary": "#1da2d8",
-                "ocean-secondary": "#76b6c4",
-                "ocean-light": "#7fcdff",
-                "ocean-dark": "#021a2e",
-                "secondary-red-hover": "#923d1d",
-                "secondary-red": "#d1582a",
-                "ocean-white": "#f2faff",
+                "ocean-primary": "#1da2d8", //jarang dipake
+                "ocean-secondary": "#76b6c4", //
+                "ocean-light": "#669BBC", //background
+                "ocean-dark": "#003049", //background dark
+                "secondary-red": "#FF9233", //button - icon
+                "secondary-red-hover": "#CC5F00", //button -icon hover
+                "ocean-white": "#F4F4F6", // huruf landing page
+                "button-light": "#F8CF77", //button light
+                "button-dark": "#E9A30C", // button dark
             },
         },
     },

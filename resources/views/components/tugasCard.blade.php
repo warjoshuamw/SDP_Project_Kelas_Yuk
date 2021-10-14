@@ -2,7 +2,7 @@
     <div class="text-black font-semibold" >Judul Tugas</div>
     <div>
         <a href="{{$url}}">
-            <button class="hover:underline hover:text-blue text-black font-bold py-2 px-4 rounded dark:bg-indigo-100 bg-indigo-200 hover:bg-indigo-300 dark:hover:bg-indigo-300">
+            <button class="hover:underline dark:text-black font-semibold py-2 px-4 rounded bg-button-light dark:bg-button-dark">
                 Lihat Tugas
             </button>
         </a>

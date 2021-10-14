@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body class="" id="body">
-    <div class="bg-ocean-light dark:bg-ocean-dark dark:text-white bg-opacity-50 flex flex-col items-center ">
+    <div class="bg-ocean-light dark:bg-ocean-dark dark:text-ocean-white bg-opacity-50 flex flex-col items-center ">
         <div class="min-h-screen  flex flex-col lg:w-5/6">
             <div class="z-20">
                 @yield('navbar')
