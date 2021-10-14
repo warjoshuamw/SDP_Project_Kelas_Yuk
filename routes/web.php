@@ -57,5 +57,8 @@ Route::prefix('guru')->group(function () {
         Route::get('/{id}/penilaian', function ($id) {
             return view('pages.guru.guruPenilaian');
         });
+        Route::get('/{id}/kuis', function ($id) {
+            return view('pages.guru.guruBuatKuis');
+        });
     });
 });
