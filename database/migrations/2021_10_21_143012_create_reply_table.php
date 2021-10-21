@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTugasTable extends Migration
+class CreateReplyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateTugasTable extends Migration
      */
     public function up()
     {
-        Schema::create('Tugas', function (Blueprint $table) {
-            $table->id('tugas_id');
-            $table->foreignId('kelas_id');
-            $table->date('batas_awal');
-            $table->date('batas_akhir');
+        Schema::create('Reply', function (Blueprint $table) {
+            $table->id('reply_id');
+            $table->foreignId('comment_id');
+            $table->foreignId('pengguna_id');
+            $table->string('feed_creator');
             $table->longText('keterangan');
-            $table->boolean('status');
-            $table->string('url_soal', 255);
+            $table->timestamps();
         });
     }
 
@@ -31,6 +30,6 @@ class CreateTugasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Tugas');
+        Schema::dropIfExists('Reply');
     }
 }
