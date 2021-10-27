@@ -17,7 +17,7 @@ class CreateCommentTable extends Migration
             $table->id('comment_id');
             $table->foreignId('feed_id');
             $table->foreignId('pengguna_id');
-            $table->string('feed_creator');
+            $table->string('comment_creator');
             $table->longText('keterangan');
             $table->timestamps();
         });

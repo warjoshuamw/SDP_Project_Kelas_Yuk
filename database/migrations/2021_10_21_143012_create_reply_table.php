@@ -17,7 +17,7 @@ class CreateReplyTable extends Migration
             $table->id('reply_id');
             $table->foreignId('comment_id');
             $table->foreignId('pengguna_id');
-            $table->string('feed_creator');
+            $table->string('reply_creator');
             $table->longText('keterangan');
             $table->timestamps();
         });
