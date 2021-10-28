@@ -16,8 +16,8 @@ class CreateKuisTable extends Migration
         Schema::create('Kuis', function (Blueprint $table) {
             $table->id('kuis_id');
             $table->foreignId('kelas_id');
-            $table->date('batas_awal');
-            $table->date('batas_akhir');
+            $table->dateTime('batas_awal');
+            $table->dateTime('batas_akhir');
             $table->boolean('status');
             $table->boolean('randomable');
             $table->timestamps();
