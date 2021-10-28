@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,10 +25,7 @@ class EssentialController extends Controller
             foreach ($data_pengguna as $pgw ) { //cek login user
                 if($pgw->pengguna_email==$email && $pgw->pengguna_password==$password ){
                    $ceklogin=true;
-                   $tempuser['pengguna_nama']=$pgw->pengguna_nama;
-                   $tempuser['pengguna_email']=$pgw->pengguna_email;
-                   $tempuser['pengguna_peran']=$pgw->pengguna_peran;
-                   $tempuser['pengguna_tampilan']=$pgw->pengguna_tampilan;
+                   $tempuser=$pgw;
                 }
             }
         }
@@ -36,12 +34,14 @@ class EssentialController extends Controller
             return view("pages.essential.login",['gagal'=>true]);
         }
 
-        $request->session()->push('user_logged', $tempuser);
+        $request->session()->put('user_logged', $tempuser);
 
 
         if($tempuser['pengguna_peran']=="0"){
             //bila user merupakan guru maka arahkan ke page guru
-            return view('pages.guru.guruHome');
+            $pengguna_id = $tempuser->pengguna_id;
+            $dataKelas = Kelas::where('pengguna_id','=',$pengguna_id)->get();
+            return view('pages.guru.guruHome',['dataKelas'=>$dataKelas]);
         }else if($tempuser['pengguna_peran']=="1"){
             //bila user adalah murid maka arahkan ke page murid
             return view("pages.murid.muridHome");
@@ -72,9 +72,7 @@ class EssentialController extends Controller
             ]
         );
 
-        $result =Pengguna::create($request->all()+ ['pengguna_tampilan' => '0']);
-
-
+        $result = Pengguna::create($request->all()+ ['pengguna_tampilan' => '0']);
         return view("pages.essential.Register",['register'=>true]);
     }
     public function goToLandingPage(Request $request)
