@@ -20,6 +20,7 @@ class CreateReplyTable extends Migration
             $table->string('reply_creator');
             $table->longText('keterangan');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

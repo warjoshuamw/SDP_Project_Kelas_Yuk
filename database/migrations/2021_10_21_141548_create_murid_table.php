@@ -17,6 +17,8 @@ class CreateMuridTable extends Migration
             $table->id("murid_id");
             $table->foreignId("kelas_id");
             $table->foreignId("pengguna_id");
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -20,6 +20,8 @@ class CreateKuisTable extends Migration
             $table->date('batas_akhir');
             $table->boolean('status');
             $table->boolean('randomable');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -19,6 +19,8 @@ class CreateDQuizTable extends Migration
             $table->text('pertanyaan');
             $table->tinyInteger('pilihan')->nullable();
             $table->text('isian')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

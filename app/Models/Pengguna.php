@@ -11,7 +11,7 @@ class Pengguna extends Model
     use HasFactory;
     use SoftDeletes; // deleted_at
 
-    protected $connection = "sdp_kelas_yuk";
+    protected $connection = "mysql";
     protected $table      = "pengguna";
     protected $primaryKey = "pengguna_id";
     public $incrementing  = true;

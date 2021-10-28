@@ -21,6 +21,8 @@ class CreateTugasTable extends Migration
             $table->longText('keterangan');
             $table->boolean('status');
             $table->string('url_soal', 255);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

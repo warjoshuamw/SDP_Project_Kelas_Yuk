@@ -20,6 +20,7 @@ class CreateFeedTable extends Migration
             $table->string('feed_creator');
             $table->longText('keterangan');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

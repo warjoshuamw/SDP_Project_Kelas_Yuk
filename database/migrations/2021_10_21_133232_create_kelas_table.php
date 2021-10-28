@@ -22,6 +22,7 @@ class CreateKelasTable extends Migration
             $table->date('waktu_selesai');
             $table->boolean('status');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -10,62 +10,61 @@
 
 @section('main')
 
-<div class="flex justify-center h-screen items-center text-center">
+<form action="{{ url('/register/doregister') }}" method="get" class="flex justify-center h-screen items-center text-center">
+    @csrf
     <div class='flex max-w-sm w-full justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
         <h3 class="text-2xl font-bold mb-4 font-serif text-ocean-dark">Kelas Yuk</h3>
-    <!-- This is the input component -->
+
     <div class="relative h-10 input-component mb-5">
       <input
         id="name"
         type="text"
-        name="name"
+        name="pengguna_nama"
         class=" w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
+        @error('pengguna_nama') style="border: 2px solid red;" @enderror value="{{ old('pengguna_nama')}}"
       />
       <label for="name" class="absolute left-2 transition-all bg-white px-1">
         Name
       </label>
     </div>
+    @error("pengguna_nama")
+    <div class="ml-8 text-red-500 text-bold">{{ $message }}</div>
+    @enderror
     <!-- This is the input component -->
     <div class="relative h-10 input-component mb-5">
       <input
         id="email"
         type="text"
-        name="email"
+        name="pengguna_email"
         class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
+        @error('pengguna_nemail') style="border: 2px solid red;" @enderror value="{{ old('pengguna_email')}}"
       />
       <label for="email" class="absolute left-2 transition-all bg-white px-1">
         E-mail
       </label>
     </div>
-    <!-- This is the input component -->
-    <div class="relative h-10 input-component mb-5">
-      <input
-        id="address"
-        type="text"
-        name="address"
-        class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
-      />
-      <label for="address" class="absolute left-2 transition-all bg-white px-1">
-        Address
-      </label>
-    </div>
-    <div class="relative h-10 input-component mb-5">
-        <input
-          id="email"
-          type="email"
-          name="Email"
-          class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
-        />
-        <label for="address" class="absolute left-2 transition-all bg-white px-1">
-          Email
+    @error("pengguna_email")
+    <div class="ml-8 text-red-500 text-bold">{{ $message }}</div>
+    @enderror
+
+      <div class="relative h-10 input-component mb-5">
+
+        <select name="pengguna_peran" class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1">
+            {{-- <option value="{{old('jabatan')}}">jabatan Kosong</option> --}}
+            <option value="0">Guru</option>
+            <option value="1">Murid</option>
+        </select>
+        <label for="peran" class="absolute left-2 transition-all bg-white px-1">
+         Peran
         </label>
       </div>
       <div class="relative h-10 input-component mb-5">
         <input
           id="password"
           type="password"
-          name="password"
+          name="pengguna_password"
           class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
+          @error('pengguna_password') style="border: 2px solid red;" @enderror value="{{ old('pengguna_password')}}"
         />
         <label for="address" class="absolute left-2 transition-all bg-white px-1">
           Password
@@ -75,19 +74,39 @@
         <input
           id="konfirmasi_password"
           type="password"
-          name="Konfirmasi_password"
+          name="pengguna_password_confirmation"
           class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
+          @error('pengguna_password') style="border: 2px solid red;" @enderror value="{{ old('pengguna_password')}}"
         />
         <label for="address" class="absolute left-2 transition-all bg-white px-1">
           Konfirmasi Password
         </label>
       </div>
+      @error("pengguna_password")
+    <div class="ml-8 text-red-500 text-bold">{{ $message }}</div>
+    @enderror
+
+      {{-- <input type="hidden" name="penggutampilan" value='0'> --}}
       <a href="/login" class="text-sm text-black text-left font-roboto leading-normal hover:underline ">Kembali Ke Login</a>
       <div class="flex space-x-5 mt-3">
         <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold border p-2  w-2/3">
-        </div >
+       </div >
+       @if(isset($register))
+            {{-- <div class="text-2xl">Login Gagal</div> --}}
+
+            @if ($register==true)
+            @php
+            echo '<script type="text/javascript">
+           alert("berhasil register");
+           </script>';
+             @endphp
+            @else
+
+            @endif
+        @endif
     </div>
-</div>
+
+</form>
 
 <style>
 label {

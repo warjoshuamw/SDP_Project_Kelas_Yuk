@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'EssentialController@goToLandingPage');
 Route::get('/login', 'EssentialController@GoToLogin');
-Route::get('dologin', 'EssentialController@GoToDoLogin');
+Route::get('login/dologin', 'EssentialController@GoToDoLogin');
 Route::get('register', 'EssentialController@GoToRegister');
+Route::get('register/doregister', 'EssentialController@GoToDoRegister');
 Route::get('cobagila', function () {
     return view('pages.essential.cobasidebar');
 });

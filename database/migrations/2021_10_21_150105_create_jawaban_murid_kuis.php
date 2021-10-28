@@ -18,6 +18,8 @@ class CreateJawabanMuridKuis extends Migration
             $table->foreignId('d_kuis_id');
             $table->foreignId('murid_id');
             $table->text('jawaban');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

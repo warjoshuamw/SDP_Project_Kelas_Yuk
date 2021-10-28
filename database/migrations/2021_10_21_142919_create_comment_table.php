@@ -20,6 +20,7 @@ class CreateCommentTable extends Migration
             $table->string('comment_creator');
             $table->longText('keterangan');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

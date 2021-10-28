@@ -19,6 +19,8 @@ class CreateNilaiTugasMuridTable extends Migration
             $table->foreignId('murid_id');
             $table->string('url_pengumpulan', 255);
             $table->tinyInteger('nilai');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
