@@ -11,7 +11,7 @@ class Feed extends Model
     use HasFactory;
     use SoftDeletes; // deleted_at
 
-    protected $connection = "sdp_kelas_yuk";
+    protected $connection = "mysql";
     protected $table      = "feed";
     protected $primaryKey = "feed_id";
     public $incrementing  = true;

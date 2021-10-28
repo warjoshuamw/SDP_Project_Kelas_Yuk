@@ -11,7 +11,7 @@ class Comment extends Model
     use HasFactory;
     use SoftDeletes; // deleted_at
 
-    protected $connection = "sdp_kelas_yuk";
+    protected $connection = "mysql";
     protected $table      = "comment";
     protected $primaryKey = "comment_id";
     public $incrementing  = true;

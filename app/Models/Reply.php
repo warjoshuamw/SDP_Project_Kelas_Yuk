@@ -11,7 +11,7 @@ class Reply extends Model
     use HasFactory;
     use SoftDeletes; // deleted_at
 
-    protected $connection = "sdp_kelas_yuk";
+    protected $connection = "mysql";
     protected $table      = "reply";
     protected $primaryKey = "reply_id";
     public $incrementing  = true;

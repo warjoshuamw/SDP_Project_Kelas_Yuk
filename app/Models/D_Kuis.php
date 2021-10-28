@@ -11,7 +11,7 @@ class D_Kuis extends Model
     use HasFactory;
     use SoftDeletes; // deleted_at
 
-    protected $connection = "sdp_kelas_yuk";
+    protected $connection = "mysql";
     protected $table      = "comment";
     protected $primaryKey = "d_kuis_id";
     public $incrementing  = true;

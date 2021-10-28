@@ -11,7 +11,7 @@ class Tugas extends Model
     use HasFactory;
     use SoftDeletes; // deleted_at
 
-    protected $connection = "sdp_kelas_yuk";
+    protected $connection = "mysql";
     protected $table      = "tugas";
     protected $primaryKey = "tugas_id";
     public $incrementing  = true;

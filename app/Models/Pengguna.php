@@ -24,4 +24,14 @@ class Pengguna extends Model
         'pengguna_peran',
         'pengguna_tampilan',
     ];
+
+    public function KelasGuru()
+    {
+        return $this->hasMany(Kelas::class,'pengguna_id','pengguna_id'); //menghubungkan pengguna dengan kelas menggunakan one to many
+    }
+
+    public function KelasMurid()
+    {
+        return $this->belongsToMany(Kelas::class,'murid','pengguna_id','kelas_id');
+    }
 }

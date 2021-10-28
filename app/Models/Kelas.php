@@ -11,7 +11,7 @@ class Kelas extends Model
     use HasFactory;
     use SoftDeletes; // deleted_at
 
-    protected $connection = "sdp_kelas_yuk";
+    protected $connection = "mysql";
     protected $table      = "kelas";
     protected $primaryKey = "kelas_id";
     public $incrementing  = true;
@@ -26,4 +26,13 @@ class Kelas extends Model
         'status',
     ];
 
+    public function Guru()
+    {
+        return $this->belongsTo(Pengguna::class,'pengguna_id','pengguna_id');
+    }
+
+    public function Murid()
+    {
+        return $this->belongsToMany(Pengguna::class,'murid','kelas_id','pengguna_id');
+    }
 }
