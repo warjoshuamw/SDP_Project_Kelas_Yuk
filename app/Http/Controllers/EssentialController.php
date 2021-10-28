@@ -17,11 +17,11 @@ class EssentialController extends Controller
         $ceklogin=false;
         $email=$request->input('email');
         $password=$request->input('password');
-        $data_pengguna = Pengguna::withTrashed()->orderBy('pengguna_id','desc')->get();
+        $data_pengguna = Pengguna::all();
 
 
         if($data_pengguna!=null){
-            foreach ($data_pengguna as $pgw ) {
+            foreach ($data_pengguna as $pgw ) { //cek login user
                 if($pgw->pengguna_email==$email && $pgw->pengguna_password==$password ){
                    $ceklogin=true;
                    $tempuser['pengguna_nama']=$pgw->pengguna_nama;
@@ -32,17 +32,18 @@ class EssentialController extends Controller
             }
         }
 
-        if($ceklogin==false){
+        if($ceklogin == false){
             return view("pages.essential.login",['gagal'=>true]);
         }
 
-        $request->session()->push('tempuser', $tempuser);
-        $request->session()->put('active', $tempuser['pengguna_peran']);
-        // dd($data_pegawai);
+        $request->session()->push('user_logged', $tempuser);
+
+
         if($tempuser['pengguna_peran']=="0"){
+            //bila user merupakan guru maka arahkan ke page guru
             return view('pages.guru.guruHome');
         }else if($tempuser['pengguna_peran']=="1"){
-
+            //bila user adalah murid maka arahkan ke page murid
             return view("pages.murid.muridHome");
         }
     }
@@ -54,23 +55,11 @@ class EssentialController extends Controller
     public function GoToDoRegister(Request $request)
     {
         $data_pengguna = Pengguna::withTrashed()->orderBy('pengguna_id','desc')->get();
-        // dd($data_pengguna->pengguna_email);
         $request -> validate(
             [
                 'pengguna_nama' => ['required'],
                 'pengguna_email'=> [
-                    'required',
-                    function ($attr, $value, $fail) use($data_pengguna) {
-                        if($data_pengguna!=null){
-                            foreach ($data_pengguna as $pgw ) {
-                                if($pgw->pengguna_email==$value){
-                                    $fail('email sudah dipakai');
-                                }
-                            }
-                        }
-
-                    }
-
+                    'required','unique:pengguna,pengguna_email'
                 ],
                 'pengguna_peran' => ['required'],
                 'pengguna_password' => ['required', 'confirmed'],
@@ -79,6 +68,7 @@ class EssentialController extends Controller
                 'pengguna_nama.required' => "nama harus diisi",
                 'pengguna_email.required' => "email harus diisi",
                 'pengguna_password.confirmed' => "password and confirm password harus sama",
+                'pengguna_password.required' => "password harus diisi",
             ]
         );
 

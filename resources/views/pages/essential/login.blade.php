@@ -39,7 +39,6 @@
             </label>
         </div>
 
-        <a href="/register" class="text-base text-black text-right font-roboto leading-normal hover:underline mb-3">belum punya akun?</a>
         <button type="submit" name="login" class="bg-secondary-red text-black hover:bg-secondary-red-hover py-4 text-center px-17 md:px-12 md:py-4 rounded leading-tight text-xl md:text-base font-sans mt-4">Login</button>
         @if(isset($gagal))
         {{-- <div class="text-2xl">Login Gagal</div> --}}
@@ -49,6 +48,8 @@
             </script>';
         @endphp
         @endif
+
+        <a href="/register" class="text-base text-black text-right font-roboto leading-normal underline mb-3">belum punya akun?</a>
         </form>
 </div>
 

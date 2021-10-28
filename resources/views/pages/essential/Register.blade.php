@@ -15,23 +15,24 @@
     <div class='flex max-w-sm w-full justify-center bg-white shadow-md rounded-lg overflow-hidden mx-auto flex flex-col p-5'>
         <h3 class="text-2xl font-bold mb-4 font-serif text-ocean-dark">Kelas Yuk</h3>
 
-    <div class="relative h-10 input-component mb-5">
+    <div class="relative h-10 input-component mb-5 empty">
       <input
         id="name"
         type="text"
         name="pengguna_nama"
         class=" w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1"
-        @error('pengguna_nama') style="border: 2px solid red;" @enderror value="{{ old('pengguna_nama')}}"
+        @error('pengguna_nama') style="border: 2px solid red;" @enderror
+        value="{{ old('pengguna_nama')}}"
       />
       <label for="name" class="absolute left-2 transition-all bg-white px-1">
         Name
       </label>
+        @error("pengguna_nama")
+            <div class="text-red-500 text-xs text-left">{{ $message }}</div>
+        @enderror
     </div>
-    @error("pengguna_nama")
-    <div class="ml-8 text-red-500 text-bold">{{ $message }}</div>
-    @enderror
     <!-- This is the input component -->
-    <div class="relative h-10 input-component mb-5">
+    <div class="relative h-10 input-component mb-6 empty">
       <input
         id="email"
         type="text"
@@ -42,23 +43,21 @@
       <label for="email" class="absolute left-2 transition-all bg-white px-1">
         E-mail
       </label>
+        @error("pengguna_email")
+        <div class="text-red-500 text-xs text-left">{{ $message }}</div>
+        @enderror
     </div>
-    @error("pengguna_email")
-    <div class="ml-8 text-red-500 text-bold">{{ $message }}</div>
-    @enderror
 
       <div class="relative h-10 input-component mb-5">
-
-        <select name="pengguna_peran" class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm py-1">
-            {{-- <option value="{{old('jabatan')}}">jabatan Kosong</option> --}}
+        <select id="peran" name="pengguna_peran" class="h-full w-full border border-gray-300 px-2 transition-all border-blue rounded-sm py-1">
             <option value="0">Guru</option>
             <option value="1">Murid</option>
         </select>
-        <label for="peran" class="absolute left-2 transition-all bg-white px-1">
+        <label for="peran" class="absolute text-black left-2 transition-all bg-white px-1">
          Peran
         </label>
       </div>
-      <div class="relative h-10 input-component mb-5">
+      <div class="relative h-10 input-component mb-5 empty">
         <input
           id="password"
           type="password"
@@ -69,8 +68,11 @@
         <label for="address" class="absolute left-2 transition-all bg-white px-1">
           Password
         </label>
+        @error("pengguna_password")
+        <div class="text-red-500 text-xs text-left">{{ $message }}</div>
+        @enderror
       </div>
-      <div class="relative h-10 input-component mb-1">
+      <div class="relative h-10 input-component mb-1 empty">
         <input
           id="konfirmasi_password"
           type="password"
@@ -83,13 +85,12 @@
         </label>
       </div>
       @error("pengguna_password")
-    <div class="ml-8 text-red-500 text-bold">{{ $message }}</div>
+    <div class="text-red-500 text-xs text-left">{{ $message }}</div>
     @enderror
 
       {{-- <input type="hidden" name="penggutampilan" value='0'> --}}
-      <a href="/login" class="text-sm text-black text-left font-roboto leading-normal hover:underline ">Kembali Ke Login</a>
-      <div class="flex space-x-5 mt-3">
-        <input type="submit" value="Submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold border p-2  w-2/3">
+      <div class="">
+        <input type="submit" value="Submit" class="bg-secondary-red text-black hover:bg-secondary-red-hover py-4 text-center px-17 md:px-12 md:py-4 rounded leading-tight text-xl md:text-base font-sans mt-4 w-full">
        </div >
        @if(isset($register))
             {{-- <div class="text-2xl">Login Gagal</div> --}}
@@ -104,6 +105,7 @@
 
             @endif
         @endif
+        <a href="/login" class="text-sm text-black text-left font-roboto leading-normal underline mt-2 ">Kembali Ke Login</a>
     </div>
 
 </form>
@@ -132,10 +134,8 @@ input:focus {
 }
 </style>
 <script>
-    document.getElementById('name').value = 'John Doe'
-    document.getElementById('email').value = 'john.doe@mail.com'
     document.getElementById('email').focus()
-    const allInputs = document.querySelectorAll('input');
+    const allInputs = document.querySelectorAll('input','select');
     for(const input of allInputs) {
         input.addEventListener('input', () => {
             const val = input.value
@@ -147,33 +147,6 @@ input:focus {
         })
     }
 </script>
-
-
-{{-- <div class="h-screen w-auto bg-gradient-to-r from-blue-400 via-purple-500 to-white-500  mx-auto flex justify-center items-center">
-    <div class="justify-center flex-col flex ml-auto mr-auto items-center w-full lg:w-2/3 md:w-3/5 h-screen">
-        <form action="" class="form p-6 my-10 relative w-2/3 h-4/5 ">
-            <h3 class="text-2xl font-semibold text-white">Kelas Yuk!</h3>
-            <p class="text-white"> Halaman Register</p>
-            <div class="flex space-x-5 mt-3">
-                <input type="text" name="" id="Nama_depan" placeholder="Nama Depan" class="border p-2  w-1/2">
-                <input type="text" name="" id="Nama_Bekalang" placeholder="Nama Belakang" class="border p-2 w-1/2">
-            </div>
-            <input type="email" name="" id="Email" placeholder="Email Kamu" class="border p-2 w-full mt-3">
-            <div class="flex space-x-5 mt-3">
-                <input type="password" name="" id="Password" placeholder="Password" class="border p-2  w-1/2">
-                <input type="password" name="" id="Konfirmasi_Password" placeholder="Konfirmasi Password" class="border p-2 w-1/2">
-            </div>
-            <textarea name="" id="" cols="10" rows="3" placeholder="Ceritakan Tentangmu" class="border p-2 mt-3 w-full"></textarea>
-            <div class="flex space-x-5 mt-3">
-            <a href="/login" class="text-2xl text-white text-left font-roboto leading-normal hover:underline p-2  w-1/4">Login Saja</a>
-            <input type="submit" value="Submit" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold border p-2  w-3/4">
-            </div >
-
-
-        </form>
-  </div>
-  </div> --}}
-
 
 @endsection
 
