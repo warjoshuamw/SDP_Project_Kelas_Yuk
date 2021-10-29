@@ -48,6 +48,19 @@
             </script>';
         @endphp
         @endif
+        @if(isset($register))
+        {{-- <div class="text-2xl">Login Gagal</div> --}}
+
+        @if ($register==true)
+        @php
+        echo '<script type="text/javascript">
+       alert("berhasil register");
+       </script>';
+         @endphp
+        @else
+
+        @endif
+    @endif
 
         <a href="/register" class="text-base text-black text-right font-roboto leading-normal underline mb-3">belum punya akun?</a>
         </form>

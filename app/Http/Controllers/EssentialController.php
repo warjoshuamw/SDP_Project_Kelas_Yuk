@@ -73,7 +73,7 @@ class EssentialController extends Controller
         );
 
         $result = Pengguna::create($request->all()+ ['pengguna_tampilan' => '0']);
-        return view("pages.essential.Register",['register'=>true]);
+        return view("pages.essential.login",['register'=>true]);
     }
     public function goToLandingPage(Request $request)
     {

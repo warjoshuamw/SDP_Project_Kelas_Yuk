@@ -21,6 +21,7 @@ class Kelas extends Model
         'pengguna_id',
         'kelas_kode',
         'kelas_nama',
+        'kelas_deskripsi',
         'waktu_mulai',
         'waktu_selesai',
         'status',

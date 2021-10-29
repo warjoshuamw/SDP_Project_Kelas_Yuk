@@ -18,6 +18,7 @@ class CreateKelasTable extends Migration
             $table->foreignId('pengguna_id');
             $table->string('kelas_kode')->unique();
             $table->string('kelas_nama');
+            $table->string('kelas_deskripsi');
             $table->dateTime('waktu_mulai');
             $table->dateTime('waktu_selesai');
             $table->boolean('status');

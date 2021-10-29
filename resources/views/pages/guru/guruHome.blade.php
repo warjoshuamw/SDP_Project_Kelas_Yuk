@@ -18,7 +18,9 @@
     </div>
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto">
         @foreach ($dataKelas as $kelas)
-            @include('components.kelasCard',['url'=>'/guru/kelas/{{$kelas->kelas_id}}/home','kelas_nama'=>$kelas->kelas_nama,'pengguna_nama'=>$kelas->Guru->pengguna_nama])
+
+            {{-- @dd($kelas->kelas_id); --}}
+            @include('components.kelasCard',['kelas_id'=>$kelas->kelas_id,'kelas_nama'=>$kelas->kelas_nama,'kelas_deskripsi'=>$kelas->kelas_deskripsi,'pengguna_nama'=>$kelas->Guru->pengguna_nama])
         @endforeach
     </div>
 </div>
@@ -65,6 +67,10 @@
                     <div class="md:col-span-6">
                     <label for="kelas_nama">Nama Kelas</label>
                     <input type="text" name="kelas_nama" id="kelas_nama" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                    </div>
+                    <div class="md:col-span-6">
+                    <label for="kelas_nama">Deskripsi</label>
+                    <input type="text" name="kelas_deskripsi" id="kelas_deskripsi" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
                     </div>
                     <div class="md:col-span-3">
                     <label for="waktu_mulai">Waktu Mulai</label>
