@@ -23,4 +23,14 @@ class Feed extends Model
         'feed_creator',
         'keterangan',
     ];
+
+    public function Kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_id', 'kelas_id');
+    }
+
+    public function Comment()
+    {
+        return $this->hasMany(Comment::class, 'feed_id', 'feed_id');
+    }
 }

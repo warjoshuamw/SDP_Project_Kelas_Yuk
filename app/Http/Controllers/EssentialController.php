@@ -14,7 +14,7 @@ class EssentialController extends Controller
         return view("pages.essential.login");
     }
     public function GoToDoLogin(Request $request)
-    {
+    {//TODO ganti ke auth
         $ceklogin=false;
         $email=$request->input('email');
         $password=$request->input('password');

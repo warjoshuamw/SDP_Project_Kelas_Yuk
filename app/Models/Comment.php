@@ -23,4 +23,9 @@ class Comment extends Model
         'comment_creator',
         'keterangan',
     ];
+
+    public function Feed()
+    {
+        return $this->belongsTo(Feed::class, 'feed_id', 'feed_id');
+    }
 }

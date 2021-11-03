@@ -52,9 +52,8 @@ Route::prefix('guru')->group(function () {
     Route::get('/', 'GuruController@goToKelas');
     Route::prefix('/kelas')->group(function () {
         Route::post('/buat', 'KelasController@doAddKelas'); //buat kelas
-        Route::get('/{id}/home', function ($id) {
-            return view('pages.guru.guruFeed');
-        });
+        Route::get('/{id}/home', 'GuruController@goToGuruFeed');
+        Route::get('/{id}/home/add', 'GuruController@doAddFeed');
         Route::get('/{id}/tugas', function ($id) {
             return view('pages.guru.guruBeriTugas');
         });

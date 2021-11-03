@@ -18,6 +18,13 @@ module.exports = {
                 "button-light": "#F8CF77", //button light
                 "button-dark": "#E9A30C", // button dark
             },
+            minHeight: {
+                0: "0",
+                "1/4": "25%",
+                "1/2": "50%",
+                "3/4": "75%",
+                full: "100%",
+            },
         },
     },
     variants: {

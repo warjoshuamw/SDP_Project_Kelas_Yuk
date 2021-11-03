@@ -36,4 +36,9 @@ class Kelas extends Model
     {
         return $this->belongsToMany(Pengguna::class,'murid','kelas_id','pengguna_id');
     }
+
+    public function Feed()
+    {
+        return $this->hasMany(Feed::class,'kelas_id','kelas_id');
+    }
 }
