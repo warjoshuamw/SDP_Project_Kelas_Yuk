@@ -23,4 +23,8 @@ class Reply extends Model
         'reply_creator',
         'keterangan',
     ];
+    public function Comment()
+    {
+        return $this->belongsTo(Comment::class,'comment_id','comment_id');
+    }
 }

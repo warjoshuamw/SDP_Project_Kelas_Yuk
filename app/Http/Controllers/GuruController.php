@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Kelas;
+use App\Models\Reply;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
 
@@ -122,6 +123,23 @@ class GuruController extends Controller
             'keterangan'=>$comment,
         ]);
 
+        return back();
+    }
+
+    public function doAddReply(Request $request)
+    {
+        $user_logged = $request->session()->get('user_logged', 'default');
+        $keterangan = $request->keterangan;
+        $comment_id = $request->comment_id;
+        $pengguna_id = $user_logged->pengguna_id;
+        $reply_creator = $user_logged->pengguna_nama;
+        //TODO add reply ke table reply ambil
+        $hasil = Reply::create([
+            'comment_id'=>$comment_id,
+            'pengguna_id'=>$pengguna_id,
+            'reply_creator'=>$reply_creator,
+            'keterangan'=>$keterangan,
+        ]);
         return back();
     }
 }

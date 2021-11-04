@@ -28,4 +28,8 @@ class Comment extends Model
     {
         return $this->belongsTo(Feed::class, 'feed_id', 'feed_id');
     }
+    public function Reply()
+    {
+        return $this->hasMany(Reply::class,'comment_id','comment_id');
+    }
 }
