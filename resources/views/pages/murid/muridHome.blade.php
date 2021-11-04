@@ -6,11 +6,24 @@
 <div><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded"onclick="document.getElementById('myModal').showModal()">Tambah kelas</button></div>
 
 <div class="flex flex-col md:flex-row gap-2">
-    
+
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto">
-        @for ($i = 0; $i < 1; $i++)
-            @include('components.kelasCard',['url'=>'/murid/kelas/1/home'])
-        @endfor
+        @foreach ($dataKelas as $kelas)
+            {{-- @dd($kelas->kelas_id); --}}
+            {{-- @php
+                dump(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$kelas->waktu_mulai)->locale('id')->format('D H:i'));
+            @endphp --}}
+            @include('components.kelasCard',
+            [
+                'role'=>$user_login->pengguna_peran,
+                'kelas_id'=>$kelas->kelas_id,
+                'kelas_nama'=>$kelas->kelas_nama,
+                'kelas_deskripsi'=>$kelas->kelas_deskripsi,
+                'pengguna_nama'=>$kelas->Guru->pengguna_nama,
+                "waktuAwal"=>date('D H:i', strtotime($kelas->waktu_mulai)),
+                "waktuAkhir"=>date('D H:i', strtotime($kelas->waktu_selesai)),
+            ])
+        @endforeach
     </div>
 </div>
 
@@ -58,10 +71,10 @@
                     <div class="col-span-1 justify-center item-center"><img class="mx-auto w-auto bg-center justify-center" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow"></div>
                     <div class="col-span-4 grid-rows-2">
                         <div class="row-span-1">
-                            <h3 name="full_name" id="full_name" class="h-10 mt-1 font-bold rounded px-4 w-full text-left " value="">Andrian Sugianto Putra</h3>
+                            <h3 name="full_name" id="full_name" class="h-10 mt-1 font-bold rounded px-4 w-full text-left " value="">{{$user_login->pengguna_nama}}</h3>
                         </div>
                         <div class="row-span-1">
-                            <h3 name="full_name" id="full_name" class="h-10 rounded px-4 w-full text-left" value="">Andriansugiantoputra@gmail.com</h3>
+                            <h3 name="full_name" id="full_name" class="h-10 rounded px-4 w-full text-left" value="">{{$user_login->pengguna_email}}</h3>
                         </div>
                     </div>
                 </div>
@@ -80,7 +93,8 @@
 
                     <div class=" text-right">
                         <div class="inline-flex items-end">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join</button>
+                            <a href=""> <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join</button></a>
+
                         </div>
                     </div>
             </div>

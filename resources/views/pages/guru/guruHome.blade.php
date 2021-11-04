@@ -24,6 +24,7 @@
             @endphp --}}
             @include('components.kelasCard',
             [
+                'role'=>$user_login->pengguna_peran,
                 'kelas_id'=>$kelas->kelas_id,
                 'kelas_nama'=>$kelas->kelas_nama,
                 'kelas_deskripsi'=>$kelas->kelas_deskripsi,

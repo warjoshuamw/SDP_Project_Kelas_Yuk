@@ -14,7 +14,12 @@ class GuruController extends Controller
         $pengguna_id = $request->session()->get('user_logged', 'default')->pengguna_id;
         if ($pengguna_id == 'default') return back()->with('message', 'error');
         $dataKelas = Kelas::where('pengguna_id', '=', $pengguna_id)->get();
-        return view('pages.guru.guruHome', ['dataKelas' => $dataKelas]);
+        $user_login=$request->session()->get('user_logged', 'default');
+        $param=[];
+        $param['dataKelas']=$dataKelas;
+        $param['user_login']=$user_login;
+
+        return view('pages.guru.guruHome', $param);
     }
 
     public function goToGuruFeed(Request $request)
@@ -24,6 +29,7 @@ class GuruController extends Controller
 
         // dd($dataKelas);
         $params['dataFeed'] = $dataKelas->Feed;
+        // dd($dataKelas->Feed);
         // $params['id_kelas_sekarang'] = $request->id;
         // dd($dataKelas->Feed);
         return view('pages.guru.guruFeed', $params);

@@ -40,11 +40,15 @@ class EssentialController extends Controller
         if($tempuser['pengguna_peran']=="0"){
             //bila user merupakan guru maka arahkan ke page guru
             $pengguna_id = $tempuser->pengguna_id;
+            $tempuser = $tempuser;
             $dataKelas = Kelas::where('pengguna_id','=',$pengguna_id)->get();
-            return view('pages.guru.guruHome',['dataKelas'=>$dataKelas]);
+            return redirect('/guru');
+            // return view('pages.guru.guruHome',['dataKelas'=>$dataKelas,'user_login'=>$tempuser]);
         }else if($tempuser['pengguna_peran']=="1"){
             //bila user adalah murid maka arahkan ke page murid
-            return view("pages.murid.muridHome");
+            $pengguna_id = $tempuser->pengguna_id;
+            $dataKelas = Kelas::where('pengguna_id','=',$pengguna_id)->get();
+            return view("pages.murid.muridHome",['dataKelas'=>$dataKelas,'user_login'=>$tempuser]);
         }
     }
     public function GoToRegister()
