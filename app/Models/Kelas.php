@@ -41,4 +41,8 @@ class Kelas extends Model
     {
         return $this->hasMany(Feed::class,'kelas_id','kelas_id');
     }
+    public function Tugas()
+    {
+        return $this->hasMany(Tugas::class,'kelas_id','kelas_id');
+    }
 }

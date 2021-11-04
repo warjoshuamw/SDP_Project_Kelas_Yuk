@@ -19,10 +19,17 @@ class Tugas extends Model
 
     protected $fillable = [
         'kelas_id',
+        'tugas_nama',
         'batas_awal',
         'batas_akhir',
-        'keterangan',
+        'tugas_keterangan',
         'status',
         'url_soal',
     ];
+
+    public function Kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_id', 'kelas_id');
+    }
+
 }

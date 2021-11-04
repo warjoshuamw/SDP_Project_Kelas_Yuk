@@ -16,9 +16,10 @@ class CreateTugasTable extends Migration
         Schema::create('Tugas', function (Blueprint $table) {
             $table->id('tugas_id');
             $table->foreignId('kelas_id');
+            $table->string('tugas_nama');
             $table->dateTime('batas_awal');
             $table->dateTime('batas_akhir');
-            $table->longText('keterangan');
+            $table->longText('tugas_keterangan');
             $table->boolean('status');
             $table->string('url_soal', 255);
             $table->timestamps();

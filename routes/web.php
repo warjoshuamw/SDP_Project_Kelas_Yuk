@@ -54,18 +54,11 @@ Route::prefix('guru')->group(function () {
         Route::post('/buat', 'KelasController@doAddKelas'); //buat kelas
         Route::get('/{id}/home', 'GuruController@goToGuruFeed');
         Route::get('/{id}/home/add', 'GuruController@doAddFeed');
-        Route::get('/{id}/tugas', function ($id) {
-            return view('pages.guru.guruBeriTugas');
-        });
-        Route::get('/{id}/tugas/{idTugas}', function ($id, $idTugas) {
-            return view('pages.guru.guruLihatTugas');
-        });
-        Route::get('/{id}/penilaian', function ($id) {
-            return view('pages.guru.guruPenilaian');
-        });
-        Route::get('/{id}/kuis', function ($id) {
-            return view('pages.guru.guruKuis');
-        });
+        Route::get('/{id}/tugas', 'GuruController@goToGuruBeriTugas');
+        Route::post('/{id}/tugas/add', 'GuruController@doAddTugas');
+        Route::get('/{id}/tugas/{idTugas}','GuruController@goToGuruLihatTugas');
+        Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
+        Route::get('/{id}/kuis', 'GuruController@goToGuruKuis');
         Route::get('/{id}/kuis/buat', function ($id) {
             return view('pages.guru.guruBuatKuis');
         });
