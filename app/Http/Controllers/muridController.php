@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use App\Models\Murid;
+use App\Models\Pengguna;
 use Illuminate\Http\Request;
 
 class MuridController extends Controller
@@ -11,7 +12,12 @@ class MuridController extends Controller
     //Routing untuk
     public function goToKelas(Request $request)
     {
-        return view('pages.murid.muridHome');
+        $pengguna_id = $request->session()->get('user_logged', 'default')->pengguna_id;
+        $dataKelasMurid = Pengguna::find($pengguna_id)->KelasMurid;
+        $user_login = $request->session()->get('user_logged', 'default');
+        $param['dataKelasMurid'] = $dataKelasMurid;
+        $param['user_login'] = $user_login;
+        return view('pages.murid.muridHome',$param);
     }
     public function goToDo(Request $request)
     {
@@ -39,7 +45,7 @@ class MuridController extends Controller
                 'pengguna_id'=>$dataUser->pengguna_id,
             ]);
         }else{
-            
+
         }
 
 

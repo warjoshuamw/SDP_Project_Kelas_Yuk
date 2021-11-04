@@ -32,6 +32,8 @@ class Pengguna extends Model
 
     public function KelasMurid()
     {
-        return $this->belongsToMany(Kelas::class,'murid','pengguna_id','kelas_id');
+        return $this->belongsToMany(Kelas::class,'murid','pengguna_id','kelas_id')
+                    ->withPivot('kelas_id','pengguna_id')
+        ;
     }
 }

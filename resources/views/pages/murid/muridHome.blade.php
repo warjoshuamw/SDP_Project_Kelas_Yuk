@@ -8,7 +8,7 @@
 <div class="flex flex-col md:flex-row gap-2">
 
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto">
-        @foreach ($dataKelas as $kelas)
+        @foreach ($dataKelasMurid as $kelas)
             {{-- @dd($kelas->kelas_id); --}}
             {{-- @php
                 dump(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$kelas->waktu_mulai)->locale('id')->format('D H:i'));

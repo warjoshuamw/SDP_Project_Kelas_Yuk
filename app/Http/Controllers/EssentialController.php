@@ -48,7 +48,7 @@ class EssentialController extends Controller
             //bila user adalah murid maka arahkan ke page murid
             $pengguna_id = $tempuser->pengguna_id;
             $dataKelas = Kelas::where('pengguna_id','=',$pengguna_id)->get();
-            return view("pages.murid.muridHome",['dataKelas'=>$dataKelas,'user_login'=>$tempuser]);
+            return redirect('/murid');
         }
     }
     public function GoToRegister()
