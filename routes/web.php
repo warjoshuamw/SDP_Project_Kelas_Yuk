@@ -25,6 +25,7 @@ Route::get('cobagila', function () {
 Route::prefix('murid')->group(function () {
     Route::get('/', 'MuridController@goToKelas');
     Route::get('/todo', 'MuridController@goToDo');
+    Route::post('/dojoin', 'MuridController@DoJoinKelas');
     Route::prefix('/kelas')->group(function () {
         // Route::get('/buat', ''); //buat kelas
         Route::get('/{id}/home', function ($id) {
@@ -60,7 +61,7 @@ Route::prefix('guru')->group(function () {
         Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
         Route::get('/{id}/kuis', 'GuruController@goToGuruKuis');
         Route::get('/{kelas_id}/home/comment/{feed_id}/add','GuruController@doAddComment');
-        
+
         Route::get('/{id}/kuis/buat', function ($id) {
             return view('pages.guru.guruBuatKuis');
         });

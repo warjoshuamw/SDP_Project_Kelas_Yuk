@@ -83,21 +83,24 @@
             </div>
             {{-- bawah --}}
             <div>
+                <form action={{url("murid/dojoin")}} method="POST">
+                    @csrf
                 <div class=" border-solid border-2 border-blue-500 p-3">
 
                     <div>
                     <div class="text-2xl text-left">Kode Kelas</div>
                     <div class="text-base text-left mb-4">Minta kode kelas pada gurumu,lalu masukkan dibawah</div>
-                    <input type="text" name="kode" id="kode" class="transition-all flex h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Kode Kelas" value="" />
+                    <input type="text" name="kode_join" id="kode" class="transition-all flex h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Kode Kelas" value="" />
                     </div>
 
                     <div class=" text-right">
                         <div class="inline-flex items-end">
-                            <a href=""> <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join</button></a>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Join</button>
 
                         </div>
                     </div>
-            </div>
+                </div>
+                </form>
 
 
             </div>
