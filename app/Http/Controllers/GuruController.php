@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,22 @@ class GuruController extends Controller
             "feed_creator" => $dataUser->pengguna_nama,
             "keterangan" => $request->keterangan,
         ]);
+        return back();
+    }
+
+    public function doAddComment(Request $request)
+    {
+        $comment = $request->comment;
+        $kelas_id = $request->kelas_id;
+        $feed_id = $request->feed_id;
+        $pengguna = $request->session()->get('user_logged', 'default');
+        $hasil = Comment::create([
+            'feed_id'=>$feed_id,
+            'pengguna_id'=>$pengguna->pengguna_id,
+            'comment_creator'=>$pengguna->pengguna_nama,
+            'keterangan'=>$comment,
+        ]);
+        
         return back();
     }
 }

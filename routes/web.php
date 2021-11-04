@@ -54,6 +54,7 @@ Route::prefix('guru')->group(function () {
         Route::post('/buat', 'KelasController@doAddKelas'); //buat kelas
         Route::get('/{id}/home', 'GuruController@goToGuruFeed');
         Route::get('/{id}/home/add', 'GuruController@doAddFeed');
+        Route::get('/{kelas_id}/home/comment/{feed_id}/add','GuruController@doAddComment');
         Route::get('/{id}/tugas', function ($id) {
             return view('pages.guru.guruBeriTugas');
         });
