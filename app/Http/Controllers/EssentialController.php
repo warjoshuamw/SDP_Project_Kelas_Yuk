@@ -63,7 +63,7 @@ class EssentialController extends Controller
             [
                 'pengguna_nama' => ['required'],
                 'pengguna_email'=> [
-                    'required','unique:pengguna,pengguna_email'
+                    'required','unique:pengguna,pengguna_email','email'
                 ],
                 'pengguna_peran' => ['required'],
                 'pengguna_password' => ['required', 'confirmed'],
@@ -71,13 +71,19 @@ class EssentialController extends Controller
             [
                 'pengguna_nama.required' => "nama harus diisi",
                 'pengguna_email.required' => "email harus diisi",
+                'pengguna_email.email' => "email harus valid",
                 'pengguna_password.confirmed' => "password and confirm password harus sama",
                 'pengguna_password.required' => "password harus diisi",
             ]
         );
 
         $result = Pengguna::create($request->all()+ ['pengguna_tampilan' => '0']);
-        return view("pages.essential.login",['register'=>true]);
+        $request->session()->put('user_logged', $result);
+        if ($request->pengguna_peran == 0) {
+            return redirect('guru');
+        }else{
+            return redirect('murid');
+        }
     }
     public function goToLandingPage(Request $request)
     {

@@ -48,15 +48,7 @@
         @enderror
     </div>
 
-      <div class="relative h-10 input-component mb-5">
-        <select id="peran" name="pengguna_peran" class="h-full w-full border border-gray-300 px-2 transition-all border-blue rounded-sm py-1">
-            <option value="0">Guru</option>
-            <option value="1">Murid</option>
-        </select>
-        <label for="peran" class="absolute text-black left-2 transition-all bg-white px-1">
-         Peran
-        </label>
-      </div>
+
       <div class="relative h-10 input-component mb-5 empty">
         <input
           id="password"
@@ -83,6 +75,16 @@
         <label for="address" class="absolute left-2 transition-all bg-white px-1">
           Konfirmasi Password
         </label>
+
+      </div>
+      <div class="relative h-10 input-component mt-5">
+        <select id="peran" name="pengguna_peran" class="h-full w-full border border-gray-300 px-2 transition-all border-blue rounded-sm py-1">
+            <option value="0">Guru</option>
+            <option value="1">Murid</option>
+        </select>
+        <label for="peran" class="absolute text-black left-2 transition-all bg-white px-1">
+         Peran
+        </label>
       </div>
       @error("pengguna_password")
     <div class="text-red-500 text-xs text-left">{{ $message }}</div>
@@ -92,19 +94,6 @@
       <div class="">
         <input type="submit" value="Submit" class="bg-secondary-red text-black hover:bg-secondary-red-hover py-4 text-center px-17 md:px-12 md:py-4 rounded leading-tight text-xl md:text-base font-sans mt-4 w-full">
        </div >
-       @if(isset($register))
-            {{-- <div class="text-2xl">Login Gagal</div> --}}
-
-            @if ($register==true)
-            @php
-            echo '<script type="text/javascript">
-           alert("berhasil register");
-           </script>';
-             @endphp
-            @else
-
-            @endif
-        @endif
         <a href="/login" class="text-sm text-black text-left font-roboto leading-normal underline mt-2 ">Kembali Ke Login</a>
     </div>
 
@@ -137,6 +126,12 @@ input:focus {
     document.getElementById('email').focus()
     const allInputs = document.querySelectorAll('input','select');
     for(const input of allInputs) {
+        const val = input.value
+            if(!val) {
+                input.parentElement.classList.add('empty')
+            } else {
+                input.parentElement.classList.remove('empty')
+            }
         input.addEventListener('input', () => {
             const val = input.value
             if(!val) {
