@@ -12,7 +12,7 @@ class KelasController extends Controller
         /**
          * Kodingan kodingan untuk kelas code
          */
-        $length = 16;
+        $length = 6;
         $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         if ($length < 1) {
             throw new \RangeException("Length must be a positive integer");

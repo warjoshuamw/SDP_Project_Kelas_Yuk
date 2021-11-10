@@ -6,14 +6,14 @@
     <div class="flex flex-col w-full gap-2 flex-wrap break-words p-2 md:px-10 text-xs lg:text-lg ">
         <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 bg-opacity-50 backdrop-filter backdrop-blur h-52 md:w-2/3 md:mx-auto">
             <div class="flex flex-col gap-2 lg:gap-4 break-normal  justify-between h-full">
-                <div class="flex-shrink-0 text-3xl font-semibold">
+                <div class="flex-shrink-0 text-3xl font-semibold border-b border-gray-700 pb-4">
                     {{$dataKelas->kelas_nama}}
                 </div>
                 <div class="flex-shrink-0 text-lg font-semibold">
                     {{$dataKelas->kelas_deskripsi}}
                 </div>
                 <div class="flex-shrink-0 text-lg font-semibold">
-                    {{date('D H:i', strtotime($dataKelas->waktu_mulai)) . " - " . date('D H:i', strtotime($dataKelas->waktu_selesai))}}
+                    Waktu Kelas : {{date('D H:i', strtotime($dataKelas->waktu_mulai)) . " - " . date('D H:i', strtotime($dataKelas->waktu_selesai))}}
                 </div>
             </div>
         </div>
