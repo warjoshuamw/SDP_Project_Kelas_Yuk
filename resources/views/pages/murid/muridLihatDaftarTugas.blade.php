@@ -6,9 +6,17 @@
 <div class="flex flex-col md:flex-row gap-2">
 
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center">
-        @for ($i = 0; $i < 3;$i++)
-            @include('components.tugasCard',['url'=>'/murid/kelas/1/tugas/1'])
-        @endfor
+        @foreach ($dataTugas as $tugas)
+
+        @include('components.tugasCard',
+        [
+            'role'=>$user_login->pengguna_peran,
+            'kelas_id_sekarang'=>$id_kelas_sekarang,
+            'tugas_id'=>$tugas->tugas_id,
+            'tugas_nama'=>$tugas->tugas_nama,
+        ])
+    @endforeach
+
     </div>
 </div>
 

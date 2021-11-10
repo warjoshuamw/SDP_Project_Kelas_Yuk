@@ -12,6 +12,7 @@
 
         @include('components.tugasCard',
         [
+            'role'=>$user_login->pengguna_peran,
             'kelas_id_sekarang'=>$id_kelas_sekarang,
             'tugas_id'=>$tugas->tugas_id,
             'tugas_nama'=>$tugas->tugas_nama,

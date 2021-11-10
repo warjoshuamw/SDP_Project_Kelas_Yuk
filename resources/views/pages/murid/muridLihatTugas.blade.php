@@ -6,11 +6,12 @@
     <div class="flex flex-row w-full gap-2 break-words p-2 text-xs lg:text-lg">
         <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-75 ">
             <div class="font-semibold  border-b-2 mb-2 pb-2">
-                Lihat Tugas : Judul Tugas
+                {{$dataTugas->tugas_nama}}
+
             </div>
             <div class="flex flex-row gap-2 lg:gap-4 break-normal">
                 <div class="">
-                    DESKRIPSI TUGAS || Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non aperiam at cumque? Id officia minima ipsum, quam pariatur, tenetur nesciunt culpa aliquid esse neque ullam! Aspernatur quis quod officiis officia. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque maiores libero voluptas soluta ducimus unde inventore veniam, animi possimus ullam, corporis quaerat facilis. Dignissimos praesentium laudantium iste, quas consectetur velit!
+                    {{$dataTugas->tugas_keterangan}}
                 </div>
                 <div class="">
 
@@ -18,15 +19,21 @@
             </div>
         </div>
 
-        <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-75 ">
-            <div class="font-semibold border-b-2 mb-2 pb-2">Submit Tugas</div>
-            <div>
-                <input type="file" name="" id="">
-            </div>
+            <form action="/murid/kelas/{{$id_kelas_sekarang}}/tugas/uploadtugas" method="POST" class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-75 " enctype="multipart/form-data">
+                @csrf
+                <div class="font-semibold border-b-2 mb-2 pb-2">Submit Tugas</div>
+                <div>
+                    <input type="file" name="file" id="">
+                </div>
+
+                <input type="hidden" class="" value="{{$dataTugas->tugas_id}}" name="id_tugas">
+                <br>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+
+            </form>
         </div>
-    </div>
 @endsection
 @section('footer')
-    guru here
+    murid here
 @endsection
 

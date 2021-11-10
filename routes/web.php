@@ -28,21 +28,14 @@ Route::prefix('murid')->group(function () {
     Route::post('/dojoin', 'MuridController@DoJoinKelas');
     Route::prefix('/kelas')->group(function () {
         // Route::get('/buat', ''); //buat kelas
-        Route::get('/{id}/home', function ($id) {
-            return view('pages.murid.murid');
-        });
-        Route::get('/{id}/tugas', function ($id) {
-            return view('pages.murid.muridLihatDaftarTugas');
-        });
-        Route::get('/{id}/tugas/{idTugas}', function ($id, $idTugas) {
-            return view('pages.murid.muridLihatTugas');
-        });
-        Route::get('/{id}/quiz', function ($id) {
-            return view('pages.murid.muridLihatDaftarQuiz');
-        });
-        Route::get('/{id}/quiz/{idTugas}', function ($id, $idTugas) {
-            return view('pages.murid.muridQuiz');
-        });
+        Route::get('/{id}/home', 'MuridController@goToMuridFeed');
+        Route::get('/{id}/home/add', 'MuridController@doAddFeed');
+        Route::get('/{id}/tugas', 'MuridController@goTomuridTugas');
+        Route::get('/{id}/tugas/{idTugas}','MuridController@goTomuridLihatTugas');
+        Route::post('/{id}/tugas/uploadtugas','MuridController@doUploadTugas');
+        Route::get('/{id}/kuis', 'MuridController@goTomuridKuis');
+        Route::get('/{kelas_id}/home/comment/{feed_id}/add','MuridController@doAddComment');
+        Route::get('/{kelas_id}/home/reply/{comment_id}/add','MuridController@doAddReply');
         Route::get('/{id}/daftarnilai', function ($id) {
             return view('pages.murid.nilaiMurid');
         });

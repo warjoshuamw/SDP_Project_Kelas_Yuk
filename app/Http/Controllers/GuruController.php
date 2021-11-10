@@ -89,6 +89,8 @@ class GuruController extends Controller
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataKelas->Tugas;
         $params['id_kelas_sekarang'] = $request->id;
+        $user_login = $request->session()->get('user_logged', 'default');
+        $params['user_login'] = $user_login;
         // dd($dataKelas->Tugas);
         // dd($dataKelas->Feed);
         return view('pages.guru.guruBeriTugas', $params);
