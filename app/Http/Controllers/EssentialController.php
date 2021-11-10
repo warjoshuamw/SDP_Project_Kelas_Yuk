@@ -90,4 +90,14 @@ class EssentialController extends Controller
         $param = [];
         return view('pages.essential.landing',$param);
     }
+
+    //controller untuk membantu pengambilan components
+    public function cardKuisPilgan(Request $request)
+    {
+        return view('components.cardKuisPilgan',['i'=>$request->i]);
+    }
+    public function cardKuisUraian(Request $request)
+    {
+        return view('components.cardKuisUraian',['i'=>$request->i]);
+    }
 }

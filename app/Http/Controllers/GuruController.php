@@ -40,12 +40,14 @@ class GuruController extends Controller
     {
         $dataUser = $request->session()->get('user_logged', 'default');
         $dataKelas = Kelas::find($request->id);
-        $hasil = $dataKelas->Feed()->create([
-            "kelas_id" => $dataKelas->kelas_id,
-            "pengguna_id" => $dataUser->pengguna_id,
-            "feed_creator" => $dataUser->pengguna_nama,
-            "keterangan" => $request->keterangan,
-        ]);
+        if ($dataKelas->kelas_id && $dataUser->pengguna_id && $dataUser->pengguna_nama && $request->keterangan) {
+            $hasil = $dataKelas->Feed()->create([
+                "kelas_id" => $dataKelas->kelas_id,
+                "pengguna_id" => $dataUser->pengguna_id,
+                "feed_creator" => $dataUser->pengguna_nama,
+                "keterangan" => $request->keterangan,
+            ]);
+        }
         return back();
     }
 
@@ -55,12 +57,14 @@ class GuruController extends Controller
         $kelas_id = $request->kelas_id;
         $feed_id = $request->feed_id;
         $pengguna = $request->session()->get('user_logged', 'default');
-        $hasil = Comment::create([
-            'feed_id'=>$feed_id,
-            'pengguna_id'=>$pengguna->pengguna_id,
-            'comment_creator'=>$pengguna->pengguna_nama,
-            'keterangan'=>$comment,
-        ]);
+        if ($feed_id && $pengguna->pengguna_id && $pengguna->pengguna_nama && $comment) {
+            $hasil = Comment::create([
+                'feed_id'=>$feed_id,
+                'pengguna_id'=>$pengguna->pengguna_id,
+                'comment_creator'=>$pengguna->pengguna_nama,
+                'keterangan'=>$comment,
+            ]);
+        }
 
         return back();
     }
@@ -73,12 +77,14 @@ class GuruController extends Controller
         $pengguna_id = $user_logged->pengguna_id;
         $reply_creator = $user_logged->pengguna_nama;
         //TODO add reply ke table reply ambil
-        $hasil = Reply::create([
-            'comment_id'=>$comment_id,
-            'pengguna_id'=>$pengguna_id,
-            'reply_creator'=>$reply_creator,
-            'keterangan'=>$keterangan,
-        ]);
+        if ($comment_id && $pengguna_id && $reply_creator && $keterangan) {
+            $hasil = Reply::create([
+                'comment_id'=>$comment_id,
+                'pengguna_id'=>$pengguna_id,
+                'reply_creator'=>$reply_creator,
+                'keterangan'=>$keterangan,
+            ]);
+        }
         return back();
     }
     //============ Feed Selesai ============
@@ -130,9 +136,18 @@ class GuruController extends Controller
         $params['dataKelas'] = $dataKelas;
         $params['dataKuis'] = $dataKelas->Kuis;
         $params['id_kelas_sekarang'] = $request->id;
-        // dd($dataKelas->Tugas);
-        // dd($dataKelas->Feed);
         return view('pages.guru.guruKuis', $params);
+    }
+    public function goToGuruBuatKuis(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        $params['dataKelas'] = $dataKelas;
+        return view('pages.guru.guruBuatKuis', $params);
+    }
+    public function doGuruBuatKuis(Request $request)
+    {
+        $id_kelas_sekarang = $request->id;
+        return redirect(`guru/kelas/{$id_kelas_sekarang}/kuis`);
     }
     //============ Kuis Selesai ============
 

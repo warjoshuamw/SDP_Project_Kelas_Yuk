@@ -53,19 +53,20 @@ Route::prefix('guru')->group(function () {
     Route::get('/', 'GuruController@goToKelas');
     Route::prefix('/kelas')->group(function () {
         Route::post('/buat', 'KelasController@doAddKelas'); //buat kelas
-        Route::get('/{id}/home', 'GuruController@goToGuruFeed');
-        Route::get('/{id}/home/add', 'GuruController@doAddFeed');
         Route::get('/{id}/tugas', 'GuruController@goToGuruBeriTugas');
         Route::post('/{id}/tugas/add', 'GuruController@doAddTugas');
         Route::get('/{id}/tugas/{idTugas}','GuruController@goToGuruLihatTugas');
         Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
-        Route::get('/{id}/kuis', 'GuruController@goToGuruKuis');
+        //routing feed
+        Route::get('/{id}/home', 'GuruController@goToGuruFeed');
+        Route::get('/{id}/home/add', 'GuruController@doAddFeed');
         Route::get('/{kelas_id}/home/comment/{feed_id}/add','GuruController@doAddComment');
         Route::get('/{kelas_id}/home/reply/{comment_id}/add','GuruController@doAddReply');
+        //routing kuis
+        Route::get('/{id}/kuis', 'GuruController@goToGuruKuis');
+        Route::get('/{id}/kuis/buat','GuruController@goToGuruBuatKuis');
+        Route::get('/{id}/kuis/buat/do','GuruController@doGuruBuatKuis');
 
-        Route::get('/{id}/kuis/buat', function ($id) {
-            return view('pages.guru.guruBuatKuis');
-        });
         Route::get('/{id}/kuis/{idKuis}', function ($id) {
             return view('pages.guru.guruLihatKuis');
         });
@@ -74,3 +75,7 @@ Route::prefix('guru')->group(function () {
         });
     });
 });
+
+//routing untuk mendapatkan components
+Route::get('cardKuisPilgan/{i}', 'EssentialController@cardKuisPilgan');
+Route::get('cardKuisUraian/{i}', 'EssentialController@cardKuisUraian');
