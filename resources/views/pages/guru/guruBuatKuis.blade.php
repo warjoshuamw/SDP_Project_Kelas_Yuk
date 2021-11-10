@@ -5,7 +5,7 @@
 @section('content')
     <div class="flex flex-col items-center">
         <div class="w-3/4 bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-50 backdrop-filter backdrop-blur p-2 lg:p-5 my-2">
-            <div class="font-semibold">
+            <div class="font-semibold border-b border-black mb-2">
                 Pembuatan Kuis
             </div>
             <div class="flex flex-wrap my-2">
@@ -45,8 +45,8 @@
                             <img src="{{url('/asset/add.png')}}" class="mx-auto" alt="">
                         </button>
                         <div id="dropDown" class="absolute right-0 mt-2 w-32 bg-white rounded-md overflow-hidden hidden shadow-xl z-50">
-                          <a href="#" class="block px-4 py-2 text-sm text-gray-800 border-b hover:bg-gray-200 z-50">Pilihan Ganda</a>
-                          <a href="#" class="block px-4 py-2 text-sm text-gray-800 border-b hover:bg-gray-200 z-50">Uraian</a>
+                            <button class="block px-4 py-2 text-sm text-gray-800 border-b hover:bg-gray-200 z-50 w-full" onclick="pilihanGandaAdd()">Pilihan Ganda</button>
+                            <button class="block px-4 py-2 text-sm text-gray-800 border-b hover:bg-gray-200 z-50 w-full" onclick="uraianAdd()">Uraian</button>
                         </div>
                     </div>
                     <a href="/guru/kelas/1/kuis">
@@ -54,15 +54,18 @@
                     </a>
                 </div>
             </div>
-            <div class="flex-grow md:ml-2 z-40">
-                @for ($i = 0; $i<3;$i++)
+            <div id="kuisPertanyaan" class="flex-grow md:ml-2 z-40">
+
+                {{-- @for ($i = 0; $i<3;$i++)
                     @include('components.cardKuisPilgan')
                     @include('components.cardKuisUraian')
-                @endfor
+                @endfor --}}
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
+        let i = 0;
         function openDropDown(params) {
             let dropDown = document.getElementById('dropDown');
             if (dropDown.classList.contains('hidden')) {
@@ -70,6 +73,30 @@
             }else{
                 dropDown.classList.add('hidden')
             }
+        }
+        function pilihanGandaAdd() {
+            i = i + 1;
+            $.ajax({
+                method: 'GET',
+                url: '/cardKuisPilgan/'+i
+            })
+            .done( (data) =>{
+                $('#kuisPertanyaan').append(data);
+                let dropDown = document.getElementById('dropDown');
+                dropDown.classList.add('hidden')
+            })
+        }
+        function uraianAdd() {
+            i = i + 1;
+            $.ajax({
+                method: 'GET',
+                url: '/cardKuisUraian/'+i
+            })
+            .done( (data) =>{
+                $('#kuisPertanyaan').append(data);
+                let dropDown = document.getElementById('dropDown');
+                dropDown.classList.add('hidden')
+            })
         }
     </script>
 @endsection
