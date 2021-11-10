@@ -14,7 +14,7 @@ class CreateFeedTable extends Migration
     public function up()
     {
         Schema::create('Feed', function (Blueprint $table) {
-            $table->id('feed_id');
+            $table->increments('feed_id');
             $table->foreignId('kelas_id');
             $table->foreignId('pengguna_id');
             $table->string('feed_creator');

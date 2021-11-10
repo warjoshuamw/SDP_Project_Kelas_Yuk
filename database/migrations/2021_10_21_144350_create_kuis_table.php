@@ -14,7 +14,7 @@ class CreateKuisTable extends Migration
     public function up()
     {
         Schema::create('Kuis', function (Blueprint $table) {
-            $table->id('kuis_id');
+            $table->increments('kuis_id');
             $table->foreignId('kelas_id');
             $table->dateTime('batas_awal');
             $table->dateTime('batas_akhir');

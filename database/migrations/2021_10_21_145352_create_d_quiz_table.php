@@ -14,7 +14,7 @@ class CreateDQuizTable extends Migration
     public function up()
     {
         Schema::create('D_Kuis', function (Blueprint $table) {
-            $table->id('d_kuis_id');
+            $table->increments('d_kuis_id');
             $table->foreignId('kuis_id');
             $table->text('pertanyaan');
             $table->tinyInteger('pilihan')->nullable();

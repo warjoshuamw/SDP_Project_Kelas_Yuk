@@ -14,7 +14,7 @@ class CreateNilaiTugasMuridTable extends Migration
     public function up()
     {
         Schema::create('Nilai_Tugas_Murid', function (Blueprint $table) {
-            $table->id('nilai_tugas_murid_id');
+            $table->increments('nilai_tugas_murid_id');
             $table->foreignId('tugas_id');
             $table->foreignId('murid_id');
             $table->string('url_pengumpulan', 255);

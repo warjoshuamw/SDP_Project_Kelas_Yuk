@@ -14,7 +14,7 @@ class CreateTugasTable extends Migration
     public function up()
     {
         Schema::create('Tugas', function (Blueprint $table) {
-            $table->id('tugas_id');
+            $table->increments('tugas_id');
             $table->foreignId('kelas_id');
             $table->string('tugas_nama');
             $table->dateTime('batas_awal');

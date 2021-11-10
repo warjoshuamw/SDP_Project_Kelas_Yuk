@@ -14,7 +14,7 @@ class CreateJawabanMuridKuis extends Migration
     public function up()
     {
         Schema::create('Jawaban_Murid_Kuis', function (Blueprint $table) {
-            $table->id('jawaban_murid_kuis_id');
+            $table->increments('jawaban_murid_kuis_id');
             $table->foreignId('d_kuis_id');
             $table->foreignId('murid_id');
             $table->text('jawaban');

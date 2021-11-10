@@ -14,7 +14,7 @@ class CreateMuridTable extends Migration
     public function up()
     {
         Schema::create('Murid', function (Blueprint $table) {
-            $table->id("murid_id");
+            $table->increments("murid_id");
             $table->foreignId("kelas_id");
             $table->foreignId("pengguna_id");
             $table->timestamps();

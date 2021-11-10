@@ -14,7 +14,7 @@ class CreateReplyTable extends Migration
     public function up()
     {
         Schema::create('Reply', function (Blueprint $table) {
-            $table->id('reply_id');
+            $table->increments('reply_id');
             $table->foreignId('comment_id');
             $table->foreignId('pengguna_id');
             $table->string('reply_creator');
