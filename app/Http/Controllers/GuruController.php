@@ -22,7 +22,7 @@ class GuruController extends Controller
 
         return view('pages.guru.guruHome', $param);
     }
-
+    //============ Feed Dimulai ============
     public function goToGuruFeed(Request $request)
     {
         $dataKelas = Kelas::find($request->id);
@@ -49,6 +49,40 @@ class GuruController extends Controller
         return back();
     }
 
+    public function doAddComment(Request $request)
+    {
+        $comment = $request->comment;
+        $kelas_id = $request->kelas_id;
+        $feed_id = $request->feed_id;
+        $pengguna = $request->session()->get('user_logged', 'default');
+        $hasil = Comment::create([
+            'feed_id'=>$feed_id,
+            'pengguna_id'=>$pengguna->pengguna_id,
+            'comment_creator'=>$pengguna->pengguna_nama,
+            'keterangan'=>$comment,
+        ]);
+
+        return back();
+    }
+
+    public function doAddReply(Request $request)
+    {
+        $user_logged = $request->session()->get('user_logged', 'default');
+        $keterangan = $request->keterangan;
+        $comment_id = $request->comment_id;
+        $pengguna_id = $user_logged->pengguna_id;
+        $reply_creator = $user_logged->pengguna_nama;
+        //TODO add reply ke table reply ambil
+        $hasil = Reply::create([
+            'comment_id'=>$comment_id,
+            'pengguna_id'=>$pengguna_id,
+            'reply_creator'=>$reply_creator,
+            'keterangan'=>$keterangan,
+        ]);
+        return back();
+    }
+    //============ Feed Selesai ============
+    //============ Tugas Dimulai ============
     public function goToGuruBeriTugas(Request $request)
     {
         $dataKelas = Kelas::find($request->id);
@@ -88,7 +122,8 @@ class GuruController extends Controller
         ]);
         return back();
     }
-
+    //============ Tugas Selesai ============
+    //============ Kuis Dimulai ============
     public function goToGuruKuis(Request $request)
     {
         $dataKelas = Kelas::find($request->id);
@@ -99,7 +134,9 @@ class GuruController extends Controller
         // dd($dataKelas->Feed);
         return view('pages.guru.guruKuis', $params);
     }
+    //============ Kuis Selesai ============
 
+    //============ Penilaian Dimulai ============
     public function goToGuruPenilaian(Request $request)
     {
         $dataKelas = Kelas::find($request->id);
@@ -110,36 +147,6 @@ class GuruController extends Controller
         // dd($dataKelas->Feed);
         return view('pages.guru.guruPenilaian', $params);
     }
-    public function doAddComment(Request $request)
-    {
-        $comment = $request->comment;
-        $kelas_id = $request->kelas_id;
-        $feed_id = $request->feed_id;
-        $pengguna = $request->session()->get('user_logged', 'default');
-        $hasil = Comment::create([
-            'feed_id'=>$feed_id,
-            'pengguna_id'=>$pengguna->pengguna_id,
-            'comment_creator'=>$pengguna->pengguna_nama,
-            'keterangan'=>$comment,
-        ]);
+    //============ Penilaian Selesai ============
 
-        return back();
-    }
-
-    public function doAddReply(Request $request)
-    {
-        $user_logged = $request->session()->get('user_logged', 'default');
-        $keterangan = $request->keterangan;
-        $comment_id = $request->comment_id;
-        $pengguna_id = $user_logged->pengguna_id;
-        $reply_creator = $user_logged->pengguna_nama;
-        //TODO add reply ke table reply ambil
-        $hasil = Reply::create([
-            'comment_id'=>$comment_id,
-            'pengguna_id'=>$pengguna_id,
-            'reply_creator'=>$reply_creator,
-            'keterangan'=>$keterangan,
-        ]);
-        return back();
-    }
 }
