@@ -3,9 +3,12 @@
         <label class="flex flex-col">
             <div class="flex justify-between mb-2 border-b border-black pb-1">
                 <span class="ml-2">Soal uraian</span>
-                <span class="ml-2"><button class="btn-delete shadow-xl border-black rounded-md bg-gray-300 px-2" idsoal={{$i}}>X</button></span>
+                <span class="ml-2"><button class="btn-delete shadow-xl border-black rounded-md bg-gray-300 px-2" type="button" idsoal={{$i}}>X</button></span>
             </div>
-            <input type="text" class="rounded-md shadow" name="uraian[]" id="">
+            <span>Soal : </span>
+            <input type="text" class="rounded-md shadow w-full px-2 py-1" name="uraian[]" id="">
+            <span>Jawaban : </span>
+            <input type="text" class="rounded-md shadow w-full px-2 py-1" name="uraianJawaban[]" id="">
         </label>
     </div>
 </div>

@@ -17,6 +17,10 @@ class CreateDQuizTable extends Migration
             $table->increments('d_kuis_id');
             $table->foreignId('kuis_id');
             $table->text('pertanyaan');
+            $table->text('pilihan_a')->nullable();
+            $table->text('pilihan_b')->nullable();
+            $table->text('pilihan_c')->nullable();
+            $table->text('pilihan_d')->nullable();
             $table->tinyInteger('pilihan')->nullable();
             $table->text('isian')->nullable();
             $table->timestamps();

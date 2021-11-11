@@ -31,11 +31,11 @@ Route::prefix('murid')->group(function () {
         Route::get('/{id}/home', 'MuridController@goToMuridFeed');
         Route::get('/{id}/home/add', 'MuridController@doAddFeed');
         Route::get('/{id}/tugas', 'MuridController@goTomuridTugas');
-        Route::get('/{id}/tugas/{idTugas}','MuridController@goTomuridLihatTugas');
-        Route::post('/{id}/tugas/uploadtugas','MuridController@doUploadTugas');
+        Route::get('/{id}/tugas/{idTugas}', 'MuridController@goTomuridLihatTugas');
+        Route::post('/{id}/tugas/uploadtugas', 'MuridController@doUploadTugas');
         Route::get('/{id}/kuis', 'MuridController@goTomuridKuis');
-        Route::get('/{kelas_id}/home/comment/{feed_id}/add','MuridController@doAddComment');
-        Route::get('/{kelas_id}/home/reply/{comment_id}/add','MuridController@doAddReply');
+        Route::get('/{kelas_id}/home/comment/{feed_id}/add', 'MuridController@doAddComment');
+        Route::get('/{kelas_id}/home/reply/{comment_id}/add', 'MuridController@doAddReply');
         Route::get('/{id}/daftarnilai', function ($id) {
             return view('pages.murid.nilaiMurid');
         });
@@ -48,17 +48,17 @@ Route::prefix('guru')->group(function () {
         Route::post('/buat', 'KelasController@doAddKelas'); //buat kelas
         Route::get('/{id}/tugas', 'GuruController@goToGuruBeriTugas');
         Route::post('/{id}/tugas/add', 'GuruController@doAddTugas');
-        Route::get('/{id}/tugas/{idTugas}','GuruController@goToGuruLihatTugas');
+        Route::get('/{id}/tugas/{idTugas}', 'GuruController@goToGuruLihatTugas');
         Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
         //routing feed
         Route::get('/{id}/home', 'GuruController@goToGuruFeed');
         Route::get('/{id}/home/add', 'GuruController@doAddFeed');
-        Route::get('/{kelas_id}/home/comment/{feed_id}/add','GuruController@doAddComment');
-        Route::get('/{kelas_id}/home/reply/{comment_id}/add','GuruController@doAddReply');
+        Route::get('/{kelas_id}/home/comment/{feed_id}/add', 'GuruController@doAddComment');
+        Route::get('/{kelas_id}/home/reply/{comment_id}/add', 'GuruController@doAddReply');
         //routing kuis
         Route::get('/{id}/kuis', 'GuruController@goToGuruKuis');
-        Route::get('/{id}/kuis/buat','GuruController@goToGuruBuatKuis');
-        Route::get('/{id}/kuis/buat/do','GuruController@doGuruBuatKuis');
+        Route::get('/{id}/kuis/buat', 'GuruController@goToGuruBuatKuis');
+        Route::post('/{id}/kuis/buat/do', 'GuruController@doGuruBuatKuis');
 
         Route::get('/{id}/kuis/{idKuis}', function ($id) {
             return view('pages.guru.guruLihatKuis');
