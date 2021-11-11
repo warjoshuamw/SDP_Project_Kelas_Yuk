@@ -84,6 +84,16 @@
                 $('#kuisPertanyaan').append(data);
                 let dropDown = document.getElementById('dropDown');
                 dropDown.classList.add('hidden')
+
+                let inputElement = document.getElementsByClassName('btn-delete');
+                for (let i = 0; i < inputElement.length; i++) {
+                    const element = inputElement[i];
+                    element.onclick = function(input) {
+                        console.log(element.getAttribute('idsoal'));
+                        let node = document.getElementById(element.getAttribute('idsoal'));
+                        node.remove();
+                    }
+                }
             })
         }
         function uraianAdd() {
@@ -96,6 +106,17 @@
                 $('#kuisPertanyaan').append(data);
                 let dropDown = document.getElementById('dropDown');
                 dropDown.classList.add('hidden')
+
+                let inputElement = document.getElementsByClassName('btn-delete');
+                for (let i = 0; i < inputElement.length; i++) {
+                    const element = inputElement[i];
+                    element.onclick = function(input) {
+                        console.log(element.getAttribute('idsoal'));
+                        let node = document.getElementById(element.getAttribute('idsoal'));
+                        node.remove();
+                    }
+                }
+
             })
         }
     </script>
