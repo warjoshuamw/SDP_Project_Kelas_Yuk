@@ -17,7 +17,7 @@ class CreateNilaiTugasMuridTable extends Migration
             $table->increments('nilai_tugas_murid_id');
             $table->foreignId('tugas_id');
             $table->foreignId('murid_id');
-            $table->string('url_pengumpulan', 255);
+            $table->string('url_pengumpulan', 255)->nullable();
             $table->tinyInteger('nilai');
             $table->timestamps();
             $table->softDeletes();

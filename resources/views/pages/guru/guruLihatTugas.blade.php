@@ -16,9 +16,15 @@
             </div>
         </div>
         <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row flex-wrap p-5 bg-opacity-75">
-            @for ($i = 0; $i < 9; $i++)
-                @include('components.cardFileMurid')
-            @endfor
+            @foreach ($datatugasmurid as $item)
+
+            @include('components.cardFileMurid',
+            [
+                'nama'=>$item->PunyaMurid->PunyaUser->pengguna_nama,
+                'url'=>$item->url_pengumpulan,
+            ])
+
+            @endforeach
         </div>
     </div>
 @endsection

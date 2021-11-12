@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Kelas;
 use App\Models\Murid;
+use App\Models\NilaiTugasMurid;
 use App\Models\Pengguna;
 use App\Models\Reply;
 use App\Models\Tugas;
@@ -186,6 +187,7 @@ class MuridController extends Controller
     }
     public function doUploadTugas(Request $request)
     {
+        $user_login = $request->session()->get('user_logged', 'default');
         $id_tugas=$request->id_tugas;
         // dd($id_tugas);
         $file = $request->file('file');
@@ -194,17 +196,28 @@ class MuridController extends Controller
 		$nama_file = time()."_".$file->getClientOriginalName();
 
       	        // isi dengan nama folder tempat kemana file diupload
-		$tujuan_upload = 'data_file';
-		$file->move($tujuan_upload,$nama_file);
+
 
 		// Gambar::create([
 		// 	'file' => $nama_file,
 		// 	'keterangan' => $request->keterangan,
         //
 		// ]);
-        $result=Tugas::find($id_tugas);
-        $result->url_soal=$nama_file;
-        $result->save();
+        $tujuan_upload = 'data_file';
+		$file->move($tujuan_upload,$nama_file);
+
+        $result=NilaiTugasMurid::where('tugas_id','=',$id_tugas)->get();
+
+        foreach ($result as $res) {
+            if($res->PunyaMurid->pengguna_id==$user_login->pengguna_id){
+                // dd($nama_file);
+                $res->url_pengumpulan=$nama_file;
+                $res->save();
+            }
+        }
+
+        // $result->url_soal=$nama_file;
+        // $result->save();
 
         return back();
     }

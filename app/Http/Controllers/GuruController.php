@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Kelas;
+use App\Models\Murid;
+use App\Models\NilaiTugasMurid;
 use App\Models\Reply;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
@@ -109,7 +111,9 @@ class GuruController extends Controller
         // dd($dataTugas);
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataTugas;
-
+        $datatugasmurid=NilaiTugasMurid::where('tugas_id','=',$request->idTugas)->get();
+        $params['datatugasmurid']=$datatugasmurid;
+        // dd($datatugasmurid);
         // dd($dataKelas->Tugas);
         // dd($dataKelas->Feed);
         return view('pages.guru.guruLihatTugas', $params);
@@ -128,6 +132,18 @@ class GuruController extends Controller
             "url_soal"=>"tidak tau url apa bang",
             "status"=>0,
         ]);
+        $data_oldest= Tugas::latest('tugas_id')->first();
+
+        $kelastugas=$data_oldest->kelas_id;
+        $data_murid=Murid::where('kelas_id','=',$kelastugas)->get();
+        // dd($data_murid);
+        foreach ($data_murid as $murid) {
+            $tugasdibagi=NilaiTugasMurid::create([
+                "tugas_id"=>$data_oldest->tugas_id,
+                "murid_id"=>$murid->murid_id,
+                "nilai"=>0,
+            ]);
+        }
         return back();
     }
     //============ Tugas Selesai ============

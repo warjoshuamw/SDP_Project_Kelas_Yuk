@@ -19,5 +19,8 @@ class Murid extends Pivot
         'pengguna_id',
     ];
 
-
+    public function PunyaUser()
+    {
+        return $this->belongsTo(Pengguna::class, 'pengguna_id', 'pengguna_id');
+    }
 }
