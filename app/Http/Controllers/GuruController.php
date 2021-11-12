@@ -17,10 +17,10 @@ class GuruController extends Controller
         $pengguna_id = $request->session()->get('user_logged', 'default')->pengguna_id;
         if ($pengguna_id == 'default') return back()->with('message', 'error');
         $dataKelas = Kelas::where('pengguna_id', '=', $pengguna_id)->get();
-        $user_login=$request->session()->get('user_logged', 'default');
-        $param=[];
-        $param['dataKelas']=$dataKelas;
-        $param['user_login']=$user_login;
+        $user_login = $request->session()->get('user_logged', 'default');
+        $param = [];
+        $param['dataKelas'] = $dataKelas;
+        $param['user_login'] = $user_login;
 
         return view('pages.guru.guruHome', $param);
     }
@@ -61,10 +61,10 @@ class GuruController extends Controller
         $pengguna = $request->session()->get('user_logged', 'default');
         if ($feed_id && $pengguna->pengguna_id && $pengguna->pengguna_nama && $comment) {
             $hasil = Comment::create([
-                'feed_id'=>$feed_id,
-                'pengguna_id'=>$pengguna->pengguna_id,
-                'comment_creator'=>$pengguna->pengguna_nama,
-                'keterangan'=>$comment,
+                'feed_id' => $feed_id,
+                'pengguna_id' => $pengguna->pengguna_id,
+                'comment_creator' => $pengguna->pengguna_nama,
+                'keterangan' => $comment,
             ]);
         }
 
@@ -81,10 +81,10 @@ class GuruController extends Controller
         //TODO add reply ke table reply ambil
         if ($comment_id && $pengguna_id && $reply_creator && $keterangan) {
             $hasil = Reply::create([
-                'comment_id'=>$comment_id,
-                'pengguna_id'=>$pengguna_id,
-                'reply_creator'=>$reply_creator,
-                'keterangan'=>$keterangan,
+                'comment_id' => $comment_id,
+                'pengguna_id' => $pengguna_id,
+                'reply_creator' => $reply_creator,
+                'keterangan' => $keterangan,
             ]);
         }
         return back();
@@ -107,7 +107,7 @@ class GuruController extends Controller
     public function goToGuruLihatTugas(Request $request)
     {
         $dataKelas = Kelas::find($request->id);
-        $dataTugas= Tugas::find($request->idTugas);
+        $dataTugas = Tugas::find($request->idTugas);
         // dd($dataTugas);
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataTugas;
@@ -125,12 +125,12 @@ class GuruController extends Controller
         $dataKelas = Kelas::find($request->id);
         $hasil = $dataKelas->Tugas()->create([
             "kelas_id" => $dataKelas->kelas_id,
-            "tugas_nama"=>$request->tugas_nama,
+            "tugas_nama" => $request->tugas_nama,
             "tugas_keterangan" => $request->tugas_keterangan,
-            "batas_awal"=>$request->batas_awal,
-            "batas_akhir"=>$request->batas_akhir,
-            "url_soal"=>"tidak tau url apa bang",
-            "status"=>0,
+            "batas_awal" => $request->batas_awal,
+            "batas_akhir" => $request->batas_akhir,
+            "url_soal" => "tidak tau url apa bang",
+            "status" => 0,
         ]);
         $data_oldest= Tugas::latest('tugas_id')->first();
 
@@ -160,10 +160,14 @@ class GuruController extends Controller
     {
         $dataKelas = Kelas::find($request->id);
         $params['dataKelas'] = $dataKelas;
+        $params['id_kelas_sekarang'] = $request->id;
         return view('pages.guru.guruBuatKuis', $params);
     }
     public function doGuruBuatKuis(Request $request)
     {
+        dump($request->toArray());
+        return back();
+        dd($request);
         $id_kelas_sekarang = $request->id;
         return redirect(`guru/kelas/{$id_kelas_sekarang}/kuis`);
     }
