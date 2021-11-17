@@ -58,6 +58,7 @@ Route::prefix('guru')->group(function () {
         //routing kuis
         Route::get('/{id}/kuis', 'GuruController@goToGuruKuis');
         Route::get('/{id}/kuis/buat', 'GuruController@goToGuruBuatKuis');
+        Route::get('/{id}/kuis/buat/{pages}', 'GuruController@goToGuruBuatKuisDetail');
         Route::post('/{id}/kuis/buat/do', 'GuruController@doGuruBuatKuis');
 
         Route::get('/{id}/kuis/{idKuis}', function ($id) {
@@ -70,5 +71,5 @@ Route::prefix('guru')->group(function () {
 });
 
 //routing untuk mendapatkan components
-Route::get('cardKuisPilgan/{i}', 'EssentialController@cardKuisPilgan');
-Route::get('cardKuisUraian/{i}', 'EssentialController@cardKuisUraian');
+Route::get('cardKuisPilgan', 'EssentialController@cardKuisPilgan');
+Route::get('cardKuisUraian', 'EssentialController@cardKuisUraian');

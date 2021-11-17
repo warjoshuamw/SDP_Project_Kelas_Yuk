@@ -8,8 +8,6 @@
         <form action={{url('/guru/kelas/'.$id_kelas_sekarang.'/kuis/buat')}} method="GET">
             <button type="submit" class="py-2 pb-3 px-4 text-white rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-full text-3xl">+</button>
         </form>
-
-
     </div>
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center">
         @for ($i = 0; $i < 9;$i++)

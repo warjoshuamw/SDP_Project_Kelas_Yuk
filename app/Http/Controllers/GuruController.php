@@ -163,6 +163,14 @@ class GuruController extends Controller
         $params['id_kelas_sekarang'] = $request->id;
         return view('pages.guru.guruBuatKuis', $params);
     }
+    public function goToGuruBuatKuisDetail(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        $params['pages'] = $request->pages;
+        $params['dataKelas'] = $dataKelas;
+        $params['id_kelas_sekarang'] = $request->id;
+        return view('pages.guru.guruBuatKuisDetail',$params);
+    }
     public function doGuruBuatKuis(Request $request)
     {
         dump($request->toArray());

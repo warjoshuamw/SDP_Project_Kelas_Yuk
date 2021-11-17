@@ -19,6 +19,7 @@ class Kuis extends Model
 
     protected $fillable = [
         'kelas_id',
+        'kuis_judul',
         'batas_awal',
         'batas_akhir',
         'status',
