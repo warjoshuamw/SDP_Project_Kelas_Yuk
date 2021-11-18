@@ -1,4 +1,4 @@
-@extends('layout_murid.layout_murid')
+@extends('layout.layout_murid')
 @section('content')
     <div>
         <div id="sideBar" class="">
