@@ -30,12 +30,12 @@ class MuridController extends Controller
     }
     public function DoJoinKelas(Request $request)
     {
+
         $kode=$request->kode_join;
         $dataUser = $request->session()->get('user_logged', 'default');
         $dataKelas=Kelas::get();
         // dd($dataKelas);
         $kelasyangdijoin=[];
-
         $ketemu=false;
         foreach ($dataKelas as $kelas) {
             if($kelas->kelas_kode==$kode){
@@ -43,12 +43,28 @@ class MuridController extends Controller
                 $ketemu=true;
             }
         }
+        $kelasyangada=Murid::where('pengguna_id','=',$dataUser->pengguna_id)->get();
+        foreach ($kelasyangada as $kelas) {
+           if ($kelas->kelas_id==$kelasyangdijoin->kelas_id) {
+               return back();
+           }
+        }
 
         if($ketemu==true){
             $hasil=Murid::create([
                 'kelas_id'=>$kelasyangdijoin->kelas_id,
                 'pengguna_id'=>$dataUser->pengguna_id,
             ]);
+
+            $tugasdikelas=Tugas::where('kelas_id','=',$kelasyangdijoin->kelas_id)->get();
+            // dd($tugasdikelas);
+            foreach ($tugasdikelas as $tugas) {
+                $tugasdibagi=NilaiTugasMurid::create([
+                    "tugas_id"=>$tugas->tugas_id,
+                    "murid_id"=>$dataUser->AdalahMurid->murid_id,
+                    "nilai"=>0,
+                ]);
+            }
         }else{
 
         }
@@ -119,7 +135,10 @@ class MuridController extends Controller
     //============ Tugas Dimulai ============
     public function goTomuridTugas(Request $request)
     {
+
+        // dd($request->id);
         $dataKelas = Kelas::find($request->id);
+        // dd($$dataKelas);
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataKelas->Tugas;
         $params['id_kelas_sekarang'] = $request->id;

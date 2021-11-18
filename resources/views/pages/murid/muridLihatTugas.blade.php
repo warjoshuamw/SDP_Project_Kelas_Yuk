@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="flex flex-row w-full gap-2 break-words p-2 text-xs lg:text-lg">
-        <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-75 ">
+        <div class=" w-3/4 bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-75 ">
             <div class="font-semibold  border-b-2 mb-2 pb-2">
                 {{$dataTugas->tugas_nama}}
 

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="flex flex-row w-full gap-2 break-words p-2 text-xs lg:text-lg flex-wrap">
-        <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 flex flex-col bg-opacity-75 flex-shrink">
+        <div class="bg-white w-screen dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 flex flex-col bg-opacity-75 flex-shrink">
             <div class="font-semibold  border-b-2 mb-2 pb-2">
                 {{-- @dd($dataTugas) --}}
                 {{$dataTugas->tugas_nama}}
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row flex-wrap p-5 bg-opacity-75">
+        <div class="bg-white w-screen dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row flex-wrap p-5 bg-opacity-75">
             @foreach ($datatugasmurid as $item)
 
             @include('components.cardFileMurid',

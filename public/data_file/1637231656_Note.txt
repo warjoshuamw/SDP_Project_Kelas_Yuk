@@ -1,0 +1,8 @@
+Memakai library Carbon untuk mengatur waktu
+
+Jabatan Pegawai setelah di seeder
+admin sebagai super user
+jinjin merupakan kepala departemen gudang
+buba sebagai pegawai departemen gudang
+mamang dan andre sebagai kepala departemen bukan gudang
+wawa dan forev sebagai pegawai departemen bukan gudang
