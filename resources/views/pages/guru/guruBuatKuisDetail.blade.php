@@ -11,15 +11,15 @@
                 Soal {{$pages}}
             </div>
             <div>
-                <input type="radio" name="jenis" id="pilgan" onchange="changeType();" >Pilihan ganda
-                <input type="radio" name="jenis" id="uraian" onchange="changeType();" >Uraian
+                <input type="radio" name="jenis" id="pilgan" value="pilgan" onchange="changeType();" class="mr-2">Pilihan ganda
+                <input type="radio" name="jenis" id="uraian" value="uraian" onchange="changeType();" class="mr-2">Uraian
             </div>
             <div class="flex flex-wrap my-2" id="kuisPertanyaan">
 
             </div>
             <div class="flex self-end gap-2">
                 <button type="submit" class="py-2 px-1 px-4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-lg text-base md:text-xl w-1/2 md:w-auto" name="btnTeruskan" value="teruskan">Tambah Soal</button>
-                <button type="submit" class="py-2 px-1 px-4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-lg text-base md:text-xl w-1/2 md:w-auto" name="btnSimpan" value="simpan">Berhenti   </button>
+                <button type="submit" class="py-2 px-1 px-4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-lg text-base md:text-xl w-1/2 md:w-auto" name="btnSimpan" value="simpan">Berhenti</button>
             </div>
         </div>
     </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\D_Kuis;
 use App\Models\Kelas;
+use App\Models\Kuis;
 use App\Models\Murid;
 use App\Models\NilaiTugasMurid;
 use App\Models\Reply;
@@ -165,6 +167,85 @@ class GuruController extends Controller
     }
     public function goToGuruBuatKuisDetail(Request $request)
     {
+        if ($request->btnSimpan) {
+            $request->session()->forget('idKuisSedanDibuat');
+            $request->session()->forget('soal');
+            $request->session()->forget('kuisPage');
+            return redirect('guru/kelas/'.$request->id.'/kuis');
+        }
+        if ($request->pages) {
+            if ($request->pages == 1) {
+                if (!$request->session()->has('idKuisSedangDibuat')) {
+                    //bila tidak di refresh
+                    $request->validate([
+                        'kuis_judul'=>'required',
+                        'batas_awal'=>'required|after:today',
+                        'batas_akhir'=>'required|after:batas_awal',
+                    ],[
+                        'kuis_judul.required'=>'kolom ini tidak boleh kosong',
+                        'batas_awal.required'=>'kolom ini tidak boleh kosong',
+                        'batas_awal.after'=>'kolom ini tidak dimulai kurang dari hari ini',
+                        'batas_akhir.required'=>'kolom ini tidak boleh kosong',
+                        'batas_akhir.after'=>'kolom ini tidak boleh sebelum batas awal',
+                    ]);
+                    //melakukan insert data ke kuis
+                    $data = Kuis::create([
+                        'kelas_id'=> $request->id,
+                        'kuis_judul'=> $request->kuis_judul,
+                        'batas_awal'=> $request->batas_awal,
+                        'batas_akhir'=> $request->batas_akhir,
+                        'status'=> 1,
+                        'randomable'=> $request->randomable?1:0,
+                    ]);
+                    //data inserted
+                    $request->session()->put('idKuisSedangDibuat', $data->kuis_id);//menyimpan id yang baru disimpan
+                    $request->session()->put('kuisPage',$request->pages);
+                }
+            }else{
+                if ($request->session()->get('idKuisSedangDibuat')) {
+                    if (!$request->session()->has('kuisPage')) {
+                        $request->session()->put('kuisPage', $request->pages);
+                    }
+                    if ($request->session()->get('kuisPage') < $request->pages){
+                        dump($request->session()->get('kuisPage'));
+                        dump($request->pages);
+                        dd($request->session()->get('kuisPage') < $request->pages);
+                    }else{
+                        $idKuis = $request->session()->get('idKuisSedangDibuat');
+                        //bila sedang membuat maka :
+                        //kita punya id, masukin ke detail, sebelumnya check dulu ini pilgan ato bukan
+                        if ($request->jenis == "uraian") {
+                            $request->validate([
+                                'uraian'=>'required',
+                                'uraianJawaban'=>'required',
+                            ]);
+                            //insert data ke database dengan pengecekan udah di insert sebelumnya atau belum
+                            $request->session()->put('kuisPage', $request->pages);
+                            $data = D_Kuis::create([
+                                'kuis_id'=>$idKuis,
+                                'pertanyaan'=>$request->uraian,
+                                'isian'=>$request->uraianJawaban,
+                            ]);
+                            $request->session()->push('soal', $data);
+                            $request->session()->put('kuisPage', $request->pages);
+                        }else if ($request->jenis == "pilgan"){
+                            $request->validate([
+                                'radio'=>'required',
+                                'soal'=>'required',
+                                'pilgan_a'=>'required',
+                                'pilgan_b'=>'required',
+                                'pilgan_c'=>'required',
+                                'pilgan_d'=>'required',
+                            ]);
+                            //insert data ke database dengan pengecekan udah di insert sebelumnya atau belum
+                            dd('added');
+                            $request->session()->put('kuisPage', $request->pages);
+                        }
+                    }
+
+                }
+            }
+        }
         $dataKelas = Kelas::find($request->id);
         $params['pages'] = $request->pages;
         $params['dataKelas'] = $dataKelas;

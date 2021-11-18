@@ -12,7 +12,7 @@ class D_Kuis extends Model
     use SoftDeletes; // deleted_at
 
     protected $connection = "mysql";
-    protected $table      = "comment";
+    protected $table      = "d_kuis";
     protected $primaryKey = "d_kuis_id";
     public $incrementing  = true;
     public $timestamps    = true; //created_at & updated_at
@@ -20,6 +20,10 @@ class D_Kuis extends Model
     protected $fillable = [
         'kuis_id',
         'pertanyaan',
+        'pilihan_a',
+        'pilihan_b',
+        'pilihan_c',
+        'pilihan_d',
         'pilihan',
         'isian',
     ];
