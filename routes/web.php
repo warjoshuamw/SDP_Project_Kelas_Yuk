@@ -36,9 +36,7 @@ Route::prefix('murid')->group(function () {
         Route::get('/{id}/kuis', 'MuridController@goTomuridKuis');
         Route::get('/{kelas_id}/home/comment/{feed_id}/add', 'MuridController@doAddComment');
         Route::get('/{kelas_id}/home/reply/{comment_id}/add', 'MuridController@doAddReply');
-        Route::get('/{id}/daftarnilai', function ($id) {
-            return view('pages.murid.nilaiMurid');
-        });
+        Route::get('/{id}/daftarnilai','MuridController@goTomuridPenilaian');
     });
 });
 

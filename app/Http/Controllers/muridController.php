@@ -10,6 +10,7 @@ use App\Models\Pengguna;
 use App\Models\Reply;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MuridController extends Controller
 {
@@ -189,7 +190,7 @@ class MuridController extends Controller
         $params['id_kelas_sekarang'] = $request->id;
         // dd($dataKelas->Tugas);
         // dd($dataKelas->Feed);
-        return view('pages.murid.muridKuis', $params);
+        return view('pages.murid.muridQuiz', $params);
     }
     //============ Kuis Selesai ============
 
@@ -202,17 +203,19 @@ class MuridController extends Controller
         $params['id_kelas_sekarang'] = $request->id;
         // dd($dataKelas->Tugas);
         // dd($dataKelas->Feed);
-        return view('pages.murid.muridPenilaian', $params);
+        return view('pages.murid.nilaiMurid', $params);
     }
     public function doUploadTugas(Request $request)
     {
+        $dataKelas = Kelas::find($request->id);
+
         $user_login = $request->session()->get('user_logged', 'default');
         $id_tugas=$request->id_tugas;
         // dd($id_tugas);
-        $file = $request->file('file');
+        $file = $request->file('file_upload');
 
         // dd($file);
-		$nama_file = time()."_".$file->getClientOriginalName();
+		$nama_file = $file->getClientOriginalName();
 
       	        // isi dengan nama folder tempat kemana file diupload
 
@@ -222,8 +225,14 @@ class MuridController extends Controller
 		// 	'keterangan' => $request->keterangan,
         //
 		// ]);
-        $tujuan_upload = 'data_file';
-		$file->move($tujuan_upload,$nama_file);
+        // $tujuan_upload = 'data_file';
+		// $file->move($tujuan_upload,$nama_file);
+
+        $path = Storage::putFileAs(
+            'TugasKelas/'.$dataKelas->kelas_kode,
+            $request->file('file_upload'),
+            $nama_file
+        );
 
         $result=NilaiTugasMurid::where('tugas_id','=',$id_tugas)->get();
 

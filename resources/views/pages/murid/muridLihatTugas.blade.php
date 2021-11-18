@@ -23,7 +23,7 @@
                 @csrf
                 <div class="font-semibold border-b-2 mb-2 pb-2">Submit Tugas</div>
                 <div>
-                    <input type="file" name="file" id="">
+                    <input type="file" name="file_upload" id="">
                 </div>
 
                 <input type="hidden" class="" value="{{$dataTugas->tugas_id}}" name="id_tugas">
