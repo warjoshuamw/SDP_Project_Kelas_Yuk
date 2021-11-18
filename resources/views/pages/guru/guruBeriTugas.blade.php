@@ -7,7 +7,7 @@
     <div class="flex flex-col items-center justify-start my-4 mx-2 px-2">
         <button class="py-2 pb-3 px-4 text-white rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-full text-3xl" onclick="document.getElementById('myModal').showModal()">+</button>
     </div>
-    <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center">
+    <div class="flex flex-row flex-wrap my-2 m-2 w-full justify-center">
         @foreach ($dataTugas as $tugas)
 
         @include('components.tugasCard',
@@ -18,7 +18,6 @@
             'tugas_nama'=>$tugas->tugas_nama,
         ])
     @endforeach
-
     </div>
 </div>
 
@@ -50,7 +49,7 @@
     <div class="flex flex-col w-full h-auto ">
         <div class="flex w-full h-auto justify-end items-center">
             <div class="flex flex-row w-10/12 h-auto py-3 justify-center items-center text-2xl font-bold">
-                    Tambah Kelas
+                    Tambah Tugas
             </div>
             <div onclick="document.getElementById('myModal').close();" class="flex w-1/12 h-auto justify-center cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
