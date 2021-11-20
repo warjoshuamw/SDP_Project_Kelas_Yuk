@@ -3,7 +3,7 @@
     @include('pages.essential.navbarGuruDalamKelas')
 @endsection
 @section('content')
-<form id="myForm" action="{{url('guru/kelas/'.$id_kelas_sekarang.'/kuis/buat/1')}}" method="GET" name="myForm">
+<form id="myForm" action="{{url('guru/kelas/'.$id_kelas_sekarang.'/kuis/buat/do')}}" method="GET" name="myForm">
     @csrf
     <div class="flex flex-col items-center">
         <div class="w-3/4 bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-50 backdrop-filter backdrop-blur p-2 lg:p-5 my-2">
