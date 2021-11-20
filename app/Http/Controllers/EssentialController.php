@@ -13,6 +13,12 @@ class EssentialController extends Controller
     {
         return view("pages.essential.login");
     }
+    public function  GoTologout(Request $request)
+    {
+        $request->session()->forget('user_logged');
+        return view("pages.essential.login");
+    }
+
     public function GoToDoLogin(Request $request)
     {//TODO ganti ke auth
         $ceklogin=false;

@@ -13,16 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'EssentialController@goToLandingPage');
-Route::get('/login', 'EssentialController@GoToLogin');
+Route::get('/', 'EssentialController@goToLandingPage')->middleware('is_logout');
+Route::get('/login', 'EssentialController@GoToLogin')->middleware('is_logout');
+Route::get('/logout', 'EssentialController@GoTologout')->middleware('is_login');
 Route::get('login/dologin', 'EssentialController@GoToDoLogin');
-Route::get('register', 'EssentialController@GoToRegister');
+Route::get('register', 'EssentialController@GoToRegister')->middleware('is_logout');
 Route::get('register/doregister', 'EssentialController@GoToDoRegister');
 Route::get('cobagila', function () {
     return view('pages.essential.cobasidebar');
 });
 
-Route::prefix('murid')->group(function () {
+Route::prefix('murid')->middleware('is_login')->middleware('is_murid')->group(function () {
     Route::get('/', 'MuridController@goToKelas');
     Route::get('/todo', 'MuridController@goToDo');
     Route::post('/dojoin', 'MuridController@DoJoinKelas');
@@ -40,7 +41,7 @@ Route::prefix('murid')->group(function () {
     });
 });
 
-Route::prefix('guru')->group(function () {
+Route::prefix('guru')->middleware('is_login')->middleware('is_guru')->group(function () {
     Route::get('/', 'GuruController@goToKelas');
     Route::prefix('/kelas')->group(function () {
         Route::post('/buat', 'KelasController@doAddKelas'); //buat kelas

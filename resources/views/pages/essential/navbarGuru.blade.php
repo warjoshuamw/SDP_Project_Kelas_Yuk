@@ -39,7 +39,7 @@
                 </span>
             </div>
         </div>
-        <a href="/login"><button class="px-4 py-2 rounded-md text-sm font-medium border-0 hover:shadow-md focus:outline-none focus:ring transition text-white dark:bg-secondary-red-hover  dark:hover:bg-secondary-red bg-secondary-red hover:bg-secondary-red-hover hidden md:block">Log Out</button></a>
+        <a href="/logout"><button class="px-4 py-2 rounded-md text-sm font-medium border-0 hover:shadow-md focus:outline-none focus:ring transition text-white dark:bg-secondary-red-hover  dark:hover:bg-secondary-red bg-secondary-red hover:bg-secondary-red-hover hidden md:block">Log Out</button></a>
     </div>
     <button type="button" onclick="openMobile()" class="bg-secondary-red dark:bg-secondary-red-hover rounded-md p-2 inline-flex items-center justify-center text-white focus:outline-none  md:hidden" aria-expanded="false">
         <span class="sr-only">Open menu</span>
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <span class="ml-3 text-base font-medium text-gray-900 ">
-                <a href="/login"><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-secondary-red dark:bg-secondary-red-hover">Log Out</button></a>
+                <a href="/logout"><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-secondary-red dark:bg-secondary-red-hover">Log Out</button></a>
                 </span>
               </nav>
             </div>
