@@ -27,7 +27,13 @@
                 </div>
 
                 <input type="hidden" class="" value="{{$dataTugas->tugas_id}}" name="id_tugas">
+
+                @if ($datalapor->url_pengumpulan!=null)
+                <div class=" text-center text-green-400 bg-white-500 text-white font-bold py-2 px-4 rounded">Already Submited</div>
+                @else
                 <br>
+                @endif
+
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
 
             </form>

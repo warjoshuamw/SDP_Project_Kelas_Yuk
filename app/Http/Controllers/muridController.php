@@ -155,9 +155,14 @@ class MuridController extends Controller
     {
         $dataKelas = Kelas::find($request->id);
         $dataTugas= Tugas::find($request->idTugas);
+        $dataUser = $request->session()->get('user_logged', 'default');
+
+        $datalaporan=NilaiTugasMurid::where('tugas_id','=',$request->idTugas)->where('murid_id','=',$dataUser->AdalahMurid->murid_id)->first();
         // dd($dataTugas);
+        // dd($datalaporan);
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataTugas;
+        $params['datalapor'] = $datalaporan;
         $params['id_kelas_sekarang'] = $request->id;
 
         // dd($dataKelas->Tugas);

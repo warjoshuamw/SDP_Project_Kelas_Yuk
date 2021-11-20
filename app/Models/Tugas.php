@@ -31,5 +31,10 @@ class Tugas extends Model
     {
         return $this->belongsTo(Kelas::class, 'kelas_id', 'kelas_id');
     }
+    public function hasiltugas()
+    {
+        return $this->belongsTo(NilaiTugasMurid::class, 'tugas_id', 'tugas_id');
+    }
+
 
 }
