@@ -25,5 +25,5 @@ class Kuis extends Model
         'status',
         'randomable',
     ];
-
+    
 }

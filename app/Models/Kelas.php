@@ -45,4 +45,8 @@ class Kelas extends Model
     {
         return $this->hasMany(Tugas::class,'kelas_id','kelas_id');
     }
+    public function Kuis()
+    {
+        return $this->hasMany(Kuis::class,'kelas_id','kelas_id');
+    }
 }

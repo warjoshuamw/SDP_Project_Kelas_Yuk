@@ -199,16 +199,11 @@ class GuruController extends Controller
     }
     public function goToGuruBuatKuisDetail(Request $request)
     {
-        // dd($request->btnSimpan);
 
         $params['jenis'] = "";
-        // dump($request->pages);
-        // dump($request->session()->get('kuisPage'));
-        // dump($request->session()->get('kuisPage') >= $request->pages);
         if ($request->session()->get('kuisPage') >= $request->pages) {
             //update data
             $data = $request->session()->get('soal', 'default')[$request->pages-1];
-            // dd();
             if ($data->pilihan) {
                 $params['jenis'] = "pilgan";
             }else if($data->isian){
@@ -237,12 +232,7 @@ class GuruController extends Controller
         }
         $request->validate(['jenis'=>'required']);
         if ($request->session()->get('idKuisSedangDibuat')) {
-            // if (!$request->session()->has('kuisPage')) {
-            //     $request->session()->put('kuisPage', $request->pages);
-            // }
             if ($request->session()->get('kuisPage') >= $request->pages){
-                //update kuis detail before
-                // dd($request->session()->get('soal', 'default')[$request->pages-1]);
                 $soal = $request->session()->get('soal', 'default')[$request->pages-1];
                 if ($request->jenis == "pilgan") {
                     $data = D_Kuis::find($soal->d_kuis_id);
@@ -324,6 +314,16 @@ class GuruController extends Controller
         dd($request);
         $id_kelas_sekarang = $request->id;
         return redirect(`guru/kelas/{$id_kelas_sekarang}/kuis`);
+    }
+
+    public function goToLihatKuis(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        $params['dataKuis'] = Kuis::find($request->idKuis);
+        $params['pages'] = $request->pages;
+        $params['dataKelas'] = $dataKelas;
+        $params['id_kelas_sekarang'] = $request->id;
+        return view('pages.guru.guruLihatKuis',$params);
     }
     //============ Kuis Selesai ============
 
