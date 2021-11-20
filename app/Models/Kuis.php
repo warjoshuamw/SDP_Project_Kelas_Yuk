@@ -25,5 +25,8 @@ class Kuis extends Model
         'status',
         'randomable',
     ];
-    
+    public function D_Kuis()
+    {
+        return $this->hasMany(D_Kuis::class,'kuis_id','kuis_id');
+    }
 }

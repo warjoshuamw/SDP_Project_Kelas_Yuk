@@ -19,10 +19,21 @@
     </div>
     <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row flex-wrap p-5 bg-opacity-75 w-full">
 
-        @foreach ($dataKelas->Murid as $MuridDalamKelas)
-            @foreach ($MuridDalamKelas as $Murid)
-                @include('components.cardQuizMurid',['nama_user'=>$Murid->pengguna_nama])
+
+        @foreach ($dataKelas->Murid as $Murid)
+            @php
+                $status = false;
+            @endphp
+            @foreach ($dataKuis->D_Kuis as $D_Kuis)
+                @foreach ($D_Kuis->KuisJawaban as $jawaban)
+                    @if ($jawaban->pengguna_id == $Murid->pengguna_id )
+                        @php
+                            $status = true;
+                        @endphp
+                    @endif
+                @endforeach
             @endforeach
+            @include('components.cardQuizMurid',['nama_user'=>$Murid->pengguna_nama,'status'=>$status])
         @endforeach
     </div>
 </div>

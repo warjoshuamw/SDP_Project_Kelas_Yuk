@@ -3,7 +3,7 @@
         <p>{{$nama_user}}</p>
     </div>
     <div class="flex flex-col">
-        @if ($status ==  "missing")
+        @if ($status == false)
         <p class="text-red-700">missing</p>
         @else
         <a href="/guru/kelas/1/kuis/1/1">
