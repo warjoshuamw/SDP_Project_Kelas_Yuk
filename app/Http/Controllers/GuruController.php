@@ -169,6 +169,7 @@ class GuruController extends Controller
     }
     public function doBuatKuis(Request $request)
     {
+
         if (!$request->session()->has('idKuisSedangDibuat')) {
             //bila tidak di refresh
             $request->validate([
@@ -196,6 +197,7 @@ class GuruController extends Controller
             $request->session()->put('kuisPage',$request->pages);
 
         }
+        // dd(!$request->session()->has('idKuisSedangDibuat'));
         return redirect('/guru/kelas/'.$request->id.'/kuis/buat/1');
         // return back();
     }
@@ -224,7 +226,7 @@ class GuruController extends Controller
     public function doKuisDetailCreate(Request $request)
     {
         if ($request->btnSimpan) {
-            $request->session()->forget('idKuisSedanDibuat');
+            $request->session()->forget('idKuisSedangDibuat');
             $request->session()->forget('soal');
             $request->session()->forget('kuisPage');
             return redirect('guru/kelas/'.$request->id.'/kuis');
@@ -233,6 +235,7 @@ class GuruController extends Controller
             return redirect('/guru/kelas/'.$request->id.'/kuis/buat/'.$request->pages-1);
         }
         $request->validate(['jenis'=>'required']);
+
         if ($request->session()->get('idKuisSedangDibuat')) {
             if ($request->session()->get('kuisPage') >= $request->pages){
                 $soal = $request->session()->get('soal', 'default')[$request->pages-1];

@@ -236,6 +236,7 @@ class MuridController extends Controller
                 ]
             );
         }
+        return back();
 
     }
     //============ Kuis Selesai ============
