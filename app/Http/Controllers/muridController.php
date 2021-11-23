@@ -206,7 +206,7 @@ class MuridController extends Controller
         $dataKelas = Kelas::find($request->id);
         //mencari kuis sudah dijawab atau belum
         $status = false;
-        $user_logged = $request->session()->get('user_logged');
+        $user_logged = Auth::guard('satpam_pengguna')->user();
         $murid = Murid::where('kelas_id','=',$request->id)->where('pengguna_id','=',$user_logged->pengguna_id)->first();
         $isAnswered = DB::table('jawaban_murid_kuis')->where('d_kuis_id','=',$request->idKuis)->where('murid_id','=',$murid->murid_id)->first();
         if ($isAnswered != null) {
@@ -224,7 +224,7 @@ class MuridController extends Controller
     {
         //do insert jawaban murid
         // dd($request->request);
-        $user_logged = $request->session()->get('user_logged');
+        $user_logged = Auth::guard('satpam_pengguna')->user();;
         $murid = Murid::where('kelas_id','=',$request->id)->where('pengguna_id','=',$user_logged->pengguna_id)->first();
         // dd($murid);
         foreach ($request->jawaban as $key => $value) {
