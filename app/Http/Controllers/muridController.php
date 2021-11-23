@@ -10,6 +10,7 @@ use App\Models\Pengguna;
 use App\Models\Reply;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class MuridController extends Controller
@@ -19,7 +20,7 @@ class MuridController extends Controller
     {
         $pengguna_id = $request->session()->get('user_logged', 'default')->pengguna_id;
         $dataKelasMurid = Pengguna::find($pengguna_id)->KelasMurid;
-        $user_login = $request->session()->get('user_logged', 'default');
+        $user_login =  Auth::guard('satpam_pengguna')->user();
         $param['user_login'] = $user_login;
         $param['dataKelasMurid'] = $dataKelasMurid;
 
@@ -33,7 +34,7 @@ class MuridController extends Controller
     {
 
         $kode=$request->kode_join;
-        $dataUser = $request->session()->get('user_logged', 'default');
+        $dataUser =  Auth::guard('satpam_pengguna')->user();
         $dataKelas=Kelas::get();
         // dd($dataKelas);
         $kelasyangdijoin=[];
@@ -89,7 +90,7 @@ class MuridController extends Controller
 
     public function doAddFeed(Request $request)
     {
-        $dataUser = $request->session()->get('user_logged', 'default');
+        $dataUser =  Auth::guard('satpam_pengguna')->user();
         $dataKelas = Kelas::find($request->id);
         $hasil = $dataKelas->Feed()->create([
             "kelas_id" => $dataKelas->kelas_id,
@@ -105,7 +106,7 @@ class MuridController extends Controller
         $comment = $request->comment;
         $kelas_id = $request->kelas_id;
         $feed_id = $request->feed_id;
-        $pengguna = $request->session()->get('user_logged', 'default');
+        $pengguna =  Auth::guard('satpam_pengguna')->user();
         $hasil = Comment::create([
             'feed_id'=>$feed_id,
             'pengguna_id'=>$pengguna->pengguna_id,
@@ -118,7 +119,7 @@ class MuridController extends Controller
 
     public function doAddReply(Request $request)
     {
-        $user_logged = $request->session()->get('user_logged', 'default');
+        $user_logged =  Auth::guard('satpam_pengguna')->user();
         $keterangan = $request->keterangan;
         $comment_id = $request->comment_id;
         $pengguna_id = $user_logged->pengguna_id;
@@ -143,7 +144,7 @@ class MuridController extends Controller
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataKelas->Tugas;
         $params['id_kelas_sekarang'] = $request->id;
-        $user_login = $request->session()->get('user_logged', 'default');
+        $user_login =  Auth::guard('satpam_pengguna')->user();
         $params['user_login'] = $user_login;
         // dd($dataKelas->Tugas);
         // dd($dataKelas->Feed);
@@ -155,7 +156,7 @@ class MuridController extends Controller
     {
         $dataKelas = Kelas::find($request->id);
         $dataTugas= Tugas::find($request->idTugas);
-        $dataUser = $request->session()->get('user_logged', 'default');
+        $dataUser =  Auth::guard('satpam_pengguna')->user();
 
         $datalaporan=NilaiTugasMurid::where('tugas_id','=',$request->idTugas)->where('murid_id','=',$dataUser->AdalahMurid->murid_id)->first();
         // dd($dataTugas);
@@ -172,7 +173,7 @@ class MuridController extends Controller
 
     public function doAddTugas(Request $request)
     {
-        $dataUser = $request->session()->get('user_logged', 'default');
+        $dataUser =  Auth::guard('satpam_pengguna')->user();
         $dataKelas = Kelas::find($request->id);
         $hasil = $dataKelas->Tugas()->create([
             "kelas_id" => $dataKelas->kelas_id,
@@ -214,7 +215,7 @@ class MuridController extends Controller
     {
         $dataKelas = Kelas::find($request->id);
 
-        $user_login = $request->session()->get('user_logged', 'default');
+        $user_login =  Auth::guard('satpam_pengguna')->user();
         $id_tugas=$request->id_tugas;
         // dd($id_tugas);
         $file = $request->file('file_upload');

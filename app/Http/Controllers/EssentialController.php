@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class EssentialController extends Controller
 {
@@ -15,7 +17,9 @@ class EssentialController extends Controller
     }
     public function  GoTologout(Request $request)
     {
-        $request->session()->forget('user_logged');
+        if(Auth::guard('satpam_pengguna')->check()){
+            Auth::guard('satpam_pengguna')->logout();
+        }
         return view("pages.essential.login");
     }
 
@@ -26,6 +30,23 @@ class EssentialController extends Controller
         $password=$request->input('password');
         $data_pengguna = Pengguna::all();
 
+        $credential = [
+            'pengguna_email' => $email,
+            'password' => $password
+        ];
+        // dd($data_pengguna);
+        // dd($credential);
+        // dd(Auth::guard('satpam_pengguna'));
+        if(Auth::guard('satpam_pengguna')->attempt($credential)){
+            if(getAuthUser()->role_text == 'guru'){
+                return redirect('/guru');
+            }else{
+                return redirect('/murid');
+            }
+
+        }else{
+            return view("pages.essential.login",['gagal'=>true]);
+        }
 
         if($data_pengguna!=null){
             foreach ($data_pengguna as $pgw ) { //cek login user
@@ -84,6 +105,9 @@ class EssentialController extends Controller
         );
 
         $result = Pengguna::create($request->all()+ ['pengguna_tampilan' => '0']);
+        $password = Hash::make($request->pengguna_password);
+        $result->pengguna_password=$password;
+        $result->save();
         $request->session()->put('user_logged', $result);
         if ($request->pengguna_peran == 0) {
             return redirect('guru');

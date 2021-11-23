@@ -11,15 +11,17 @@ use App\Models\NilaiTugasMurid;
 use App\Models\Reply;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GuruController extends Controller
 {
     public function goToKelas(Request $request)
     {
-        $pengguna_id = $request->session()->get('user_logged', 'default')->pengguna_id;
+        // dd(Auth::guard('satpam_pengguna')->user()->pengguna_id);
+        $pengguna_id = Auth::guard('satpam_pengguna')->user()->pengguna_id;
         if ($pengguna_id == 'default') return back()->with('message', 'error');
         $dataKelas = Kelas::where('pengguna_id', '=', $pengguna_id)->get();
-        $user_login = $request->session()->get('user_logged', 'default');
+        $user_login =  Auth::guard('satpam_pengguna')->user();
         $param = [];
         $param['dataKelas'] = $dataKelas;
         $param['user_login'] = $user_login;
@@ -42,7 +44,7 @@ class GuruController extends Controller
 
     public function doAddFeed(Request $request)
     {
-        $dataUser = $request->session()->get('user_logged', 'default');
+        $dataUser = Auth::guard('satpam_pengguna')->user();
         $dataKelas = Kelas::find($request->id);
         if ($dataKelas->kelas_id && $dataUser->pengguna_id && $dataUser->pengguna_nama && $request->keterangan) {
             $hasil = $dataKelas->Feed()->create([
@@ -60,7 +62,7 @@ class GuruController extends Controller
         $comment = $request->comment;
         $kelas_id = $request->kelas_id;
         $feed_id = $request->feed_id;
-        $pengguna = $request->session()->get('user_logged', 'default');
+        $pengguna =  Auth::guard('satpam_pengguna')->user();
         if ($feed_id && $pengguna->pengguna_id && $pengguna->pengguna_nama && $comment) {
             $hasil = Comment::create([
                 'feed_id' => $feed_id,
@@ -75,7 +77,7 @@ class GuruController extends Controller
 
     public function doAddReply(Request $request)
     {
-        $user_logged = $request->session()->get('user_logged', 'default');
+        $user_logged =  Auth::guard('satpam_pengguna')->user();
         $keterangan = $request->keterangan;
         $comment_id = $request->comment_id;
         $pengguna_id = $user_logged->pengguna_id;
@@ -99,7 +101,7 @@ class GuruController extends Controller
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataKelas->Tugas;
         $params['id_kelas_sekarang'] = $request->id;
-        $user_login = $request->session()->get('user_logged', 'default');
+        $user_login =  Auth::guard('satpam_pengguna')->user();
         $params['user_login'] = $user_login;
         // dd($dataKelas->Tugas);
         // dd($dataKelas->Feed);
@@ -123,7 +125,7 @@ class GuruController extends Controller
 
     public function doAddTugas(Request $request)
     {
-        $dataUser = $request->session()->get('user_logged', 'default');
+        $dataUser =  Auth::guard('satpam_pengguna')->user();
         $dataKelas = Kelas::find($request->id);
         $hasil = $dataKelas->Tugas()->create([
             "kelas_id" => $dataKelas->kelas_id,

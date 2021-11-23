@@ -17,11 +17,11 @@ class CheckGuru
     public function handle(Request $request, Closure $next)
     {
         $tempuser=$request->session()->get('user_logged', 'default');
-            if($tempuser->pengguna_peran=="0"){
+            if(getAuthUser()->role_text == 'guru'){
                 return $next($request);
-
             }else{
                 return redirect('/murid');
             }
+
     }
 }
