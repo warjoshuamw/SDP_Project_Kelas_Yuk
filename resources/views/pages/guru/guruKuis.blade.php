@@ -12,7 +12,7 @@
     <div class="flex flex-row flex-wrap my-2 m-2  justify-center w-full">
         @if (isset($dataKuis))
             @foreach ($dataKuis as $kuis)
-                @include('components.kuisCard',['url'=>'/guru/kelas/1/kuis/'.$kuis->kuis_id,'judul'=>$kuis->kuis_judul])
+                @include('components.kuisCard',['url'=>'/guru/kelas/'.$dataKelas->kelas_id.'/kuis/'.$kuis->kuis_id,'judul'=>$kuis->kuis_judul])
             @endforeach
         @endif
     </div>

@@ -5,17 +5,12 @@
 @section('content')
 <div class="flex w-full flex-col justify-center  md:flex-row gap-2">
 
-    <div class="flex flex-col w-3/4 my-2 m-2 ">
-        @for ($i = 0; $i < 3;$i++)
-
-            @if ($i%2==0)
-            @include('components.pilganCard',['url'=>'/murid/kelas/1/tugas/1'])
-            @else
-            @include('components.uraianCard',['url'=>'/murid/kelas/1/tugas/1'])
-            @endif
-
-        @endfor
-        <button class="self-end px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-secondary-red dark:bg-secondary-red-hover" >Submit</button>
+    <div class="flex flex-col w-full my-2 m-2 items-center">
+        @if (isset($dataKuis))
+            @foreach ($dataKuis as $kuis)
+                @include('components.kuisCard',['judul'=>$kuis->kuis_judul,'url'=>'/murid/kelas/'.$dataKelas->kelas_id.'/kuis/'.$kuis->kuis_id])
+            @endforeach
+        @endif
     </div>
 </div>
 

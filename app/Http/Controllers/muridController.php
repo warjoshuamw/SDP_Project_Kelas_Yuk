@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\JawabanMuridKuis;
 use App\Models\Kelas;
+use App\Models\Kuis;
 use App\Models\Murid;
 use App\Models\NilaiTugasMurid;
 use App\Models\Pengguna;
 use App\Models\Reply;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class MuridController extends Controller
@@ -196,6 +199,43 @@ class MuridController extends Controller
         // dd($dataKelas->Tugas);
         // dd($dataKelas->Feed);
         return view('pages.murid.muridQuiz', $params);
+    }
+    public function goToJawabKuis(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        //mencari kuis sudah dijawab atau belum
+        $status = false;
+        $user_logged = $request->session()->get('user_logged');
+        $murid = Murid::where('kelas_id','=',$request->id)->where('pengguna_id','=',$user_logged->pengguna_id)->first();
+        $isAnswered = DB::table('jawaban_murid_kuis')->where('d_kuis_id','=',$request->idKuis)->where('murid_id','=',$murid->murid_id)->first();
+        if ($isAnswered != null) {
+            $status = true;
+        }
+        $params['status'] = $status;
+        $params['dataKelas'] = $dataKelas;
+        $params['dataKuis'] = $dataKelas->Kuis;
+        $params['id_kelas_sekarang'] = $request->id;
+        $params['id_kuis_sekarang'] = $request->idKuis;
+        $params['kuis_sekarang'] = Kuis::find($request->idKuis);
+        return view('pages.murid.muridJawabKuis', $params);
+    }
+    public function doSubmitKuis(Request $request)
+    {
+        //do insert jawaban murid
+        // dd($request->request);
+        $user_logged = $request->session()->get('user_logged');
+        $murid = Murid::where('kelas_id','=',$request->id)->where('pengguna_id','=',$user_logged->pengguna_id)->first();
+        // dd($murid);
+        foreach ($request->jawaban as $key => $value) {
+            JawabanMuridKuis::create(
+                [
+                    'd_kuis_id' =>$request->idKuis,
+                    'murid_id'=>$murid->murid_id,
+                    'jawaban' => $value,
+                ]
+            );
+        }
+
     }
     //============ Kuis Selesai ============
 

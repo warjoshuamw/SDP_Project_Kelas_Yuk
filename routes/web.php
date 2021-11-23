@@ -34,7 +34,12 @@ Route::prefix('murid')->middleware('is_login')->middleware('is_murid')->group(fu
         Route::get('/{id}/tugas', 'MuridController@goTomuridTugas');
         Route::get('/{id}/tugas/{idTugas}', 'MuridController@goTomuridLihatTugas');
         Route::post('/{id}/tugas/uploadtugas', 'MuridController@doUploadTugas');
+
+        //murid kuis
         Route::get('/{id}/kuis', 'MuridController@goTomuridKuis');
+        Route::get('/{id}/kuis/{idKuis}', 'MuridController@goToJawabKuis');
+        Route::post('/{id}/kuis/{idKuis}/submit', 'MuridController@doSubmitKuis');
+
         Route::get('/{kelas_id}/home/comment/{feed_id}/add', 'MuridController@doAddComment');
         Route::get('/{kelas_id}/home/reply/{comment_id}/add', 'MuridController@doAddReply');
         Route::get('/{id}/daftarnilai','MuridController@goTomuridPenilaian');
