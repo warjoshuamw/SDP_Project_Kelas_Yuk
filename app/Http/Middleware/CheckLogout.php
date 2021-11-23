@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CheckLogout
@@ -17,22 +18,17 @@ class CheckLogout
      */
     public function handle(Request $request, Closure $next)
     {
-        $tempuser=$request->session()->get('user_logged', 'default');
 
-        if(Session::has('user_logged'))
-        {
-            if($tempuser->pengguna_peran=="0"){
+        if(Auth::guard('satpam_pengguna')->check()){
+            if(getAuthUser()->role_text == 'guru'){
                 return redirect('/guru');
-
             }else{
                 return redirect('/murid');
             }
-
-        }
-        else {
-            # Dikembalikan ke login page apabila belum login
+        }else{
             return $next($request);
-            // return redirect('/');
         }
+
+
     }
 }

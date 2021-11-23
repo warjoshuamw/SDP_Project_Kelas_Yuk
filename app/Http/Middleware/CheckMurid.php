@@ -18,11 +18,10 @@ class CheckMurid
     public function handle(Request $request, Closure $next)
     {
             $tempuser=$request->session()->get('user_logged', 'default');
-            if($tempuser->pengguna_peran=="0"){
-                return redirect('/guru');
-
-            }else{
+            if(getAuthUser()->role_text == 'murid'){
                 return $next($request);
+            }else{
+                return redirect('/guru');
             }
 
     }

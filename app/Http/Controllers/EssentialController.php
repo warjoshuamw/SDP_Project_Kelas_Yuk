@@ -108,11 +108,30 @@ class EssentialController extends Controller
         $password = Hash::make($request->pengguna_password);
         $result->pengguna_password=$password;
         $result->save();
-        $request->session()->put('user_logged', $result);
-        if ($request->pengguna_peran == 0) {
-            return redirect('guru');
+        $email=$request->input('pengguna_email');
+        // $request->session()->put('user_logged', $result);
+        // if ($request->pengguna_peran == 0) {
+        //     return redirect('guru');
+        // }else{
+        //     return redirect('murid');
+        // }
+
+        $credential = [
+            'pengguna_email' => $email,
+            'password' => $request->pengguna_password
+        ];
+        // dd($data_pengguna);
+        // dd($credential);
+        // dd(Auth::guard('satpam_pengguna'));
+        if(Auth::guard('satpam_pengguna')->attempt($credential)){
+            if(getAuthUser()->role_text == 'guru'){
+                return redirect('/guru');
+            }else{
+                return redirect('/murid');
+            }
+
         }else{
-            return redirect('murid');
+            return view("pages.essential.login",['gagal'=>true]);
         }
     }
     public function goToLandingPage(Request $request)

@@ -12,6 +12,7 @@ use App\Models\Reply;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class GuruController extends Controller
 {
@@ -141,12 +142,20 @@ class GuruController extends Controller
         $kelastugas=$data_oldest->kelas_id;
         $data_murid=Murid::where('kelas_id','=',$kelastugas)->get();
         // dd($data_murid);
+        $details = [
+            'title' => $request->tugas_nama,
+            'body' => $request->tugas_keterangan,
+            'tanggal'=> 'Batas Akhir : '.$request->batas_akhir,
+            ];
         foreach ($data_murid as $murid) {
             $tugasdibagi=NilaiTugasMurid::create([
                 "tugas_id"=>$data_oldest->tugas_id,
                 "murid_id"=>$murid->murid_id,
                 "nilai"=>0,
             ]);
+            // dd($murid->PunyaUser->pengguna_email);
+            \Mail::to($murid->PunyaUser->pengguna_email)->send(new \App\Mail\MyTestMail($details));
+
         }
         return back();
     }

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CheckLogin
@@ -17,14 +18,11 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::has('user_logged'))
-        {
+        if(Auth::guard('satpam_pengguna')->check()){
             return $next($request);
-        }
-        else {
-            # Dikembalikan ke login page apabila belum login
+        }else{
             return response()->view('pages.essential.login');
-            // return redirect('/');
         }
+
     }
 }
