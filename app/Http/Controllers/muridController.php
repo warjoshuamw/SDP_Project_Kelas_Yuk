@@ -18,7 +18,7 @@ class MuridController extends Controller
     //Routing untuk
     public function goToKelas(Request $request)
     {
-        $pengguna_id = $request->session()->get('user_logged', 'default')->pengguna_id;
+        $pengguna_id = Auth::guard('satpam_pengguna')->user()->pengguna_id;
         $dataKelasMurid = Pengguna::find($pengguna_id)->KelasMurid;
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $param['user_login'] = $user_login;
