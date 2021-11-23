@@ -17,7 +17,7 @@ class CreatePenggunaTable extends Migration
             $table->increments('pengguna_id');
             $table->string('pengguna_nama', 100);
             $table->string('pengguna_email', 150);
-            $table->string('pengguna_password', 50);
+            $table->string('pengguna_password', 225);
             $table->boolean('pengguna_peran');
             $table->boolean('pengguna_tampilan');
             $table->timestamps();

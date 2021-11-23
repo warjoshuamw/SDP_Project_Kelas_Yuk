@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KelasController extends Controller
 {
@@ -25,7 +26,7 @@ class KelasController extends Controller
         $kelas_kode = implode('', $pieces);
 
 
-        $pengguna_id = $request->session()->get('user_logged', 'default')->pengguna_id;
+        $pengguna_id =  Auth::guard('satpam_pengguna')->user()->pengguna_id;
         if ($pengguna_id == 'default') return back()->with('message', 'error');
         $kelas_nama = explode(' ', $request->kelas_nama);
         $hasil = Kelas::create($request->all() + ['pengguna_id' => $pengguna_id, 'kelas_kode' => $kelas_kode, 'status' => true]);

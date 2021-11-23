@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pengguna extends Model
+class Pengguna extends Authenticatable
 {
     use HasFactory;
     use SoftDeletes; // deleted_at
@@ -16,6 +18,7 @@ class Pengguna extends Model
     protected $primaryKey = "pengguna_id";
     public $incrementing  = true;
     public $timestamps    = true; //created_at & updated_at
+    protected $appends = ['role_text'];
 
     protected $fillable = [
         'pengguna_nama',
@@ -39,5 +42,17 @@ class Pengguna extends Model
     public function AdalahMurid()
     {
         return $this->belongsTo(Murid::class, 'pengguna_id', 'pengguna_id');
+    }
+    public function getAuthPassword()
+    {
+        return $this->pengguna_password;
+    }
+    public function getRoleTextAttribute()
+    {
+        if($this->pengguna_peran == 0){
+            return 'guru';
+        }else{
+            return 'murid';
+        }
     }
 }
