@@ -275,11 +275,12 @@ class MuridController extends Controller
         // $tujuan_upload = 'data_file';
 		// $file->move($tujuan_upload,$nama_file);
 
-        $path = Storage::putFileAs(
-            'TugasKelas/'.$dataKelas->kelas_kode,
-            $request->file('file_upload'),
-            $nama_file
-        );
+        // $path = Storage::putFileAs(
+        //     'TugasKelas/'.$dataKelas->kelas_kode,
+        //     $request->file('file_upload'),
+        //     $nama_file
+        // );
+        $request->file('file_upload')->storeAs('TugasKelas/'.$dataKelas->kelas_kode,$nama_file, 'local');
 
         $result=NilaiTugasMurid::where('tugas_id','=',$id_tugas)->get();
 

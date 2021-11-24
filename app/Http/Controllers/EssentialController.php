@@ -7,7 +7,9 @@ use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class EssentialController extends Controller
 {
@@ -148,5 +150,29 @@ class EssentialController extends Controller
     public function cardKuisUraian(Request $request)
     {
         return view('components.cardKuisUraian',['i'=>$request->i]);
+    }
+    public function downloadfile(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        $kelas=$dataKelas->kelas_kode;
+        return Storage::disk('local')->download("TugasKelas/$kelas/$request->namafile");
+    }
+    public function downloadallfile(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        $kelas=$dataKelas->kelas_kode;
+        $zip = new \ZipArchive();
+        $fileName = 'TugasKelas'.$dataKelas->kelas_nama.'.zip';
+        if ($zip->open(storage_path($fileName), \ZipArchive::CREATE)== TRUE)
+        {
+            $files = File::files(storage_path("app/TugasKelas/$kelas"));
+            foreach ($files as $key => $value){
+                $relativeName = basename($value);
+                $zip->addFile($value, $relativeName);
+            }
+            $zip->close();
+        }
+
+        return response()->download(storage_path($fileName));
     }
 }

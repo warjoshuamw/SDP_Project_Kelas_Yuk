@@ -76,3 +76,6 @@ Route::prefix('guru')->middleware('is_login')->middleware('is_guru')->group(func
 //routing untuk mendapatkan components
 Route::get('cardKuisPilgan', 'EssentialController@cardKuisPilgan');
 Route::get('cardKuisUraian', 'EssentialController@cardKuisUraian');
+
+Route::get('download/{id}/{namafile}','EssentialController@downloadfile');
+Route::get('downloadall/{id}','EssentialController@downloadallfile');
