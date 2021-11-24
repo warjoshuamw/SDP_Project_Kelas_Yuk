@@ -19,5 +19,6 @@ class JawabanMuridKuis extends Pivot
         'd_kuis_id',
         'murid_id',
         'jawaban',
+        'nilai',
     ];
 }

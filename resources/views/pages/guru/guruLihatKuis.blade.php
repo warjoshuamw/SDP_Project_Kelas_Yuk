@@ -33,7 +33,7 @@
                     @endif
                 @endforeach
             @endforeach
-            @include('components.cardQuizMurid',['nama_user'=>$Murid->pengguna_nama,'status'=>$status])
+            @include('components.cardQuizMurid',['nama_user'=>$Murid->pengguna_nama,'status'=>$status,'idMurid'=>$Murid->pivot->murid_id])
         @endforeach
     </div>
 </div>
