@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Pengguna extends Authenticatable
 {
+    use Notifiable;
     use HasFactory;
     use SoftDeletes; // deleted_at
 
@@ -54,5 +56,9 @@ class Pengguna extends Authenticatable
         }else{
             return 'murid';
         }
+    }
+    public function routeNotificationForMail()
+    {
+        return $this->pengguna_email;
     }
 }

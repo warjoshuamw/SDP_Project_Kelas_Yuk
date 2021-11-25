@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class Kelas extends Model
 {
     use HasFactory;
     use SoftDeletes; // deleted_at
-
+    use Notifiable;
+    
     protected $connection = "mysql";
     protected $table      = "kelas";
     protected $primaryKey = "kelas_id";
