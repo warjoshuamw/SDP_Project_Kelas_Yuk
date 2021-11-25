@@ -208,7 +208,8 @@ class MuridController extends Controller
         $status = false;
         $user_logged = Auth::guard('satpam_pengguna')->user();
         $murid = Murid::where('kelas_id','=',$request->id)->where('pengguna_id','=',$user_logged->pengguna_id)->first();
-        $isAnswered = DB::table('jawaban_murid_kuis')->where('d_kuis_id','=',$request->idKuis)->where('murid_id','=',$murid->murid_id)->first();
+        $d_kuis_id = Kuis::find($request->idKuis)->D_Kuis->first()->d_kuis_id;
+        $isAnswered = DB::table('jawaban_murid_kuis')->where('d_kuis_id','=',$d_kuis_id)->where('murid_id','=',$murid->murid_id)->first();
         if ($isAnswered != null) {
             $status = true;
         }
@@ -230,7 +231,7 @@ class MuridController extends Controller
         foreach ($request->jawaban as $key => $value) {
             JawabanMuridKuis::create(
                 [
-                    'd_kuis_id' =>$request->idKuis,
+                    'd_kuis_id' =>$key,
                     'murid_id'=>$murid->murid_id,
                     'jawaban' => $value,
                 ]

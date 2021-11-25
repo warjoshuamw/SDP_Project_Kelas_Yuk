@@ -9,7 +9,7 @@
                 <div class="text-xs text-red-500">{{$message}}</div>
             @enderror
             <span>Jawaban : </span>
-            <input type="text" class="rounded-md shadow w-full px-2 py-1 border border-gray-400" name="jawaban[{{$detail->d_kuis_id}}]" id="" required>
+            <input type="text" class="rounded-md shadow w-full px-2 py-1 border border-gray-400" name="jawaban[{{$detail->d_kuis_id}}]" id="" required >
             @error('uraianJawaban')
                 <div class="text-xs text-red-500">{{$message}}</div>
             @enderror

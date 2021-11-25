@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\D_Kuis;
+use App\Models\JawabanMuridKuis;
 use App\Models\Kelas;
 use App\Models\Kuis;
 use App\Models\Murid;
@@ -337,6 +338,7 @@ class GuruController extends Controller
         $params['pages'] = $request->pages;
         $params['dataKelas'] = $dataKelas;
         $params['id_kelas_sekarang'] = $request->id;
+        $params['id_kuis'] = $request->idKuis;
         return view('pages.guru.guruLihatKuis',$params);
     }
 
@@ -349,6 +351,26 @@ class GuruController extends Controller
         $params['id_kelas_sekarang'] = $request->id;
         $params['murid_id'] = $request->idMurid;
         return view('pages.guru.guruLihatKuisMurid',$params);
+    }
+    public function guruMenyimpanPenilaianKuis(Request $request)
+    {
+        $request->validate([
+            'nilai'=>[function($attribute, $value, $fail){
+                $sum = 0;
+                foreach ($value as $key => $v) {
+                    $sum+=$v;
+                }
+                if ($sum > 100 || $sum < 0) {
+                    $fail("Total Nilai Melebihi maksimal(100) atau Minimal(0)");
+                }
+            }]
+        ]);
+        foreach ($request->nilai as $key => $value) {
+            $jawaban = JawabanMuridKuis::find($key);
+            $jawaban->nilai = $value;
+            $jawaban->save();
+        }
+        return back();
     }
     //============ Kuis Selesai ============
 

@@ -2,12 +2,14 @@
     <div>
         <label class="flex flex-col">
             <span class="ml-2">Soal Pilihan Ganda</span>
-            <div class="font-semibold">{{$kuis->kuis_judul}}</div>
+            <div class="font-semibold">{{$kuis->pertanyaan}}</div>
+            <div class="">Kunci Jawaban : pilihan ke-{{$kuis->pilihan}}</div>
+
         </label>
     </div>
     <div>
         <label class="inline-flex items-center">
-            <input type="radio" class="form-radio" name="" value="1" {{$jawaban_murid_kuis->jawaban==1?"checked":""}}>
+            <input type="radio" class="form-radio" name="" value="1" {{$jawaban_murid_kuis==1?"checked":""}}>
             <div class="ml-2">
                 {{$kuis->pilihan_a}}
             </div>
@@ -15,7 +17,7 @@
     </div>
     <div>
         <label class="inline-flex items-center">
-            <input type="radio" class="form-radio" name="" value="2" {{$jawaban_murid_kuis->jawaban==2?"checked":""}}>
+            <input type="radio" class="form-radio" name="" value="2" {{$jawaban_murid_kuis==2?"checked":""}}>
             <div class="ml-2">
                 {{$kuis->pilihan_b}}
             </div>
@@ -23,7 +25,7 @@
     </div>
     <div>
         <label class="inline-flex items-center">
-            <input type="radio" class="form-radio" name="" value="3" {{$jawaban_murid_kuis->jawaban==3?"selected":""}}>
+            <input type="radio" class="form-radio" name="" value="3" {{$jawaban_murid_kuis==3?"selected":""}}>
             <div class="ml-2">
                 {{$kuis->pilihan_c}}
             </div>
@@ -31,7 +33,7 @@
     </div>
     <div>
         <label class="inline-flex items-center">
-            <input type="radio" class="form-radio" name="" value="4" {{$jawaban_murid_kuis->jawaban==4?"selected":""}}>
+            <input type="radio" class="form-radio" name="" value="4" {{$jawaban_murid_kuis==4?"selected":""}}>
             <div class="ml-2">
                 {{$kuis->pilihan_d}}
             </div>
@@ -40,7 +42,7 @@
     <div>
         <label class="inline-flex items-center">
             Nilai :
-            <input type="number" name="nilai[{{$jawaban_murid_kuis->jawaban_murid_kuis_id}}]" id="" max="100" min="0" class="ml-2 rounded-md shadow-sm px-2" required>
+            <input type="number" name="nilai[{{$jawaban_murid_kuis_id}}]" id="" max="100" min="0" class="ml-2 rounded-md shadow-sm px-2" required value={{$nilai??$nilai}}>
         </label>
     </div>
 </div>

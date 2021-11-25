@@ -29,6 +29,6 @@ class D_Kuis extends Model
     ];
     public function KuisJawaban()
     {
-        return $this->belongsToMany(Murid::class,'jawaban_murid_kuis','d_kuis_id','murid_id')->withPivot('jawaban');
+        return $this->belongsToMany(Murid::class,'jawaban_murid_kuis','d_kuis_id','murid_id')->withPivot('jawaban','jawaban_murid_kuis_id','nilai');
     }
 }

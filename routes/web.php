@@ -68,6 +68,7 @@ Route::prefix('guru')->middleware('is_login')->middleware('is_guru')->group(func
         Route::post('/{id}/kuis/buat/do', 'GuruController@doGuruBuatKuis');
         Route::get('/{id}/kuis/{idKuis}','GuruController@goToLihatKuis');
         Route::get('/{id}/kuis/{idKuis}/{idMurid}', 'GuruController@goToLihatKuisMurid');
+        Route::post('/{id}/kuis/{idKuis}/{idMurid}/simpan','GuruController@guruMenyimpanPenilaianKuis');
     });
 });
 
