@@ -34,7 +34,7 @@ class Kelas extends Model
 
     public function Murid()
     {
-        return $this->belongsToMany(Pengguna::class,'murid','kelas_id','pengguna_id');
+        return $this->belongsToMany(Pengguna::class,'murid','kelas_id','pengguna_id')->withPivot('murid_id');
     }
 
     public function Feed()

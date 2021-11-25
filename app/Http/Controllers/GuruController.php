@@ -339,6 +339,17 @@ class GuruController extends Controller
         $params['id_kelas_sekarang'] = $request->id;
         return view('pages.guru.guruLihatKuis',$params);
     }
+
+    public function goToLihatKuisMurid(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        $params['dataKuis'] = Kuis::find($request->idKuis);
+        $params['pages'] = $request->pages;
+        $params['dataKelas'] = $dataKelas;
+        $params['id_kelas_sekarang'] = $request->id;
+        $params['murid_id'] = $request->idMurid;
+        return view('pages.guru.guruLihatKuisMurid',$params);
+    }
     //============ Kuis Selesai ============
 
     //============ Penilaian Dimulai ============

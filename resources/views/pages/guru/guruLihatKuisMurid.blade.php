@@ -5,8 +5,8 @@
 @section('content')
     <div class="flex flex-col items-center">
         <div class="w-3/4 bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-50 backdrop-filter backdrop-blur p-2 lg:p-5 my-2">
-            <div class="font-semibold">
-                Pembuatan Kuis
+            <div class="font-semibold border-b border-black">
+                Penilaian Kuis
             </div>
             <div class="flex flex-wrap my-2">
                 <div class="w-full lg:w-6/12 px-4 m-auto">
@@ -15,7 +15,7 @@
                         Judul Kuis
                         </label>
                         <div class="font-semibold">
-                            ANGGAPLAH INI JUDUL KUIS
+                            {{$dataKuis->kuis_judul}}
                         </div>
                     </div>
                 </div>
@@ -40,10 +40,20 @@
         </div>
         <div class="flex md:flex-row flex-col w-3/4">
             <div class="flex-grow  z-40">
-                @for ($i = 0; $i<3;$i++)
+                @foreach ($dataKuis->D_Kuis as $kuis)
+                    @php
+                        $jawaban_murid_kuis = DB::table('jawaban_murid_kuis')->where('d_kuis_id','=',$kuis->d_kuis_id)->where('murid_id','=',$murid_id)->first();
+                    @endphp
+                    @if ($kuis->pilihan)
+                        @include('components.cardKuisPilganPenilaian',['kuis'=>$kuis,'jawaban_murid_kuis'=>$jawaban_murid_kuis])
+                    @else
+                        @include('components.cardKuisUraianPenilaian',['kuis'=>$kuis,'jawaban_murid_kuis'=>$jawaban_murid_kuis])
+                    @endif
+                @endforeach
+                {{-- @for ($i = 0; $i<3;$i++)
                     @include('components.cardKuisPilganPenilaian')
                     @include('components.cardKuisUraianPenilaian')
-                @endfor
+                @endfor --}}
             </div>
         </div>
     </div>

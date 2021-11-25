@@ -6,11 +6,11 @@
         @if ($status == false)
         <p class="text-red-700">missing</p>
         @else
-        <a href="/guru/kelas/1/kuis/1/1">
-            <button class="mt-2 place-self-center hover:underline hover:text-blue text-black font-bold py-2 px-4 rounded dark:bg-secondary-red-hover bg-secondary-red hover:bg-secondary-red-hover dark:hover:bg-secondary-red">
-                Lihat Kuis
-            </button>
-        </a>
+            <form action="/guru/kelas/1/kuis/1/{{$idMurid}}">
+                <button class="mt-2 place-self-center hover:underline hover:text-blue text-black font-bold py-2 px-4 rounded dark:bg-secondary-red-hover bg-secondary-red hover:bg-secondary-red-hover dark:hover:bg-secondary-red">
+                    Lihat Kuis
+                </button>
+            </form>
         @endif
     </div>
 </div>
