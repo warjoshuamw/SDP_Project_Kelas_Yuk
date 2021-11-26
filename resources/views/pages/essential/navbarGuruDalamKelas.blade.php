@@ -1,56 +1,46 @@
-<div class="flex justify-between items-center py-4 mx-2 md:px-10 border-b-2 border-blue-500 dark:border-blue-700">
-    <div id="logo" class="flex">
-        <img src="" alt=".">
+<div class="flex justify-between p-auto mx-2 md:px-2 border-b-2 border-blue-500 dark:border-blue-700">
+    <div id="logo" class="flex items-center">
+        <img src="/seminar.png" class="w-6 h-6" alt="">
         <div class="mx-2 px-2 font-serif">
             Kelas Yuk
         </div>
     </div>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 transition-all hover:bg-gray-100 hover:bg-opacity-25">
+        <img src="/home.png" class="w-6 h-6" alt="">
          <a href="/guru/">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
          </a>
     </button>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
-         <a href="/guru/kelas/{{$dataKelas->kelas_id}}/home">
-         <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Feed</p>
-         </a>
+    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2">
+        <img src="/feed.png" class="w-6 h-6" alt="">
+        <a href="/guru/kelas/{{$dataKelas->kelas_id}}/home">
+        <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Feed</p>
+        </a>
     </button>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2">
+        <img src="/homework.png" class="w-6 h-6" alt="">
          <a href="/guru/kelas/{{$dataKelas->kelas_id}}/tugas">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Tugas</p>
          </a>
     </button>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2">
+        <img src="/quiz.png" class="w-6 h-6" alt="">
          <a href="/guru/kelas/{{$dataKelas->kelas_id}}/kuis">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Quiz</p>
          </a>
     </button>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2">
+        <img src="/grades.png" class="w-6 h-6" alt="">
          <a href="/guru/kelas/{{$dataKelas->kelas_id}}/penilaian">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Penilaian</p>
          </a>
     </button>
 
-    <div class="flex flex-row flex-wrap gap-4 items-center">
-        <div id class=" h-full flex flex-col justify-center items-center hidden md:block">
+    <div class="flex flex-row flex-wrap justify-center gap-2 items-center">
+        <div id class="flex flex-col justify-center items-center hidden md:block">
             <div class="flex justify-center items-center">
                 <span class="">
-                    <svg class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="h-4 w-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
                 </span>
@@ -60,7 +50,7 @@
                     <div id="buttonToggler" class="bg-white w-5 h-5 rounded-full shadow-md transform" :class="{ 'translate-x-7': toggleActive}"></div>
                 </div>
                 <span class="">
-                    <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="h-4 w-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                     </svg>
                 </span>

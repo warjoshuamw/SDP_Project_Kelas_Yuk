@@ -1,46 +1,36 @@
 <div class="flex justify-between items-center py-4 mx-2 md:px-10 border-b-2 border-blue-500 dark:border-blue-700">
     <div id="logo" class="flex">
-        <img src="" alt=".">
+        <img src="/seminar.png" class="w-6 h-6" alt="">
         <div class="mx-2 px-2 font-serif">
-            Logo disini
+            Kelas Yuk
         </div>
     </div>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center">
+        <img src="/home.png" class="w-6 h-6" alt="">
          <a href="/murid/">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
          </a>
     </button>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center">
+        <img src="/feed.png" class="w-6 h-6" alt="">
          <a href="/murid/kelas/{{$dataKelas->kelas_id}}/home">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Feed</p>
          </a>
     </button>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center">
+        <img src="/homework.png" class="w-6 h-6" alt="">
          <a href="/murid/kelas/{{$dataKelas->kelas_id}}/tugas">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar Tugas</p>
          </a>
     </button>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center">
+        <img src="/quiz.png" class="w-6 h-6" alt="">
          <a href="/murid/kelas/{{$dataKelas->kelas_id}}/kuis">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar Quiz</p>
          </a>
     </button>
-    <button class="flex mx-2 hidden md:flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="black">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-         </svg>
+    <button class="flex mx-2 hidden md:flex items-center">
+        <img src="/grades.png" class="w-6 h-6" alt="">
          <a href="/murid/kelas/{{$dataKelas->kelas_id}}/daftarnilai">
          <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar nilai</p>
          </a>

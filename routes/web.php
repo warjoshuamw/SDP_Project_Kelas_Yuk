@@ -53,7 +53,6 @@ Route::prefix('guru')->middleware('is_login')->middleware('is_guru')->group(func
         Route::get('/{id}/tugas', 'GuruController@goToGuruBeriTugas');
         Route::post('/{id}/tugas/add', 'GuruController@doAddTugas');
         Route::get('/{id}/tugas/{idTugas}', 'GuruController@goToGuruLihatTugas');
-        Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
         //routing feed
         Route::get('/{id}/home', 'GuruController@goToGuruFeed');
         Route::get('/{id}/home/add', 'GuruController@doAddFeed');
@@ -69,6 +68,9 @@ Route::prefix('guru')->middleware('is_login')->middleware('is_guru')->group(func
         Route::get('/{id}/kuis/{idKuis}','GuruController@goToLihatKuis');
         Route::get('/{id}/kuis/{idKuis}/{idMurid}', 'GuruController@goToLihatKuisMurid');
         Route::post('/{id}/kuis/{idKuis}/{idMurid}/simpan','GuruController@guruMenyimpanPenilaianKuis');
+
+        //routing guru penilaian
+        Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
     });
 });
 

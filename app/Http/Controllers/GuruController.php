@@ -14,6 +14,7 @@ use App\Models\Tugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use stdClass;
 
 class GuruController extends Controller
 {
@@ -379,12 +380,45 @@ class GuruController extends Controller
     {
         $dataKelas = Kelas::find($request->id);
         $params['dataKelas'] = $dataKelas;
-        // $params['dataPenilaian'] = $dataKelas->Kuis;
         $params['id_kelas_sekarang'] = $request->id;
-        // dd($dataKelas->Tugas);
-        // dd($dataKelas->Feed);
+
+        //mencari data yang ditampilkan
+        //1. mencari murid yang mengikuti kelas
+        $dataTampilan = [];
+        $dataMurid = $dataKelas->Murid;
+        foreach ($dataMurid as $key => $value) {
+            //mencari murid
+            $murid = new stdClass();
+            $murid->murid_id = $value->pivot->murid_id;
+            $murid->murid_nama = $value->pengguna_nama;
+            //selesai mencari murid
+            $dataTampilan[] = $murid; //masukkan murid ke dalam data tampungan
+        }
+
+        $nilaiMurid = [];
+        $dataKuis = $dataKelas->Kuis; //mencari kuis dalam kelas
+        $sum = [];
+        foreach ($dataKuis as $key => $value) {
+            //mendapatkan kuis dalam kelas
+            //mencari jawaban kuis
+            foreach ($value->D_Kuis as $key => $v) {
+                foreach ($v->KuisJawaban as $key => $nilai) {
+                    if (isset($sum[$v->kuis_id][$nilai->murid_id])) {
+                        $sum[$v->kuis_id][$nilai->murid_id] += $nilai->pivot->nilai;
+                    } else {
+                        $sum[$v->kuis_id][$nilai->murid_id] = $nilai->pivot->nilai;
+                    }
+
+                }
+            }
+        }
+        dump($sum); 
+
+        dd($dataTampilan);
+
         return view('pages.guru.guruPenilaian', $params);
     }
+
     //============ Penilaian Selesai ============
 
 }
