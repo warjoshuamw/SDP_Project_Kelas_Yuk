@@ -15,6 +15,9 @@
                 <div class="flex-shrink-0 text-lg font-semibold">
                     Waktu Kelas : {{date('D H:i', strtotime($dataKelas->waktu_mulai)) . " - " . date('D H:i', strtotime($dataKelas->waktu_selesai))}}
                 </div>
+                <div class="flex-shrink-0 text-lg font-semibold">
+                    Kode Kelas : <input type="text" class="appearance-none bg-opacity-0 bg-transparent" disabled value="{{$dataKelas->kelas_kode}}"> <button class="border border-black rounded-md shadow px-2" onclick="myFunction()">Copy</button>
+                </div>
             </div>
         </div>
         {{-- <div class="flex flex-col md:flex-row w-full gap-4 "> --}}
@@ -51,6 +54,22 @@
             </div>
         {{-- </div> --}}
     </div>
+
+    <script>
+        function myFunction() {
+          var copyText = document.getElementById("myInput");
+
+          /* Select the text field */
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+          /* Copy the text inside the text field */
+          navigator.clipboard.writeText(copyText.value);
+
+          /* Alert the copied text */
+          alert("Copied the text: " + copyText.value);
+        }
+    </script>
 @endsection
 @section('footer')
     kelas guru
