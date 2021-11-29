@@ -376,49 +376,39 @@ class GuruController extends Controller
     //============ Kuis Selesai ============
 
     //============ Penilaian Dimulai ============
-    public function goToGuruPenilaian(Request $request)
+     public function goToGuruPenilaian(Request $request)
     {
         $dataKelas = Kelas::find($request->id);
         $params['dataKelas'] = $dataKelas;
         $params['id_kelas_sekarang'] = $request->id;
+        $params['dataMurid'] = $dataKelas->murid;
+        $params['nofilter'] = false;
 
-        //mencari data yang ditampilkan
-        //1. mencari murid yang mengikuti kelas
-        $dataTampilan = [];
-        $dataMurid = $dataKelas->Murid;
-        foreach ($dataMurid as $key => $value) {
-            //mencari murid
-            $murid = new stdClass();
-            $murid->murid_id = $value->pivot->murid_id;
-            $murid->murid_nama = $value->pengguna_nama;
-            //selesai mencari murid
-            $dataTampilan[] = $murid; //masukkan murid ke dalam data tampungan
-        }
+        $dataNilai = [];
+        //mengambil data kuis
+        $dataKuis = $dataKelas->Kuis;
 
-        $nilaiMurid = [];
-        $dataKuis = $dataKelas->Kuis; //mencari kuis dalam kelas
-        $sum = [];
-        foreach ($dataKuis as $key => $value) {
-            //mendapatkan kuis dalam kelas
-            //mencari jawaban kuis
-            foreach ($value->D_Kuis as $key => $v) {
-                foreach ($v->KuisJawaban as $key => $nilai) {
-                    if (isset($sum[$v->kuis_id][$nilai->murid_id])) {
-                        $sum[$v->kuis_id][$nilai->murid_id] += $nilai->pivot->nilai;
-                    } else {
-                        $sum[$v->kuis_id][$nilai->murid_id] = $nilai->pivot->nilai;
+        if (isset($request->filter_murid) && isset($request->filter_jenis)) {
+            foreach ($dataKuis as $key => $value) {
+                $dataNilai[$value->kuis_id]['judul_kuis'] = $value->kuis_judul;
+                $nilai = 0;
+                foreach ($value->D_Kuis as $key => $D_Kuis) {
+                    foreach ($D_Kuis->KuisJawaban as $key => $jawaban) {
+                        if ($request->filter_murid == $jawaban->murid_id) {
+                            $nilai += $jawaban->pivot->nilai;
+                        }
                     }
-
                 }
+                $dataNilai[$value->kuis_id]['nilai_kuis'] = $nilai;
+
             }
+        }else{
+            $params['nofilter'] = true;
         }
-        dump($sum); 
-
-        dd($dataTampilan);
-
+        $params['dataNilai'] = $dataNilai;
+        // dd($dataNilai);
         return view('pages.guru.guruPenilaian', $params);
     }
-
     //============ Penilaian Selesai ============
 
 }
