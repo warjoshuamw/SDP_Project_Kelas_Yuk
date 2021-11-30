@@ -35,6 +35,10 @@ class Tugas extends Model
     {
         return $this->belongsTo(NilaiTugasMurid::class, 'tugas_id', 'tugas_id');
     }
+    public function nilaiTugas()
+    {
+        return $this->hasMany(NilaiTugasMurid::class,'tugas_id','tugas_id');
+    }
 
 
 }

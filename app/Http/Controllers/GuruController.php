@@ -389,18 +389,33 @@ class GuruController extends Controller
         $dataKuis = $dataKelas->Kuis;
 
         if (isset($request->filter_murid) && isset($request->filter_jenis)) {
-            foreach ($dataKuis as $key => $value) {
-                $dataNilai[$value->kuis_id]['judul_kuis'] = $value->kuis_judul;
-                $nilai = 0;
-                foreach ($value->D_Kuis as $key => $D_Kuis) {
-                    foreach ($D_Kuis->KuisJawaban as $key => $jawaban) {
-                        if ($request->filter_murid == $jawaban->murid_id) {
-                            $nilai += $jawaban->pivot->nilai;
+            $params['filter_jenis'] = $request->filter_jenis;
+            $params['filter_murid'] = $request->filter_murid;
+            if ($request->filter_jenis == "tugas") {
+                $dataTugas = $dataKelas->Tugas;
+
+                foreach ($dataTugas as $key => $value) {
+                    $dataNilai[$value->tugas_id]['judul'] = $value->tugas_nama;
+                    foreach ($value->nilaiTugas as $key => $nilai) {
+                        if ($nilai->murid_id == $request->filter_murid) {
+                            $dataNilai[$value->tugas_id]['nilai'] = $nilai->nilai;
                         }
                     }
                 }
-                $dataNilai[$value->kuis_id]['nilai_kuis'] = $nilai;
+            }else{
+                foreach ($dataKuis as $key => $value) {
+                    $dataNilai[$value->kuis_id]['judul'] = $value->kuis_judul;
+                    $nilai = 0;
+                    foreach ($value->D_Kuis as $key => $D_Kuis) {
+                        foreach ($D_Kuis->KuisJawaban as $key => $jawaban) {
+                            if ($request->filter_murid == $jawaban->murid_id) {
+                                $nilai += $jawaban->pivot->nilai;
+                            }
+                        }
+                    }
+                    $dataNilai[$value->kuis_id]['nilai'] = $nilai;
 
+                }
             }
         }else{
             $params['nofilter'] = true;
