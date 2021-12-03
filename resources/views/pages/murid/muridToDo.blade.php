@@ -4,22 +4,43 @@
 @endsection
 @section('content')
 
-<label class="block text-left flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center" style="max-width: 400px;">
+@foreach ($kelasMurid as $kelas)
 
-    <select class="form-select block w-full mt-1">
-        <option>All Class</option>
-        <option>Class 1</option>
-    </select>
-  </label>
+<section class="container mx-auto p-6 font-mono">
+    <div class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md">
+        <div class="border-b border-black p-2">
+            <span>Kelas : {{$kelas->kelas_nama}}</span>
+        </div>
+        <div class="px-2 py-1">
+            <span>Tugas</span>
+            <div class="items-center">
+                @foreach ($kelas->Tugas as $tugas)
+                @include('components.tugasCard',
+                        [
+                            'role'=>1,
+                            'kelas_id_sekarang'=>$kelas->kelas_id,
+                            'tugas_id'=>$tugas->tugas_id,
+                            'tugas_nama'=>$tugas->tugas_nama,
+                        ])
+            @endforeach
+            </div>
 
-<div class="flex flex-col md:flex-row gap-2">
 
-    <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto justify-center">
-        @for ($i = 0; $i < 3;$i++)
-            @include('components.tugasCard',['url'=>'/murid/kelas/1/tugas/1'])
-        @endfor
+        </div>
+        <div class="px-2 py-1">
+            <div>Kuis</div>
+            @foreach ($kelas->Kuis as $kuis)
+            @include('components.kuisCard',['judul'=>$kuis->kuis_judul,'url'=>'/murid/kelas/'.$kelas->kelas_id.'/kuis/'.$kuis->kuis_id])
+            @endforeach
+        </div>
+
     </div>
-</div>
+
+
+  </section>
+@endforeach
+
+
 
 <style>
     dialog[open] {

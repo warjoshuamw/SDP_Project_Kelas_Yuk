@@ -34,9 +34,11 @@ class MuridController extends Controller
     public function goToDo(Request $request)
     {
         $user_login =  Auth::guard('satpam_pengguna')->user();
-        $kelasMurid=Murid::find($user_login->AdalahMurid->murid_id);
-        dd($kelasMurid);
-        return view('pages.murid.muridToDo');
+        $kelasMurid=$user_login->KelasMurid;
+        // dd($kelasMurid);
+        $param=[];
+        $param['kelasMurid']=$kelasMurid;
+        return view('pages.murid.muridToDo',$param);
     }
     public function DoJoinKelas(Request $request)
     {
@@ -168,7 +170,13 @@ class MuridController extends Controller
         $dataTugas= Tugas::find($request->idTugas);
         $dataUser =  Auth::guard('satpam_pengguna')->user();
 
-        $datalaporan=NilaiTugasMurid::where('tugas_id','=',$request->idTugas)->where('murid_id','=',$dataUser->AdalahMurid->murid_id)->first();
+        foreach ($dataUser->AdalahMurid as $usermurid) {
+            if($usermurid->kelas_id==$request->id){
+                $muridkelas=$usermurid;
+            }
+        };
+
+        $datalaporan=NilaiTugasMurid::where('tugas_id','=',$request->idTugas)->where('murid_id','=',$muridkelas->murid_id)->first();
         // dd($dataTugas);
         // dd($datalaporan);
         $params['dataKelas'] = $dataKelas;
@@ -259,6 +267,11 @@ class MuridController extends Controller
         $params['dataMurid'] = $user_login;
         $params['nofilter'] = false;
 
+        foreach ($user_login->AdalahMurid as $usermurid) {
+            if($usermurid->kelas_id==$request->id){
+                $muridkelas=$usermurid;
+            }
+        };
         $dataNilai = [];
         //mengambil data kuis
         $dataKuis = $dataKelas->Kuis;
@@ -272,7 +285,7 @@ class MuridController extends Controller
                 foreach ($dataTugas as $key => $value) {
                     $dataNilai[$value->tugas_id]['judul'] = $value->tugas_nama;
                     foreach ($value->nilaiTugas as $key => $nilai) {
-                        if ($nilai->murid_id == $user_login->AdalahMurid->murid_id) {
+                        if ($nilai->murid_id == $muridkelas->murid_id) {
                             $dataNilai[$value->tugas_id]['nilai'] = $nilai->nilai;
                         }
                     }
@@ -283,7 +296,7 @@ class MuridController extends Controller
                     $nilai = 0;
                     foreach ($value->D_Kuis as $key => $D_Kuis) {
                         foreach ($D_Kuis->KuisJawaban as $key => $jawaban) {
-                            if ($user_login->AdalahMurid->murid_id == $jawaban->murid_id) {
+                            if ($muridkelas->murid_id == $jawaban->murid_id) {
                                 $nilai += $jawaban->pivot->nilai;
                             }
                         }
