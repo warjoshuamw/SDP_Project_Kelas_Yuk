@@ -17,7 +17,7 @@
                 <div class="text-2xl">Anda Sudah Menjawab Kuis Ini</div>
             @else
                 @foreach ($kuis_sekarang->D_Kuis as $kuis)
-                @dump($kuis)
+                
                     @if (isset($kuis->pilihan))
                         @include('components.cardKuisPilganMurid',['detail'=>$kuis])
                     @elseif (isset($kuis->isian))
