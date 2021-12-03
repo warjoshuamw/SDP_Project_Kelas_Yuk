@@ -396,6 +396,7 @@ class GuruController extends Controller
 
                 foreach ($dataTugas as $key => $value) {
                     $dataNilai[$value->tugas_id]['judul'] = $value->tugas_nama;
+                    $dataNilai[$value->tugas_id]['tugas_id'] = $value->tugas_id;
                     foreach ($value->nilaiTugas as $key => $nilai) {
                         if ($nilai->murid_id == $request->filter_murid) {
                             $dataNilai[$value->tugas_id]['nilai'] = $nilai->nilai;
@@ -422,8 +423,26 @@ class GuruController extends Controller
         }
         $params['dataNilai'] = $dataNilai;
         // dd($dataNilai);
+        // dd($params);
         return view('pages.guru.guruPenilaian', $params);
     }
     //============ Penilaian Selesai ============
-
+    public function guruMenyimpanPenilaianTugas(Request $request)
+    {
+        $kelas = $request->id_kelas;
+        $murid = $request->id_murid;
+        $nilai = $request->nilai;
+        $ctr = 0;
+        $dataTugas = Tugas::all()->where('kelas_id', '=', $kelas);
+        foreach ($dataTugas as $key => $tugas) {
+            $id = $tugas->tugas_id;
+            $updateNilai = NilaiTugasMurid::all()->where('tugas_id', '=', $id)->where('murid_id', '=', $murid);
+            foreach ($updateNilai as $key => $update) {
+                $update->nilai = $nilai[$ctr];
+                $ctr++;
+                $update->save();
+            }
+        }
+        return back();
+    }
 }

@@ -67,10 +67,11 @@ Route::prefix('guru')->middleware('is_login')->middleware('is_guru')->group(func
         Route::post('/{id}/kuis/buat/do', 'GuruController@doGuruBuatKuis');
         Route::get('/{id}/kuis/{idKuis}','GuruController@goToLihatKuis');
         Route::get('/{id}/kuis/{idKuis}/{idMurid}', 'GuruController@goToLihatKuisMurid');
-        Route::post('/{id}/kuis/{idKuis}/{idMurid}/simpan','GuruController@guruMenyimpanPenilaianKuis');
+        Route::post('/{id}/kuis/{idKuis}/{idMurid}/simpan','GuruController  @guruMenyimpanPenilaianKuis');
 
         //routing guru penilaian
         Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
+        Route::post('/{id}/penilaian/{idMurid}/simpan', 'GuruController@guruMenyimpanPenilaianTugas');
     });
 });
 
