@@ -16,7 +16,7 @@ class KelasSeeder extends Seeder
     {
 
         $item = Kelas::create([
-            'pengguna_id'=>1,
+            'pengguna_id'=>2,
             'kelas_kode'=>'qwe12r',
             'kelas_nama'=>'Matematika',
             'kelas_deskripsi'=>'ini kelas matematika Mahasiswa ISTTS semester 3',

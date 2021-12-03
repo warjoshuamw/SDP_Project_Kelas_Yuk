@@ -44,6 +44,7 @@ class Pengguna extends Authenticatable
     public function AdalahMurid()
     {
         return $this->belongsTo(Murid::class, 'pengguna_id', 'pengguna_id');
+        // return $this->hasMany(Murid::class,'pengguna_id','pengguna_id');
     }
     public function getAuthPassword()
     {

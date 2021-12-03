@@ -20,7 +20,7 @@ class PenggunaSeeder extends Seeder
             'pengguna_nama'=>'Andre Sugianto putra',
             'pengguna_email'=>'andrehebat95@gmail.com',
             'pengguna_password'=>$pass,
-            'pengguna_peran'=>0,
+            'pengguna_peran'=>1,
             'pengguna_tampilan'=>0,
         ]);
         $item->save();
@@ -28,7 +28,7 @@ class PenggunaSeeder extends Seeder
             'pengguna_nama'=>'Joshua Mishael',
             'pengguna_email'=>'warjoshua@gmail.com',
             'pengguna_password'=>$pass,
-            'pengguna_peran'=>1,
+            'pengguna_peran'=>0,
             'pengguna_tampilan'=>0,
         ]);
         $item->save();

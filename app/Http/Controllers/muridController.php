@@ -33,6 +33,9 @@ class MuridController extends Controller
     }
     public function goToDo(Request $request)
     {
+        $user_login =  Auth::guard('satpam_pengguna')->user();
+        $kelasMurid=Murid::find($user_login->AdalahMurid->murid_id);
+        dd($kelasMurid);
         return view('pages.murid.muridToDo');
     }
     public function DoJoinKelas(Request $request)
@@ -249,12 +252,52 @@ class MuridController extends Controller
     //============ Penilaian Dimulai ============
     public function goTomuridPenilaian(Request $request)
     {
+        $user_login =  Auth::guard('satpam_pengguna')->user();
         $dataKelas = Kelas::find($request->id);
         $params['dataKelas'] = $dataKelas;
-        // $params['dataPenilaian'] = $dataKelas->Kuis;
         $params['id_kelas_sekarang'] = $request->id;
-        // dd($dataKelas->Tugas);
-        // dd($dataKelas->Feed);
+        $params['dataMurid'] = $user_login;
+        $params['nofilter'] = false;
+
+        $dataNilai = [];
+        //mengambil data kuis
+        $dataKuis = $dataKelas->Kuis;
+
+        if (isset($request->filter_jenis)) {
+            $params['filter_jenis'] = $request->filter_jenis;
+
+            if ($request->filter_jenis == "tugas") {
+                $dataTugas = $dataKelas->Tugas;
+                // dd($dataTugas);
+                foreach ($dataTugas as $key => $value) {
+                    $dataNilai[$value->tugas_id]['judul'] = $value->tugas_nama;
+                    foreach ($value->nilaiTugas as $key => $nilai) {
+                        if ($nilai->murid_id == $user_login->AdalahMurid->murid_id) {
+                            $dataNilai[$value->tugas_id]['nilai'] = $nilai->nilai;
+                        }
+                    }
+                }
+            }else{
+                foreach ($dataKuis as $key => $value) {
+                    $dataNilai[$value->kuis_id]['judul'] = $value->kuis_judul;
+                    $nilai = 0;
+                    foreach ($value->D_Kuis as $key => $D_Kuis) {
+                        foreach ($D_Kuis->KuisJawaban as $key => $jawaban) {
+                            if ($user_login->AdalahMurid->murid_id == $jawaban->murid_id) {
+                                $nilai += $jawaban->pivot->nilai;
+                            }
+                        }
+                    }
+                    $dataNilai[$value->kuis_id]['nilai'] = $nilai;
+
+                }
+            }
+        }else{
+            $params['nofilter'] = true;
+        }
+        $params['dataNilai'] = $dataNilai;
+        // dd($dataNilai);
+
         return view('pages.murid.nilaiMurid', $params);
     }
     public function doUploadTugas(Request $request)
