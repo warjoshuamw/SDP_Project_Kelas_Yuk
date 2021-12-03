@@ -16,7 +16,7 @@
                     Waktu Kelas : {{date('D H:i', strtotime($dataKelas->waktu_mulai)) . " - " . date('D H:i', strtotime($dataKelas->waktu_selesai))}}
                 </div>
                 <div class="flex-shrink-0 text-lg font-semibold">
-                    Kode Kelas : <input type="text" class="appearance-none bg-opacity-0 bg-transparent" disabled value="{{$dataKelas->kelas_kode}}"> <button class="border border-black rounded-md shadow px-2" onclick="myFunction()">Copy</button>
+                    Kode Kelas : <input type="text" id="kodekelas" class="appearance-none bg-opacity-0 bg-transparent" disabled value="{{$dataKelas->kelas_kode}}"> <button class="border border-black rounded-md shadow px-2" onclick="myFunction()">Copy</button>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
 
     <script>
         function myFunction() {
-          var copyText = document.getElementById("myInput");
+          var copyText = document.getElementById("kodekelas");
 
           /* Select the text field */
           copyText.select();

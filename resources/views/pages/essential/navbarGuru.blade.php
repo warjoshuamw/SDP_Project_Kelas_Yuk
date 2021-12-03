@@ -4,7 +4,7 @@
 
 <div class="flex justify-between items-center py-4 mx-2 md:px-10 border-b-2 border-blue-500 dark:border-blue-700">
     <div id="logo" class="flex">
-        <img src="" alt=".">
+        <img src="/seminar.png" class="w-6 h-6" alt="">
         <div class="mx-2 px-2 font-serif">
             Kelas Yuk
         </div>
