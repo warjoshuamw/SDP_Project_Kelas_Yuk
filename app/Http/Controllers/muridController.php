@@ -28,6 +28,7 @@ class MuridController extends Controller
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $param['user_login'] = $user_login;
         $param['dataKelasMurid'] = $dataKelasMurid;
+        $request->session()->put('navbarSelected', "home");
 
         return view('pages.murid.muridHome',$param);
     }
@@ -36,6 +37,7 @@ class MuridController extends Controller
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $kelasMurid=$user_login->KelasMurid;
         // dd($kelasMurid);
+        $request->session()->put('navbarSelected', "todo");
         $param=[];
         $param['kelasMurid']=$kelasMurid;
         return view('pages.murid.muridToDo',$param);
@@ -92,6 +94,7 @@ class MuridController extends Controller
         $dataKelas = Kelas::find($request->id);
         $params['dataKelas'] = $dataKelas;
 
+        $request->session()->put('navbarSelected', "feed");
         // dd($dataKelas);
         $params['dataFeed'] = $dataKelas->Feed;
         // dd($dataKelas->Feed);
@@ -153,6 +156,7 @@ class MuridController extends Controller
         // dd($request->id);
         $dataKelas = Kelas::find($request->id);
         // dd($$dataKelas);
+        $request->session()->put('navbarSelected', "tugas");
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataKelas->Tugas;
         $params['id_kelas_sekarang'] = $request->id;
@@ -209,6 +213,7 @@ class MuridController extends Controller
     public function goTomuridKuis(Request $request)
     {
         $dataKelas = Kelas::find($request->id);
+        $request->session()->put('navbarSelected', "kuis");
         $params['dataKelas'] = $dataKelas;
         $params['dataKuis'] = $dataKelas->Kuis;
         $params['id_kelas_sekarang'] = $request->id;
@@ -267,6 +272,7 @@ class MuridController extends Controller
         $params['dataMurid'] = $user_login;
         $params['nofilter'] = false;
 
+        $request->session()->put('navbarSelected', "nilai");
         foreach ($user_login->AdalahMurid as $usermurid) {
             if($usermurid->kelas_id==$request->id){
                 $muridkelas=$usermurid;

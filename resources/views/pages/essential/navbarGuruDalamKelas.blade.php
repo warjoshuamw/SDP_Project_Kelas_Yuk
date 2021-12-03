@@ -1,40 +1,29 @@
-<div class="flex justify-between p-auto mx-2 md:px-2 border-b-2 border-blue-500 dark:border-blue-700">
+<div class="flex justify-between p-auto mx-2 md:px-2 border-b border-blue-500 dark:border-blue-700">
     <div id="logo" class="flex items-center">
-        <img src="/seminar.png" class="w-6 h-6" alt="">
+        <img src="/seminar.png" class="w-16 h-16 p-2" alt="">
         <div class="mx-2 px-2 font-serif">
             Kelas Yuk
         </div>
     </div>
-    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 transition-all hover:bg-gray-100 hover:bg-opacity-25">
-        <img src="/home.png" class="w-6 h-6" alt="">
-         <a href="/guru/">
-         <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
-         </a>
-    </button>
-    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2">
-        <img src="/feed.png" class="w-6 h-6" alt="">
-        <a href="/guru/kelas/{{$dataKelas->kelas_id}}/home">
-        <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Feed</p>
-        </a>
-    </button>
-    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2">
-        <img src="/homework.png" class="w-6 h-6" alt="">
-         <a href="/guru/kelas/{{$dataKelas->kelas_id}}/tugas">
-         <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Tugas</p>
-         </a>
-    </button>
-    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2">
-        <img src="/quiz.png" class="w-6 h-6" alt="">
-         <a href="/guru/kelas/{{$dataKelas->kelas_id}}/kuis">
-         <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Quiz</p>
-         </a>
-    </button>
-    <button class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2">
-        <img src="/grades.png" class="w-6 h-6" alt="">
-         <a href="/guru/kelas/{{$dataKelas->kelas_id}}/penilaian">
-         <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Penilaian</p>
-         </a>
-    </button>
+    <div class="flex justify-center">
+        <button class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 transition-all hover:bg-gray-100 hover:bg-opacity-25">
+            <a href="/guru/">
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
+            </a>
+       </button>
+       <a href="/guru/kelas/{{$dataKelas->kelas_id}}/home" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="feed"?"border-b-2 border-blue-700":""}}">
+           <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Feed</p>
+       </a>
+       <a href="/guru/kelas/{{$dataKelas->kelas_id}}/tugas" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="tugas"?"border-b-2 border-blue-700":""}}">
+           <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Tugas</p>
+       </a>
+       <a href="/guru/kelas/{{$dataKelas->kelas_id}}/kuis" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="kuis"?"border-b-2 border-blue-700":""}}">
+           <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Quiz</p>
+       </a>
+       <a href="/guru/kelas/{{$dataKelas->kelas_id}}/penilaian" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="penilaian"?"border-b-2 border-blue-700":""}}">
+           <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Penilaian</p>
+       </a>
+    </div>
 
     <div class="flex flex-row flex-wrap justify-center gap-2 items-center">
         <div id class="flex flex-col justify-center items-center hidden md:block">

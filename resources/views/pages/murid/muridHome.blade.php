@@ -3,16 +3,13 @@
     @include('pages.essential.navbarMurid')
 @endsection
 @section('content')
-<div><button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded"onclick="document.getElementById('myModal').showModal()">Tambah kelas</button></div>
+<div>
+    <button type="button" class="w-full flex items-center justify-center px-4 py-2 m-2 border border-transparent rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block rounded"onclick="document.getElementById('myModal').showModal()">Tambah kelas</button>
+</div>
 
 <div class="flex flex-col md:flex-row gap-2">
-
     <div class="flex flex-row flex-wrap my-2 m-2 lg:mx-auto">
         @foreach ($dataKelasMurid as $kelas)
-            {{-- @dd($kelas->kelas_id); --}}
-            {{-- @php
-                dump(\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$kelas->waktu_mulai)->locale('id')->format('D H:i'));
-            @endphp --}}
             @include('components.kelasCard',
             [
                 'role'=>$user_login->pengguna_peran,
@@ -63,7 +60,7 @@
         </div>
         <div class="flex w-full py-10 px-2 justify-center items-center rounded text-center text-gray-500">
             <div class="lg:col-span-2">
-            <div class=" border-solid border-2 border-blue-500 p-3 mb-10">
+            <div class=" border-solid border-2 rounded-md shadow border-blue-500 p-3 mb-10">
                 <div>
                     <div class="mb-5 text-left text-base">kamu login sebagai</div>
 
@@ -85,7 +82,7 @@
             <div>
                 <form action={{url("murid/dojoin")}} method="POST">
                     @csrf
-                <div class=" border-solid border-2 border-blue-500 p-3">
+                <div class=" border-solid border-2 border-blue-500 p-3 rounded-md shadow">
 
                     <div>
                     <div class="text-2xl text-left">Kode Kelas</div>

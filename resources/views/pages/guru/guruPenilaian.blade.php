@@ -5,13 +5,13 @@
 @section('content')
 
 <section class="container mx-auto p-6 font-mono">
-    <form action="" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md">
+    <form action="" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-50">
         <div class="border-b border-black p-2">
             <span>Filter : </span>
         </div>
         <div class="px-2 py-1">
             <span>Nama Murid:</span>
-            <select name="filter_murid" id="" class="border border-black h-full rounded-md shadow px-2 py-1">
+            <select name="filter_murid" id="" class="border border-black h-full rounded-md shadow px-2 py-1 dark:bg-ocean-light dark:bg-opacity-50">
                 @foreach ($dataMurid as $murid)
                     @isset($filter_murid)
                         <option value="{{$murid->pivot->murid_id}}" {{$filter_murid==$murid->pivot->murid_id?"selected":""}}>{{$murid->pengguna_nama}}</option>
@@ -23,7 +23,7 @@
         </div>
         <div class="px-2 py-1">
             <span>Jenis Pekerjaan:</span>
-            <select name="filter_jenis" id="" class="border border-black h-full rounded-md shadow px-2 py-1">
+            <select name="filter_jenis" id="" class="border border-black h-full rounded-md shadow px-2 py-1 dark:bg-ocean-light dark:bg-opacity-50">
                 @isset($filter_jenis)
                     <option value="quiz" {{$filter_jenis=="quiz"?"selected":""}}>
                         Quiz
@@ -106,5 +106,4 @@
   </section>
 @endsection
 @section('footer')
-    kelas Murid
 @endsection

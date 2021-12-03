@@ -29,6 +29,7 @@ class GuruController extends Controller
         $param['dataKelas'] = $dataKelas;
         $param['user_login'] = $user_login;
 
+        $request->session()->put('navbarSelected', "home");
         return view('pages.guru.guruHome', $param);
     }
     //============ Feed Dimulai ============
@@ -36,12 +37,8 @@ class GuruController extends Controller
     {
         $dataKelas = Kelas::find($request->id);
         $params['dataKelas'] = $dataKelas;
-
-        // dd($dataKelas);
         $params['dataFeed'] = $dataKelas->Feed;
-        // dd($dataKelas->Feed);
-        // $params['id_kelas_sekarang'] = $request->id;
-        // dd($dataKelas->Feed);
+        $request->session()->put('navbarSelected', "feed");
         return view('pages.guru.guruFeed', $params);
     }
 
@@ -106,6 +103,7 @@ class GuruController extends Controller
         $params['id_kelas_sekarang'] = $request->id;
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $params['user_login'] = $user_login;
+        $request->session()->put('navbarSelected', "tugas");
         // dd($dataKelas->Tugas);
         // dd($dataKelas->Feed);
         return view('pages.guru.guruBeriTugas', $params);
@@ -169,6 +167,7 @@ class GuruController extends Controller
         $params['dataKelas'] = $dataKelas;
         $params['dataKuis'] = $dataKelas->Kuis;
         $params['id_kelas_sekarang'] = $request->id;
+        $request->session()->put('navbarSelected', "kuis");
         return view('pages.guru.guruKuis', $params);
     }
     public function goToGuruBuatKuis(Request $request)
@@ -383,6 +382,7 @@ class GuruController extends Controller
         $params['id_kelas_sekarang'] = $request->id;
         $params['dataMurid'] = $dataKelas->murid;
         $params['nofilter'] = false;
+        $request->session()->put('navbarSelected', "penilaian");
 
         $dataNilai = [];
         //mengambil data kuis
