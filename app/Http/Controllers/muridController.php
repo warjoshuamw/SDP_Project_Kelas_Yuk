@@ -37,7 +37,6 @@ class MuridController extends Controller
     {
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $kelasMurid=$user_login->KelasMurid;
-        // dd($kelasMurid);
         $request->session()->put('navbarSelected', "todo");
         $param=[];
         $param['kelasMurid']=$kelasMurid;
@@ -49,7 +48,6 @@ class MuridController extends Controller
         $kode=$request->kode_join;
         $dataUser =  Auth::guard('satpam_pengguna')->user();
         $dataKelas=Kelas::get();
-        // dd($dataKelas);
         $kelasyangdijoin=[];
         $ketemu=false;
         foreach ($dataKelas as $kelas) {
@@ -72,7 +70,6 @@ class MuridController extends Controller
             ]);
 
             $tugasdikelas=Tugas::where('kelas_id','=',$kelasyangdijoin->kelas_id)->get();
-            // dd($tugasdikelas);
             foreach ($tugasdikelas as $tugas) {
                 $tugasdibagi=NilaiTugasMurid::create([
                     "tugas_id"=>$tugas->tugas_id,
@@ -87,7 +84,6 @@ class MuridController extends Controller
         $invoice['kelas']=$kelasyangdijoin;
         Notification::send($dataUser, new NotifikasiKelas($dataUser,$kelasyangdijoin));
 
-        // $dataKelas = Kelas::find($request->id);
         return back();
     }
     public function goToMuridFeed(Request $request)
@@ -96,11 +92,7 @@ class MuridController extends Controller
         $params['dataKelas'] = $dataKelas;
 
         $request->session()->put('navbarSelected', "feed");
-        // dd($dataKelas);
         $params['dataFeed'] = $dataKelas->Feed;
-        // dd($dataKelas->Feed);
-        // $params['id_kelas_sekarang'] = $request->id;
-        // dd($dataKelas->Feed);
         return view('pages.murid.murid', $params);
     }
 
@@ -153,18 +145,13 @@ class MuridController extends Controller
     //============ Tugas Dimulai ============
     public function goTomuridTugas(Request $request)
     {
-
-        // dd($request->id);
         $dataKelas = Kelas::find($request->id);
-        // dd($$dataKelas);
         $request->session()->put('navbarSelected', "tugas");
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataKelas->Tugas;
         $params['id_kelas_sekarang'] = $request->id;
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $params['user_login'] = $user_login;
-        // dd($dataKelas->Tugas);
-        // dd($dataKelas->Feed);
         return view('pages.murid.muridLihatDaftarTugas', $params);
     }
 
@@ -182,15 +169,11 @@ class MuridController extends Controller
         };
 
         $datalaporan=NilaiTugasMurid::where('tugas_id','=',$request->idTugas)->where('murid_id','=',$muridkelas->murid_id)->first();
-        // dd($dataTugas);
-        // dd($datalaporan);
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataTugas;
         $params['datalapor'] = $datalaporan;
         $params['id_kelas_sekarang'] = $request->id;
 
-        // dd($dataKelas->Tugas);
-        // dd($dataKelas->Feed);
         return view('pages.murid.muridLihatTugas', $params);
     }
 
@@ -246,10 +229,8 @@ class MuridController extends Controller
     public function doSubmitKuis(Request $request)
     {
         //do insert jawaban murid
-        // dd($request->request);
         $user_logged = Auth::guard('satpam_pengguna')->user();;
         $murid = Murid::where('kelas_id','=',$request->id)->where('pengguna_id','=',$user_logged->pengguna_id)->first();
-        // dd($murid);
         if ($request->jawaban) {
             foreach ($request->jawaban as $key => $value) {
                 JawabanMuridKuis::create(
@@ -291,7 +272,6 @@ class MuridController extends Controller
 
             if ($request->filter_jenis == "tugas") {
                 $dataTugas = $dataKelas->Tugas;
-                // dd($dataTugas);
                 foreach ($dataTugas as $key => $value) {
                     $dataNilai[$value->tugas_id]['judul'] = $value->tugas_nama;
                     foreach ($value->nilaiTugas as $key => $nilai) {
@@ -319,7 +299,6 @@ class MuridController extends Controller
             $params['nofilter'] = true;
         }
         $params['dataNilai'] = $dataNilai;
-        // dd($dataNilai);
 
         return view('pages.murid.nilaiMurid', $params);
     }
@@ -329,10 +308,8 @@ class MuridController extends Controller
 
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $id_tugas=$request->id_tugas;
-        // dd($id_tugas);
         $file = $request->file('file_upload');
 
-        // dd($file);
 		$nama_file = $file->getClientOriginalName();
 
       	        // isi dengan nama folder tempat kemana file diupload
@@ -357,7 +334,6 @@ class MuridController extends Controller
 
         foreach ($result as $res) {
             if($res->PunyaMurid->pengguna_id==$user_login->pengguna_id){
-                // dd($nama_file);
                 $res->url_pengumpulan=$nama_file;
                 $res->save();
             }

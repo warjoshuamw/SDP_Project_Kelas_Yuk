@@ -20,7 +20,6 @@ class GuruController extends Controller
 {
     public function goToKelas(Request $request)
     {
-        // dd(Auth::guard('satpam_pengguna')->user()->pengguna_id);
         $pengguna_id = Auth::guard('satpam_pengguna')->user()->pengguna_id;
         if ($pengguna_id == 'default') return back()->with('message', 'error');
         $dataKelas = Kelas::where('pengguna_id', '=', $pengguna_id)->get();
@@ -104,8 +103,6 @@ class GuruController extends Controller
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $params['user_login'] = $user_login;
         $request->session()->put('navbarSelected', "tugas");
-        // dd($dataKelas->Tugas);
-        // dd($dataKelas->Feed);
         return view('pages.guru.guruBeriTugas', $params);
     }
 
@@ -113,14 +110,10 @@ class GuruController extends Controller
     {
         $dataKelas = Kelas::find($request->id);
         $dataTugas = Tugas::find($request->idTugas);
-        // dd($dataTugas);
         $params['dataKelas'] = $dataKelas;
         $params['dataTugas'] = $dataTugas;
         $datatugasmurid=NilaiTugasMurid::where('tugas_id','=',$request->idTugas)->get();
         $params['datatugasmurid']=$datatugasmurid;
-        // dd($datatugasmurid);
-        // dd($dataKelas->Tugas);
-        // dd($dataKelas->Feed);
         return view('pages.guru.guruLihatTugas', $params);
     }
 
@@ -141,7 +134,6 @@ class GuruController extends Controller
 
         $kelastugas=$data_oldest->kelas_id;
         $data_murid=Murid::where('kelas_id','=',$kelastugas)->get();
-        // dd($data_murid);
         $details = [
             'title' => $request->tugas_nama,
             'body' => $request->tugas_keterangan,
@@ -153,7 +145,6 @@ class GuruController extends Controller
                 "murid_id"=>$murid->murid_id,
                 "nilai"=>0,
             ]);
-            // dd($murid->PunyaUser->pengguna_email);
             \Mail::to($murid->PunyaUser->pengguna_email)->send(new \App\Mail\MyTestMail($details));
 
         }
@@ -207,7 +198,6 @@ class GuruController extends Controller
             $request->session()->put('kuisPage',$request->pages);
 
         }
-        // dd(!$request->session()->has('idKuisSedangDibuat'));
         return redirect('/guru/kelas/'.$request->id.'/kuis/buat/1');
         // return back();
     }
@@ -295,7 +285,6 @@ class GuruController extends Controller
                     $request->session()->push('soal', $data);
                     $request->session()->put('kuisPage', $request->pages);
                 }else if ($request->jenis == "pilgan"){
-                    // dump($request->request);
                     $request->validate([
                         'radio'=>'required',
                         'soal'=>'required',
@@ -305,7 +294,6 @@ class GuruController extends Controller
                         'pilihan_d'=>'required',
                     ]);
                     //insert data ke database dengan pengecekan udah di insert sebelumnya atau belum
-                    // dd('added');
                     $data = D_Kuis::create([
                         'kuis_id'=>$idKuis,
                         'pertanyaan'=>$request->soal,
@@ -326,7 +314,6 @@ class GuruController extends Controller
     {
         dump($request->toArray());
         return back();
-        dd($request);
         $id_kelas_sekarang = $request->id;
         return redirect(`guru/kelas/{$id_kelas_sekarang}/kuis`);
     }
@@ -422,8 +409,6 @@ class GuruController extends Controller
             $params['nofilter'] = true;
         }
         $params['dataNilai'] = $dataNilai;
-        // dd($dataNilai);
-        // dd($params);
         return view('pages.guru.guruPenilaian', $params);
     }
     //============ Penilaian Selesai ============
