@@ -12,6 +12,7 @@ use App\Models\Pengguna;
 use App\Models\Reply;
 use App\Models\Tugas;
 use App\Notifications\NotifikasiKelas;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -215,10 +216,8 @@ class MuridController extends Controller
         $dataKelas = Kelas::find($request->id);
         $request->session()->put('navbarSelected', "kuis");
         $params['dataKelas'] = $dataKelas;
-        $params['dataKuis'] = $dataKelas->Kuis;
+        $params['dataKuis'] = $dataKelas->Kuis()->where('batas_akhir','>=',Carbon::now())->where('batas_awal','<=',Carbon::now())->get();
         $params['id_kelas_sekarang'] = $request->id;
-        // dd($dataKelas->Tugas);
-        // dd($dataKelas->Feed);
         return view('pages.murid.muridQuiz', $params);
     }
     public function goToJawabKuis(Request $request)

@@ -16,14 +16,35 @@
             @if ($status)
                 <div class="text-2xl">Anda Sudah Menjawab Kuis Ini</div>
             @else
-                @foreach ($kuis_sekarang->D_Kuis as $kuis)
-                
-                    @if (isset($kuis->pilihan))
-                        @include('components.cardKuisPilganMurid',['detail'=>$kuis])
-                    @elseif (isset($kuis->isian))
-                        @include('components.cardKuisUraianMurid',['detail'=>$kuis])
-                    @endif
-                @endforeach
+                @if ($kuis_sekarang->randomable == 1)
+                    @foreach ($kuis_sekarang->D_Kuis as $kuis)
+                        @if ($loop->index%2 == 1)
+                            @if (isset($kuis->pilihan))
+                                @include('components.cardKuisPilganMurid',['detail'=>$kuis])
+                            @elseif (isset($kuis->isian))
+                                @include('components.cardKuisUraianMurid',['detail'=>$kuis])
+                            @endif
+                        @endif
+                    @endforeach
+                    @foreach ($kuis_sekarang->D_Kuis as $kuis)
+                        @if ($loop->index%2 == 0)
+                            @if (isset($kuis->pilihan))
+                                @include('components.cardKuisPilganMurid',['detail'=>$kuis])
+                            @elseif (isset($kuis->isian))
+                                @include('components.cardKuisUraianMurid',['detail'=>$kuis])
+                            @endif
+                        @endif
+                    @endforeach
+                @else
+                    @foreach ($kuis_sekarang->D_Kuis as $kuis)
+                        @if (isset($kuis->pilihan))
+                            @include('components.cardKuisPilganMurid',['detail'=>$kuis])
+                        @elseif (isset($kuis->isian))
+                            @include('components.cardKuisUraianMurid',['detail'=>$kuis])
+                        @endif
+                    @endforeach
+                @endif
+
                 <button type="submit" class="py-2 px-1 px-4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-lg text-xl">Simpan Jawaban</button>
             @endif
 
