@@ -250,14 +250,16 @@ class MuridController extends Controller
         $user_logged = Auth::guard('satpam_pengguna')->user();;
         $murid = Murid::where('kelas_id','=',$request->id)->where('pengguna_id','=',$user_logged->pengguna_id)->first();
         // dd($murid);
-        foreach ($request->jawaban as $key => $value) {
-            JawabanMuridKuis::create(
-                [
-                    'd_kuis_id' =>$key,
-                    'murid_id'=>$murid->murid_id,
-                    'jawaban' => $value,
-                ]
-            );
+        if ($request->jawaban) {
+            foreach ($request->jawaban as $key => $value) {
+                JawabanMuridKuis::create(
+                    [
+                        'd_kuis_id' =>$key,
+                        'murid_id'=>$murid->murid_id,
+                        'jawaban' => $value,
+                    ]
+                );
+            }
         }
         return back();
 
