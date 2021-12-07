@@ -148,7 +148,7 @@ class MuridController extends Controller
         $dataKelas = Kelas::find($request->id);
         $request->session()->put('navbarSelected', "tugas");
         $params['dataKelas'] = $dataKelas;
-        $params['dataTugas'] = $dataKelas->Tugas;
+        $params['dataTugas'] = $dataKelas->Tugas()->where('batas_akhir','>=',Carbon::now())->where('batas_awal','<=',Carbon::now())->get();;
         $params['id_kelas_sekarang'] = $request->id;
         $user_login =  Auth::guard('satpam_pengguna')->user();
         $params['user_login'] = $user_login;
