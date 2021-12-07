@@ -14,14 +14,14 @@
     <div class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md">
 
         <div class="border-b border-black p-2">
-            <span>Kelas : {{$kelas->kelas_nama}}</span>
+            <span class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 flex flex-col bg-opacity-75 flex-shrink w-full">Kelas : {{$kelas->kelas_nama}}</span>
         </div>
 
         @if (count($kelas->Tugas()->where('batas_akhir','>=',\Carbon\Carbon::now())->where('batas_awal','<=',\Carbon\Carbon::now())->get()) ==0 )
 
         @else
         <div class="px-2 py-1">
-        <span>Tugas</span>
+        <span class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 flex flex-col bg-opacity-75 flex-shrink w-full">Tugas</span>
         <div class="items-center">
             @foreach ($kelas->Tugas()->where('batas_akhir','>=',\Carbon\Carbon::now())->where('batas_awal','<=',\Carbon\Carbon::now())->get() as $tugas)
             @include('components.tugasCard',
@@ -42,17 +42,14 @@
 
             @else
             <div class="px-2 py-1">
-            <div>Kuis</div>
+            <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 flex flex-col bg-opacity-75 flex-shrink w-full">Kuis</div>
             @foreach ($kelas->Kuis()->where('batas_akhir','>=',\Carbon\Carbon::now())->where('batas_awal','<=',\Carbon\Carbon::now())->get() as $kuis)
             @include('components.kuisCard',['judul'=>$kuis->kuis_judul,'url'=>'/murid/kelas/'.$kelas->kelas_id.'/kuis/'.$kuis->kuis_id])
             @endforeach
         </div>
 
     </div>
-            @endif
-
-
-
+        @endif
 
   </section>
 @endif
