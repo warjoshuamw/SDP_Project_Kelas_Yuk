@@ -97,5 +97,5 @@
     </script>
 @endsection
 @section('footer')
-    guru Here
+
 @endsection

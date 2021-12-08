@@ -40,6 +40,6 @@
         </div>
 @endsection
 @section('footer')
-    murid here
+
 @endsection
 

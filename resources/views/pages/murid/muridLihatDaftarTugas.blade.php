@@ -47,6 +47,6 @@
 
 @endsection
 @section('footer')
-    guru here
+
 @endsection
 
