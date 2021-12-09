@@ -42,5 +42,5 @@
 </div>
 @endsection
 @section('footer')
-    kelas guru
+
 @endsection

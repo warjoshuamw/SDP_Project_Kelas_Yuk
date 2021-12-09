@@ -72,5 +72,5 @@
     </script>
 @endsection
 @section('footer')
-    kelas guru
+
 @endsection
