@@ -424,7 +424,6 @@ class GuruController extends Controller
         $params['dataNilai'] = $dataNilai;
         return view('pages.guru.guruPenilaian', $params);
     }
-    //============ Penilaian Selesai ============
     public function guruMenyimpanPenilaianTugas(Request $request)
     {
         $kelas = $request->id_kelas;
@@ -443,4 +442,16 @@ class GuruController extends Controller
         }
         return back();
     }
+    //============ Penilaian Selesai ============
+    //============ List Murid Dimulai ============
+    public function goToListMuridKelas(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        $params['dataKelas'] = $dataKelas;
+        $params['id_kelas_sekarang'] = $request->id;
+        $params['dataMurid'] = $dataKelas->murid;
+        $request->session()->put('navbarSelected', "murid");
+        return view('pages.guru.guruListMurid',$params);
+    }
+    //============ List Murid Selesai ============
 }

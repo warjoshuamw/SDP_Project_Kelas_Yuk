@@ -21,6 +21,10 @@
         <a href="/murid/kelas/{{$dataKelas->kelas_id}}/daftarnilai" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="nilai"?"border-b-2 border-blue-700":""}}">
             <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar nilai</p>
         </a>
+
+        <a href="/murid/kelas/{{$dataKelas->kelas_id}}/listMurid" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="murid"?"border-b-2 border-blue-700":""}}">
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Murid</p>
+        </a>
     </div>
 
     <div class="flex flex-row flex-wrap justify-center gap-2 items-center">

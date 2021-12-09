@@ -6,11 +6,9 @@
         </div>
     </div>
     <div class="flex justify-center">
-        <button class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 transition-all hover:bg-gray-100 hover:bg-opacity-25">
-            <a href="/guru/">
+        <a href="/guru/" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 transition-all hover:bg-gray-100 hover:bg-opacity-25">
             <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
-            </a>
-       </button>
+        </a>
        <a href="/guru/kelas/{{$dataKelas->kelas_id}}/home" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="feed"?"border-b-2 border-blue-700":""}}">
            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Feed</p>
        </a>
@@ -23,6 +21,9 @@
        <a href="/guru/kelas/{{$dataKelas->kelas_id}}/penilaian" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="penilaian"?"border-b-2 border-blue-700":""}}">
            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Penilaian</p>
        </a>
+       <a href="/guru/kelas/{{$dataKelas->kelas_id}}/listMurid" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="murid"?"border-b-2 border-blue-700":""}}">
+        <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Murid</p>
+    </a>
     </div>
 
     <div class="flex flex-row flex-wrap justify-center gap-2 items-center">

@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="flex flex-col w-full gap-2 flex-wrap break-words p-2 md:px-10 text-xs lg:text-lg ">
-        <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 bg-opacity-50 backdrop-filter backdrop-blur h-52 md:w-2/3 md:mx-auto">
+        <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 bg-opacity-50 backdrop-filter backdrop-blur md:w-2/3 md:mx-auto">
             <div class="flex flex-col gap-2 lg:gap-4 break-normal  justify-between h-full">
                 <div class="flex-shrink-0 text-3xl font-semibold border-b border-gray-700 pb-4">
                     {{$dataKelas->kelas_nama}}

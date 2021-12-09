@@ -43,6 +43,9 @@ Route::prefix('murid')->middleware('is_login')->middleware('is_murid')->group(fu
         Route::get('/{kelas_id}/home/comment/{feed_id}/add', 'MuridController@doAddComment');
         Route::get('/{kelas_id}/home/reply/{comment_id}/add', 'MuridController@doAddReply');
         Route::get('/{id}/daftarnilai','MuridController@goTomuridPenilaian');
+
+        //murid (murid kelas)
+        Route::get('/{id}/listMurid','MuridController@goToListMuridKelas');
     });
 });
 
@@ -72,6 +75,9 @@ Route::prefix('guru')->middleware('is_login')->middleware('is_guru')->group(func
         //routing guru penilaian
         Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
         Route::post('/{id}/penilaian/{idMurid}/simpan', 'GuruController@guruMenyimpanPenilaianTugas');
+
+        //routing orang
+        Route::get('/{id}/listMurid','GuruController@goToListMuridKelas');
     });
 });
 

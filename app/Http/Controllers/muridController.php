@@ -344,4 +344,17 @@ class MuridController extends Controller
 
         return back();
     }
+
+
+    //============ List Murid Dimulai ============
+    public function goToListMuridKelas(Request $request)
+    {
+        $dataKelas = Kelas::find($request->id);
+        $params['dataKelas'] = $dataKelas;
+        $params['id_kelas_sekarang'] = $request->id;
+        $params['dataMurid'] = $dataKelas->murid;
+        $request->session()->put('navbarSelected', "murid");
+        return view('pages.murid.muridListMurid',$params);
+    }
+    //============ List Murid Selesai ============
 }
