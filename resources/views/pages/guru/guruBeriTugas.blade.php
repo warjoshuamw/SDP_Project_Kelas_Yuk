@@ -62,20 +62,32 @@
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
                     <div class="md:col-span-6">
                     <label for="Tugas_nama">Nama Tugas</label>
-                    <input type="text" name="tugas_nama" id="kelas_nama" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                    <input type="text" name="tugas_nama" id="kelas_nama" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{old('tugas_nama')}}" />
+                    @error("tugas_nama")
+                        <div class="text-xs text-red-500">{{$message}}</div>
+                    @enderror
                     </div>
                     <div class="md:col-span-6">
                     <label for="kelas_nama">Keterangan</label>
-                    <input type="text" name="tugas_keterangan" id="kelas_deskripsi" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
+                    <input type="text" name="tugas_keterangan" id="kelas_deskripsi" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{old('tugas_keterangan')}}" />
+                    @error("tugas_keterangan")
+                        <div class="text-xs text-red-500">{{$message}}</div>
+                    @enderror
                     </div>
                     <div class="md:col-span-3">
                     <label for="waktu_mulai">Batas awal</label>
-                    <input type="datetime-local" name="batas_awal" id="waktu_mulai" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="email@domain.com" />
+                    <input type="datetime-local" name="batas_awal" id="waktu_mulai" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{old('batas_awal')}}"/>
+                    @error("batas_awal")
+                        <div class="text-xs text-red-500">{{$message}}</div>
+                    @enderror
                     </div>
 
                     <div class="md:col-span-3">
                     <label for="waktu_selesai">Batas Akhir </label>
-                    <input type="datetime-local" name="batas_akhir" id="waktu_selesai" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                    <input type="datetime-local" name="batas_akhir" id="waktu_selesai" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="{{old('batas_akhir')}}" placeholder="" />
+                    @error("batas_akhir")
+                        <div class="text-xs text-red-500">{{$message}}</div>
+                    @enderror
                     </div>
 
 

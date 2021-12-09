@@ -119,6 +119,19 @@ class GuruController extends Controller
 
     public function doAddTugas(Request $request)
     {
+        $request->validate([
+            'tugas_nama'=>'required',
+            'tugas_keterangan'=>'required',
+            'batas_awal'=>'required|after:today',
+            'batas_akhir'=>'required|after:batas_awal',
+        ],[
+            'tugas_nama.required'=>'kolom ini tidak boleh kosong',
+            'tugas_keterangan.required'=>'kolom ini tidak boleh kosong',
+            'batas_awal.required'=>'kolom ini tidak boleh kosong',
+            'batas_awal.after'=>'kolom ini tidak dimulai kurang dari hari ini',
+            'batas_akhir.required'=>'kolom ini tidak boleh kosong',
+            'batas_akhir.after'=>'kolom ini tidak boleh sebelum waktu mulai',
+        ]);
         $dataUser =  Auth::guard('satpam_pengguna')->user();
         $dataKelas = Kelas::find($request->id);
         $hasil = $dataKelas->Tugas()->create([

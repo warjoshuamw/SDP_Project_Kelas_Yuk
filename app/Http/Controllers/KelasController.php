@@ -13,6 +13,19 @@ class KelasController extends Controller
         /**
          * Kodingan kodingan untuk kelas code
          */
+        $request->validate([
+            'kelas_nama'=>'required',
+            'kelas_deskripsi'=>'required',
+            'waktu_mulai'=>'required',
+            'waktu_selesai'=>'required|after:waktu_mulai',
+        ],[
+            'kelas_nama.required'=>'kolom ini tidak boleh kosong',
+            'kelas_deskripsi.required'=>'kolom ini tidak boleh kosong',
+            'waktu_mulai.required'=>'kolom ini tidak boleh kosong',
+            'waktu_selesai.required'=>'kolom ini tidak boleh kosong',
+            'waktu_selesai.after'=>'kolom ini tidak boleh sebelum waktu mulai',
+        ]);
+
         $length = 6;
         $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         if ($length < 1) {
