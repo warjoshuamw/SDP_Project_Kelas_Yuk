@@ -5,13 +5,13 @@
 @section('content')
 
 <section class="container mx-auto p-6 font-mono">
-    <form action="" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md">
+    <form action="" class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 bg-opacity-50 backdrop-filter backdrop-blur md:mx-auto">
         <div class="border-b border-black p-2">
-            <span>Filter : </span>
+            <span class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 flex flex-col bg-opacity-75 flex-shrink w-full">Filter : </span>
         </div>
-        <div class="px-2 py-1">
-            <span>Nama Murid:</span>
-            <span>{{$dataMurid->pengguna_nama}}</span>
+        <div class="px-2 py-1 ">
+            <span class="">Nama Murid:</span>
+            <span class="">{{$dataMurid->pengguna_nama}}</span>
             {{-- <select name="filter_murid" id="" class="border border-black h-full rounded-md shadow px-2 py-1">
                 @foreach ($dataMurid as $murid)
                     @isset($filter_murid)
@@ -24,7 +24,7 @@
         </div>
         <div class="px-2 py-1">
             <span>Jenis Pekerjaan:</span>
-            <select name="filter_jenis" id="" class="border border-black h-full rounded-md shadow px-2 py-1">
+            <select name="filter_jenis" id="" class="border border-black h-full rounded-md shadow px-2 py-1 bg-white dark:bg-ocean-light">
                 @isset($filter_jenis)
                     <option value="quiz" {{$filter_jenis=="quiz"?"selected":""}}>
                         Quiz
@@ -91,7 +91,7 @@
       </div>
 
     </div>
-    
+
   </section>
 @endsection
 @section('footer')
