@@ -80,7 +80,7 @@
                 <button type="submit" class="justify-self-start py-2 px-1 px-4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-lg text-base md:text-xl w-1/2 md:w-auto" name="btnKembali" value="kembali">Kembali Ke Soal Sebelumnya</button>
                 @endif
                 <button type="submit" class="py-2 px-1 px-4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-lg text-base md:text-xl w-1/2 md:w-auto" name="btnTeruskan" value="teruskan">Tambah Soal</button>
-                <button type="submit" class="py-2 px-1 px-4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-lg text-base md:text-xl w-1/2 md:w-auto" name="btnSimpan" value="simpan">Berhenti</button>
+                <button type="submit" class="py-2 px-1 px-4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block mx-auto rounded-lg text-base md:text-xl w-1/2 md:w-auto" name="btnSimpan" value="simpan">Selesai</button>
             </div>
 
         </div>

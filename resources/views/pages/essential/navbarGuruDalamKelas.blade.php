@@ -16,7 +16,7 @@
            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Tugas</p>
        </a>
        <a href="/guru/kelas/{{$dataKelas->kelas_id}}/kuis" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="kuis"?"border-b-2 border-blue-700":""}}">
-           <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Quiz</p>
+           <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Kuis</p>
        </a>
        <a href="/guru/kelas/{{$dataKelas->kelas_id}}/penilaian" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="penilaian"?"border-b-2 border-blue-700":""}}">
            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Penilaian</p>

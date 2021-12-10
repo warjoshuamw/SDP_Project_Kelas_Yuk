@@ -16,7 +16,7 @@
             <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar Tugas</p>
         </a>
         <a href="/murid/kelas/{{$dataKelas->kelas_id}}/kuis" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="kuis"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar Quiz</p>
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar Kuis</p>
         </a>
         <a href="/murid/kelas/{{$dataKelas->kelas_id}}/daftarnilai" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="nilai"?"border-b-2 border-blue-700":""}}">
             <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar nilai</p>
