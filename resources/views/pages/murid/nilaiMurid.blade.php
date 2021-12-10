@@ -27,14 +27,14 @@
             <select name="filter_jenis" id="" class="border border-black h-full rounded-md shadow px-2 py-1 bg-white dark:bg-ocean-light">
                 @isset($filter_jenis)
                     <option value="quiz" {{$filter_jenis=="quiz"?"selected":""}}>
-                        Quiz
+                        Kuis
                     </option>
                     <option value="tugas" {{$filter_jenis=="tugas"?"selected":""}}>
                         Tugas
                     </option>
                 @else
                     <option value="quiz">
-                        Quiz
+                        Kuis
                     </option>
                     <option value="tugas" >
                         Tugas
