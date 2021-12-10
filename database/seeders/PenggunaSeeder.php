@@ -32,5 +32,7 @@ class PenggunaSeeder extends Seeder
             'pengguna_tampilan'=>0,
         ]);
         $item->save();
+
+        Pengguna::factory()->count(5)->create();
     }
 }
