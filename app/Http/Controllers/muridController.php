@@ -69,11 +69,13 @@ class MuridController extends Controller
                 'pengguna_id'=>$dataUser->pengguna_id,
             ]);
 
+            $muridskrg=Murid::where('pengguna_id','=',$dataUser->pengguna_id)->where('kelas_id','=',$kelasyangdijoin->kelas_id)->first();
+            // dd($muridskrg);
             $tugasdikelas=Tugas::where('kelas_id','=',$kelasyangdijoin->kelas_id)->get();
             foreach ($tugasdikelas as $tugas) {
                 $tugasdibagi=NilaiTugasMurid::create([
                     "tugas_id"=>$tugas->tugas_id,
-                    "murid_id"=>$dataUser->AdalahMurid->murid_id,
+                    "murid_id"=>$muridskrg->murid_id,
                     "nilai"=>0,
                 ]);
             }
