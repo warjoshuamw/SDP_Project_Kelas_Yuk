@@ -73,7 +73,11 @@
                             </div>
                             </td>
                             <td class="text-ms border text-center">
-                                <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-50 px-4 py-3" name="nilai[]" value="{{$nilai['nilai']}}">
+                                @if (isset($nilai['nilai']))
+                                    <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-50 px-4 py-3" name="nilai[]" value="{{$nilai['nilai']}}">
+                                @else
+                                    <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-50 px-4 py-3" name="nilai[]" value="0">
+                                @endif
                             </td>
                         </tr>
                     @endforeach
