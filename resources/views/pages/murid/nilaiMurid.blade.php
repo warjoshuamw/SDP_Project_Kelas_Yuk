@@ -95,5 +95,5 @@
   </section>
 @endsection
 @section('footer')
-    kelas Murid
+    
 @endsection

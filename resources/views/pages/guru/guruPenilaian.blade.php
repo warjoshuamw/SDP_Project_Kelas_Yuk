@@ -46,9 +46,9 @@
         </div>
     </form>
     @if (isset($filter_murid))
-        <form method="POST" action="/guru/kelas/{{$id_kelas_sekarang}}/penilaian/{{$filter_murid}}/simpan" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md">
+        <form method="POST" action="/guru/kelas/{{$id_kelas_sekarang}}/penilaian/{{$filter_murid}}/simpan" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-50">
     @else
-        <form class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md">
+        <form class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-50">
     @endif
         @csrf
         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
@@ -101,9 +101,11 @@
         </div>
         @if (isset($filter_jenis))
             @if ($filter_jenis == "tugas")
-                <input type="hidden" name="id_murid" value="{{$filter_murid}}">
-                <input type="hidden" name="id_kelas" value="{{$id_kelas_sekarang}}">
-                <button type="submit" class="py-2 px-1 px-4 w-auto md:w-1/4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline rounded-lg text-xl">Update</button>
+                <div class="px-2 py-1">
+                    <input type="hidden" name="id_murid" value="{{$filter_murid}}">
+                    <input type="hidden" name="id_kelas" value="{{$id_kelas_sekarang}}">
+                    <button type="submit" class="py-2 px-1 px-4 w-auto md:w-1/4 text-white bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline rounded-lg text-xl">Update</button>
+                </div>
             @endif
         @endif
     </form>
