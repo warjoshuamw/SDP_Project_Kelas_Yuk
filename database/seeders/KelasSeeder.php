@@ -25,5 +25,7 @@ class KelasSeeder extends Seeder
             'status'=>1,
         ]);
         $item->save();
+
+        Kelas::factory()->count(2)->create();
     }
 }

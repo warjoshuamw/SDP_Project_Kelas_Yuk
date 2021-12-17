@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class Murid extends Pivot
 {
+    use HasFactory;
     protected $connection = "mysql";
     protected $table      = "murid";
     protected $primaryKey = "murid_id";

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Murid;
 use Illuminate\Database\Seeder;
 
 class MuridSeeder extends Seeder
@@ -14,5 +15,6 @@ class MuridSeeder extends Seeder
     public function run()
     {
         //
+        Murid::factory()->count(5)->create();
     }
 }
