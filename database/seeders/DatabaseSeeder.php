@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
             PenggunaSeeder::class,
             KelasSeeder::class,
             MuridSeeder::class,
+            FeedSeeder::class,
+            ComentSeeder::class,
+            ReplySeeder::class,
         ]);
     }
 }

@@ -15,6 +15,11 @@ class MuridSeeder extends Seeder
     public function run()
     {
         //
-        Murid::factory()->count(5)->create();
+        $item = Murid::create([
+            'kelas_id'=>1,
+            'pengguna_id'=>1,
+        ]);
+        $item->save();
+        Murid::factory()->count(2)->create();
     }
 }

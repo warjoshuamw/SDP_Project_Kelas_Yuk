@@ -158,7 +158,7 @@ class GuruController extends Controller
                 "murid_id"=>$murid->murid_id,
                 "nilai"=>0,
             ]);
-            \Mail::to($murid->PunyaUser->pengguna_email)->send(new \App\Mail\MyTestMail($details));
+            Mail::to($murid->PunyaUser->pengguna_email)->send(new \App\Mail\MyTestMail($details));
 
         }
         return back();
@@ -238,6 +238,7 @@ class GuruController extends Controller
     }
     public function doKuisDetailCreate(Request $request)
     {
+        $pagesekarang=$request->pages-1;
         if ($request->btnSimpan) {
             $request->session()->forget('idKuisSedangDibuat');
             $request->session()->forget('soal');
@@ -245,13 +246,13 @@ class GuruController extends Controller
             return redirect('guru/kelas/'.$request->id.'/kuis');
         }
         if ($request->btnKembali != null) {
-            return redirect('/guru/kelas/'.$request->id.'/kuis/buat/'.$request->pages-1);
+            return redirect('/guru/kelas/'.$request->id.'/kuis/buat/'.$pagesekarang);
         }
         $request->validate(['jenis'=>'required']);
 
         if ($request->session()->get('idKuisSedangDibuat')) {
             if ($request->session()->get('kuisPage') >= $request->pages){
-                $soal = $request->session()->get('soal', 'default')[$request->pages-1];
+                $soal = $request->session()->get('soal', 'default')[$pagesekarang];
                 if ($request->jenis == "pilgan") {
                     $data = D_Kuis::find($soal->d_kuis_id);
                     $data->isian = null;
@@ -263,7 +264,7 @@ class GuruController extends Controller
                     $data->pilihan = $request->radio;
                     $data->save();
                     $allSoal = $request->session()->get('soal', 'default');
-                    $allSoal[$request->pages-1] = $data;
+                    $allSoal[$pagesekarang] = $data;
                     $request->session()->put('soal', $allSoal);
                 }else if ($request->jenis == "uraian"){
                     $data = D_Kuis::find($soal->d_kuis_id);
@@ -276,7 +277,7 @@ class GuruController extends Controller
                     $data->pilihan = null;
                     $data->save();
                     $allSoal = $request->session()->get('soal', 'default');
-                    $allSoal[$request->pages-1] = $data;
+                    $allSoal[$pagesekarang] = $data;
                     $request->session()->put('soal', $allSoal);
                 }
             }else{
@@ -321,7 +322,7 @@ class GuruController extends Controller
                 }
             }
         }
-        return redirect('/guru/kelas/'.$request->id.'/kuis/buat/'.$request->pages+1);
+        return redirect('/guru/kelas/'.$request->id.'/kuis/buat/'.$pagesekarang);
     }
     public function doGuruBuatKuis(Request $request)
     {

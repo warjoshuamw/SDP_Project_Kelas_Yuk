@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Reply;
 use Illuminate\Database\Seeder;
 
 class ReplySeeder extends Seeder
@@ -14,5 +15,12 @@ class ReplySeeder extends Seeder
     public function run()
     {
         //
+        $item = Reply::create([
+            'comment_id'=>1,
+            'pengguna_id'=>1,
+            'reply_creator'=>'Andre Sugianto putra',
+            'keterangan'=>'hehe saya bercanda pak',
+        ]);
+        $item->save();
     }
 }
