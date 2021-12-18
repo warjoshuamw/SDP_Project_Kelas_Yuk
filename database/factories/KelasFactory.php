@@ -29,7 +29,7 @@ class KelasFactory extends Factory
             // 'pengguna_id'=> 2,
             'kelas_kode' => $this->faker->unique()->randomElement(['asd123','k93mmf','oeb09c','dzo3ds','p10czo']),
             'kelas_nama'=> $this->faker->unique()->randomElement(['Sejarah','Ekonomi','PKN','Inggris','Indonesia']),
-            'kelas_deskripsi'=> '',
+            'kelas_deskripsi'=> 'mana keterangan kelasnya',
             'waktu_mulai'=> Carbon::now(),
             'waktu_selesai'=> Carbon::now()->addHours(2),
             'status'=> '1',

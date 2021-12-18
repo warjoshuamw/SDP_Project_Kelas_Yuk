@@ -31,6 +31,8 @@ Route::prefix('murid')->middleware('is_login')->middleware('is_murid')->group(fu
         // Route::get('/buat', ''); //buat kelas
         Route::get('/{id}/home', 'MuridController@goToMuridFeed');
         Route::get('/{id}/home/add', 'MuridController@doAddFeed');
+        Route::get('/{kelas_id}/home/comment/{feed_id}/add', 'MuridController@doAddComment');
+        Route::get('/{kelas_id}/home/reply/{comment_id}/add', 'MuridController@doAddReply');
         Route::get('/{id}/tugas', 'MuridController@goTomuridTugas');
         Route::get('/{id}/tugas/{idTugas}', 'MuridController@goTomuridLihatTugas');
         Route::post('/{id}/tugas/uploadtugas', 'MuridController@doUploadTugas');
@@ -70,7 +72,7 @@ Route::prefix('guru')->middleware('is_login')->middleware('is_guru')->group(func
         Route::post('/{id}/kuis/buat/do', 'GuruController@doGuruBuatKuis');
         Route::get('/{id}/kuis/{idKuis}','GuruController@goToLihatKuis');
         Route::get('/{id}/kuis/{idKuis}/{idMurid}', 'GuruController@goToLihatKuisMurid');
-        Route::post('/{id}/kuis/{idKuis}/{idMurid}/simpan','GuruController  @guruMenyimpanPenilaianKuis');
+        Route::post('/{id}/kuis/{idKuis}/{idMurid}/simpan','GuruController@guruMenyimpanPenilaianKuis');
 
         //routing guru penilaian
         Route::get('/{id}/penilaian', 'GuruController@goToGuruPenilaian');
