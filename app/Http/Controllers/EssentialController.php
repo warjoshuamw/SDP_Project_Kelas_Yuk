@@ -205,6 +205,11 @@ class EssentialController extends Controller
     }
     public function doUpdateSettingsProfile(Request $request)
     {
-
+        $pengguna = Pengguna::find(Auth::guard('satpam_pengguna')->user()->pengguna_id);
+        $pengguna->pengguna_nama = $request->pengguna_nama;
+        $pengguna->pengguna_email = $request->pengguna_email;
+        $pengguna->pengguna_password = Hash::make($request->pengguna_password);
+        $pengguna->save();
+        return back();
     }
 }

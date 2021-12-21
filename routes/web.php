@@ -20,7 +20,7 @@ Route::get('login/dologin', 'EssentialController@GoToDoLogin');
 Route::get('register', 'EssentialController@GoToRegister')->middleware('is_logout');
 Route::get('register/doregister', 'EssentialController@GoToDoRegister');
 Route::get('/settings','EssentialController@goToSettingsProfile');
-Route::get('/settings/update','EssentialController@doUpdateSettingsProfile');
+Route::post('/settings/update','EssentialController@doUpdateSettingsProfile');
 
 Route::prefix('murid')->middleware('is_login')->middleware('is_murid')->group(function () {
     Route::get('/', 'MuridController@goToKelas');
