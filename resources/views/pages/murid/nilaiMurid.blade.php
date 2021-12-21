@@ -5,9 +5,9 @@
 @section('content')
 
 <section class="container mx-auto p-6 font-mono">
-    <form action="" class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 bg-opacity-50 backdrop-filter backdrop-blur md:mx-auto">
+    <form action="" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-50">
         <div class="border-b border-black p-2">
-            <span class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md p-5 flex flex-col bg-opacity-75 flex-shrink w-full">Filter : </span>
+            <span>Filter : </span>
         </div>
         <div class="px-2 py-1 ">
             <span class="">Nama Murid:</span>
@@ -95,5 +95,5 @@
   </section>
 @endsection
 @section('footer')
-    
+
 @endsection

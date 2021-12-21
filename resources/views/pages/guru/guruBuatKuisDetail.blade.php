@@ -3,7 +3,7 @@
     @include('pages.essential.navbarGuruDalamKelas')
 @endsection
 @section('content')
-<form id="myForm" action="{{url('guru/kelas/'.$id_kelas_sekarang.'/kuis/buat/'.($pages).'/do')}}" method="get" name="myForm">
+<form id="myForm" action="{{url('guru/kelas/'.$id_kelas_sekarang.'/kuis/buat/'.($pages).'/do')}}" method="get" name="myForm" onsubmit="setFormSubmitting()">
     @csrf
     <div class="flex flex-col items-center">
         <div class="w-3/4 bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row p-5 flex flex-col bg-opacity-50 backdrop-filter backdrop-blur p-2 lg:p-5 my-2">
@@ -107,7 +107,24 @@
             })
         }
     }
+    var formSubmitting = false;
+    var finish = false;
+    var setFormSubmitting = function() { formSubmitting = true; };
+
+    window.onload = function() {
+        window.addEventListener("beforeunload", function (e) {
+            if (formSubmitting) {
+                return undefined;
+            }
+
+            var confirmationMessage = 'It looks like you have been editing something. '
+                                    + 'If you leave before saving, your changes will be lost.';
+            (e || window.event).returnValue = confirmationMessage;
+            return confirmationMessage;
+        });
+    };
 </script>
+
 @endsection
 @section('footer')
 @endsection

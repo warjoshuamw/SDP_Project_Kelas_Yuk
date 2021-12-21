@@ -116,7 +116,33 @@
     let togglerMobile = document.getElementById("togglerMobile");
     let buttonToggler = document.getElementById("buttonToggler");
     let buttonTogglerMobile = document.getElementById("buttonTogglerMobile");
-
+    window.onload = function () {
+        if(getCookie('darkmode') != null){
+            handleToggleActive();
+        }
+    }
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
     function closeMobile() {
         var element = document.getElementById("mobile_burger");
         element.classList.add("hidden");
@@ -132,12 +158,14 @@
             toggler.classList.remove('bg-blue-700');
             toggler.classList.remove('darkmodeOn');
             body.classList.remove('dark');
+            eraseCookie('darkmode');
         }else{
             toggler.classList.remove('bg-gray-300');
             buttonToggler.classList.add('translate-x-7');
             toggler.classList.add('bg-blue-700');
             toggler.classList.add('darkmodeOn');
             body.classList.add('dark');
+            setCookie('darkmode','true',7);
         }
     }
     function handleToggleActiveMobile(){
