@@ -18,8 +18,6 @@
         </div>
     </div>
     <div class="bg-white dark:bg-ocean-light dark:bg-opacity-50 shadow-md rounded-md flex flex-row flex-wrap p-5 bg-opacity-75 w-full">
-
-
         @foreach ($dataKelas->Murid as $Murid)
             @php
                 $status = false;
@@ -33,7 +31,7 @@
                     @endif
                 @endforeach
             @endforeach
-            @include('components.cardQuizMurid',['nama_user'=>$Murid->pengguna_nama,'status'=>$status,'idMurid'=>$Murid->pivot->murid_id,'idKuis'=>$id_kuis])
+            @include('components.cardQuizMurid',['nama_user'=>$Murid->pengguna_nama,'status'=>$status,'idMurid'=>$Murid->pivot->murid_id,'idKuis'=>$id_kuis,'kelas_id'=>$dataKelas->kelas_id])
         @endforeach
     </div>
 </div>

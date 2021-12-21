@@ -15,11 +15,6 @@
         <form action="/settings/update" method="post" class="flex flex-col my-4 xl:w-1/2 w-full gap-2">
             @csrf
             <div class="flex flex-col">
-                <label class="font-bold text-lg">Foto profile</label>
-                <img src="" alt="." class="w-64 h-64 self-center my-2" style="object-fit: cover">
-                <input type="file" placeholder="Insert here" class="border rounded-lg py-3 px-3 border-black dark:bg-ocean-light dark:bg-opacity-100" ">
-            </div>
-            <div class="flex flex-col">
                 <label class="font-bold text-lg">Nama</label>
                 <input type="text" placeholder="Nama" name="pengguna_nama" class="border rounded-lg py-3 px-3 border-black dark:bg-ocean-light dark:bg-opacity-100" value="{{Auth::guard('satpam_pengguna')->user()->pengguna_nama}}">
             </div>
