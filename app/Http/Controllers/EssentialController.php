@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\NilaiTugasMurid;
 use App\Models\Pengguna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -160,19 +161,39 @@ class EssentialController extends Controller
     public function downloadallfile(Request $request)
     {
         $dataKelas = Kelas::find($request->id);
+        $datatugas = NilaiTugasMurid::where('tugas_id','=',$request->id_tugas)->get();
+
+        $pengumpulan=0;
+        $datapengumpulan= NilaiTugasMurid::where('tugas_id','=',$request->id_tugas)->where('url_pengumpulan','!=',null)->get();
+        $pengumpulan=sizeof($datapengumpulan);
+        if($pengumpulan==0){
+            return back()->with("message", "Tidak ada File siswa yang dapat didownload");
+        }
+        // dd($datatugas);
+        $fileName = 'TugasKelas'.$dataKelas->kelas_nama.'.zip';
+        // dd(public_path());
+        // File::delete(public_path().'/'.$fileName);
+        // Storage::delete($fileName);
         $kelas=$dataKelas->kelas_kode;
         $zip = new \ZipArchive();
-        $fileName = 'TugasKelas'.$dataKelas->kelas_nama.'.zip';
+
+
         if ($zip->open(storage_path($fileName), \ZipArchive::CREATE)== TRUE)
         {
             $files = File::files(storage_path("app/TugasKelas/$kelas"));
             foreach ($files as $key => $value){
                 $relativeName = basename($value);
-                $zip->addFile($value, $relativeName);
+                foreach ($datatugas as $item) {
+                    if($item->url_pengumpulan==$relativeName){
+                        $zip->addFile($value, $relativeName);
+                    }else{
+                    }
+                }
+
             }
             $zip->close();
         }
 
-        return response()->download(storage_path($fileName));
+        return response()->download(storage_path($fileName))->deleteFileAfterSend(true);
     }
 }

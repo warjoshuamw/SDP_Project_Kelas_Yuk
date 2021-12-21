@@ -88,4 +88,4 @@ Route::get('cardKuisPilgan', 'EssentialController@cardKuisPilgan');
 Route::get('cardKuisUraian', 'EssentialController@cardKuisUraian');
 
 Route::get('download/{id}/{namafile}','EssentialController@downloadfile');
-Route::get('downloadall/{id}','EssentialController@downloadallfile');
+Route::get('downloadall/{id}/{id_tugas}','EssentialController@downloadallfile');
