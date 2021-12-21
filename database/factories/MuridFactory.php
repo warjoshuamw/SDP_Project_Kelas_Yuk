@@ -25,7 +25,7 @@ class MuridFactory extends Factory
     {
         return [
             //
-            'kelas_id' => $this->faker->randomElement(Kelas::all()->pluck('kelas_id')),
+            'kelas_id' => $this->faker->unique()->randomElement(Kelas::all()->pluck('kelas_id')),
             // 'kelas_id' => '1',
             'pengguna_id' =>$this->faker->randomElement(Pengguna::where('pengguna_peran','=',1)->get()->pluck('pengguna_id')),
         ];

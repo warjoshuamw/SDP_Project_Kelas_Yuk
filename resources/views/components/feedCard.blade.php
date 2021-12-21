@@ -20,14 +20,31 @@
                 </div>
             @endforeach
         </div>
+        @if (Auth::guard('satpam_pengguna')->user()->pengguna_peran==0)
+        <form action="{{url('/guru/kelas/'.$dataKelas->kelas_id.'/home/reply/'.$comment->comment_id.'/add')}}" class="flex pt-2 ml-4" method="GET">
+            <input type="text" name="keterangan" id="" class="border border-gray-400 rounded-lg w-auto flex-grow mr-4 p-1 px-2">
+            <button type="submit" class="py-1 px-4 text-black rounded-lg bg-button-light hover:bg-button-dark dark:bg-button-dark dark:hover:bg-button-light shadow-lg block md:inline-block w-auto">Balas</button>
+        </form>
+        @else
         <form action="{{url('/murid/kelas/'.$dataKelas->kelas_id.'/home/reply/'.$comment->comment_id.'/add')}}" class="flex pt-2 ml-4" method="GET">
             <input type="text" name="keterangan" id="" class="border border-gray-400 rounded-lg w-auto flex-grow mr-4 p-1 px-2">
             <button type="submit" class="py-1 px-4 text-black rounded-lg bg-button-light hover:bg-button-dark dark:bg-button-dark dark:hover:bg-button-light shadow-lg block md:inline-block w-auto">Balas</button>
         </form>
+        @endif
+
+
     </div>
     @endforeach
+    @if (Auth::guard('satpam_pengguna')->user()->pengguna_peran==0)
+    <form action="{{url('/guru/kelas/'.$dataKelas->kelas_id.'/home/comment/'.$feed_id.'/add')}}" class="flex pt-2" method="GET">
+        <input type="text" name="comment" id="" class="border border-gray-400 rounded-lg w-auto flex-grow mr-4 p-1 px-2">
+        <button type="submit" class="py-1 px-4 text-black rounded-lg bg-button-light hover:bg-button-dark dark:bg-button-dark dark:hover:bg-button-light shadow-lg block md:inline-block w-auto">Komentar</button>
+    </form>
+    @else
     <form action="{{url('/murid/kelas/'.$dataKelas->kelas_id.'/home/comment/'.$feed_id.'/add')}}" class="flex pt-2" method="GET">
         <input type="text" name="comment" id="" class="border border-gray-400 rounded-lg w-auto flex-grow mr-4 p-1 px-2">
         <button type="submit" class="py-1 px-4 text-black rounded-lg bg-button-light hover:bg-button-dark dark:bg-button-dark dark:hover:bg-button-light shadow-lg block md:inline-block w-auto">Komentar</button>
     </form>
+    @endif
+
 </div>
