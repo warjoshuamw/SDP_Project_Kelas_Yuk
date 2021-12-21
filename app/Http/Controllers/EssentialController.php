@@ -196,4 +196,15 @@ class EssentialController extends Controller
 
         return response()->download(storage_path($fileName))->deleteFileAfterSend(true);
     }
+
+    // SETTINGS PROFILE
+
+    public function goToSettingsProfile()
+    {
+        return view('pages.essential.settings');
+    }
+    public function doUpdateSettingsProfile(Request $request)
+    {
+
+    }
 }

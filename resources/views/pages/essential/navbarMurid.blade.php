@@ -36,7 +36,23 @@
                 </span>
             </div>
         </div>
-        <a href="/logout"><button class="px-4 py-2 rounded-md text-sm font-medium border-0 hover:shadow-md focus:outline-none focus:ring transition text-white dark:bg-secondary-red-hover  dark:hover:bg-secondary-red bg-secondary-red hover:bg-secondary-red-hover hidden md:block">Log Out</button></a>
+        <div class="relative">
+            <input type="checkbox" id="sortbox" class="hidden absolute">
+            <label for="sortbox" class="flex items-center cursor-pointer rounded-full shadow-md bg-white w-12 h-12 text-center justify-content-center">
+
+            </label>
+            <div id="sortboxmenu" class="absolute mt-1 right-1 top-full min-w-max shadow rounded-md opacity-0 bg-gray-300 border border-gray-400 transition delay-75 ease-in-out z-10">
+                <ul class="block text-center text-gray-900">
+                    <li><a href="/settings" class="block px-3 py-2 bg-white hover:bg-gray-200 rounded-t-md">Settings</a></li>
+                    <li><a href="/logout" class="block px-3 py-2 bg-white hover:bg-gray-200 rounded-b-md">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <style>
+            #sortbox:checked ~ #sortboxmenu {
+                opacity: 1;
+            }
+        </style>
     </div>
     <button type="button" onclick="openMobile()" class="bg-secondary-red dark:bg-secondary-red-hover rounded-md p-2 inline-flex items-center justify-center text-white focus:outline-none  md:hidden" aria-expanded="false">
         <span class="sr-only">Open menu</span>
