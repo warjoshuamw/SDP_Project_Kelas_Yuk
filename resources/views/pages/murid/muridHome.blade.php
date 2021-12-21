@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div>
-    <button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block rounded"onclick="document.getElementById('myModal').showModal()">Tambah kelas</button>
+    <button type="button" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg bg-secondary-red hover:bg-secondary-red-hover dark:bg-secondary-red-hover dark:hover:bg-secondary-red shadow-lg block md:inline-block rounded dark:text-gray-100 mt-2"onclick="document.getElementById('myModal').showModal()">Tambah kelas</button>
 </div>
 
 <div class="flex flex-col md:flex-row gap-2">

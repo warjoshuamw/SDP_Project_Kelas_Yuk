@@ -4,16 +4,16 @@
 <div class="flex justify-between p-auto mx-2 md:px-2 border-b border-blue-500 dark:border-blue-700">
     <div id="logo" class="flex items-center">
         <img src="/seminar.png" class="w-16 h-16 p-2" alt="">
-        <div class="mx-2 px-2 font-serif">
+        <div class="mx-2 px-2 font-serif dark:text-white">
             Kelas Yuk
         </div>
     </div>
     <div class="flex justify-center">
-        <a href="/murid/" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="home"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
+        <a href="/murid/" class="flex hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="home"?"border-b-2 border-blue-700":""}}">
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2 dark:text-white" >Home</p>
         </a>
         <a href="/murid/todo" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="todo"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >To Do</p>
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2 dark:text-white" >To Do</p>
         </a>
     </div>
     <div class="flex flex-row flex-wrap justify-center gap-2 items-center">

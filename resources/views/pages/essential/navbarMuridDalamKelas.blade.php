@@ -1,29 +1,29 @@
 <div class="flex justify-between p-auto mx-2 md:px-2 border-b border-blue-500 dark:border-blue-700">
     <div id="logo" class="flex items-center">
         <img src="/seminar.png" class="w-16 h-16 p-2" alt="">
-        <div class="mx-2 px-2 font-serif">
+        <div class="mx-2 px-2 font-serif  dark:text-white">
             Kelas Yuk
         </div>
     </div>
     <div class="flex justify-center">
         <a href="/murid/" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="home"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Home</p>
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2 dark:text-white" >Home</p>
         </a>
         <a href="/murid/kelas/{{$dataKelas->kelas_id}}/home" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="feed"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Feed</p>
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2 dark:text-white" >Feed</p>
         </a>
         <a href="/murid/kelas/{{$dataKelas->kelas_id}}/tugas" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="tugas"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar Tugas</p>
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2 dark:text-white" >Daftar Tugas</p>
         </a>
         <a href="/murid/kelas/{{$dataKelas->kelas_id}}/kuis" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="kuis"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar Kuis</p>
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2 dark:text-white" >Daftar Kuis</p>
         </a>
         <a href="/murid/kelas/{{$dataKelas->kelas_id}}/daftarnilai" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="nilai"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Daftar nilai</p>
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2 dark:text-white" >Daftar nilai</p>
         </a>
 
         <a href="/murid/kelas/{{$dataKelas->kelas_id}}/listMurid" class="flex  hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 {{Session::get('navbarSelected')=="murid"?"border-b-2 border-blue-700":""}}">
-            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2" >Murid</p>
+            <p class="hover:text-gray-400  transition duration-200 ease-linear px-2 dark:text-white" >Murid</p>
         </a>
     </div>
 

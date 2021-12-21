@@ -5,13 +5,13 @@
 @section('content')
 
 <section class="container mx-auto p-6 font-mono">
-    <form action="" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-50">
+    <form action="" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-75 dark:text-black">
         <div class="border-b border-black p-2">
             <span>Filter : </span>
         </div>
         <div class="px-2 py-1">
             <span>Nama Murid:</span>
-            <select name="filter_murid" id="" class="border border-black h-full rounded-md shadow px-2 py-1 dark:bg-ocean-light dark:bg-opacity-50">
+            <select name="filter_murid" id="" class="border border-black h-full rounded-md shadow px-2 py-1 dark:bg-ocean-light dark:bg-opacity-75">
                 @foreach ($dataMurid as $murid)
                     @isset($filter_murid)
                         <option value="{{$murid->pivot->murid_id}}" {{$filter_murid==$murid->pivot->murid_id?"selected":""}}>{{$murid->pengguna_nama}}</option>
@@ -23,9 +23,9 @@
         </div>
         <div class="px-2 py-1">
             <span>Jenis Pekerjaan:</span>
-            <select name="filter_jenis" id="" class="border border-black h-full rounded-md shadow px-2 py-1 dark:bg-ocean-light dark:bg-opacity-50">
+            <select name="filter_jenis" id="" class="border border-black h-full rounded-md shadow px-2 py-1 dark:bg-ocean-light dark:bg-opacity-75">
                 @isset($filter_jenis)
-                    <option value="quiz" {{$filter_jenis=="quiz"?"selected":""}}>
+                    <option value="kuis" {{$filter_jenis=="kuis"?"selected":""}}>
                         Kuis
                     </option>
                     <option value="tugas" {{$filter_jenis=="tugas"?"selected":""}}>
@@ -46,16 +46,16 @@
         </div>
     </form>
     @if (isset($filter_murid))
-        <form method="POST" action="/guru/kelas/{{$id_kelas_sekarang}}/penilaian/{{$filter_murid}}/simpan" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-50">
+        <form method="POST" action="/guru/kelas/{{$id_kelas_sekarang}}/penilaian/{{$filter_murid}}/simpan" class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-75">
     @else
-        <form class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-50">
+        <form class="flex flex-col gap-2 bg-white shadow mb-2 rounded-md dark:bg-ocean-light dark:bg-opacity-75">
     @endif
         @csrf
         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
             <div class="w-full overflow-x-auto">
                 <table class="w-full">
                 <thead>
-                    <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 dark:bg-ocean-light dark:bg-opacity-50 uppercase border-b border-gray-600">
+                    <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 dark:bg-ocean-light dark:bg-opacity-75 uppercase border-b border-gray-600">
                     <th class="px-4 py-3">Judul @if (isset($filter_jenis))
                         {{$filter_jenis}}
                     @endif</th>
@@ -64,7 +64,7 @@
                 </thead>
                 <tbody class="bg-white">
                     @foreach ($dataNilai as $nilai)
-                        <tr class="text-gray-700 dark:bg-ocean-light dark:bg-opacity-50">
+                        <tr class="text-gray-700 dark:bg-ocean-light dark:bg-opacity-75">
                             <td class="px-4 py-3 border">
                             <div class="flex items-center text-sm">
                                 <div>
@@ -74,15 +74,15 @@
                             </td>
                             <td class="text-ms border text-center">
                                 @if (isset($nilai['nilai']))
-                                    <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-50 px-4 py-3" name="nilai[]" value="{{$nilai['nilai']}}">
+                                    <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-75 px-4 py-3" name="nilai[]" value="{{$nilai['nilai']}}">
                                 @else
-                                    <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-50 px-4 py-3" name="nilai[]" value="0">
+                                    <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-75 px-4 py-3" name="nilai[]" value="0">
                                 @endif
                             </td>
                         </tr>
                     @endforeach
                     @if (sizeof($dataNilai)<=0)
-                        <tr class="text-gray-700 dark:bg-ocean-light dark:bg-opacity-50">
+                        <tr class="text-gray-700 dark:bg-ocean-light dark:bg-opacity-75">
                             <td class="px-4 py-3 border">
                             <div class="flex items-center text-sm">
                                 <div>
@@ -91,7 +91,7 @@
                             </div>
                             </td>
                             <td class="text-ms border text-center">
-                                <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-50 px-4 py-3" name="" value="">
+                                <input type="number" class="w-full dark:bg-ocean-light dark:bg-opacity-75 px-4 py-3" name="" value="">
                             </td>
                         </tr>
                     @endif

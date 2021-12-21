@@ -5,13 +5,13 @@
 <div class="flex justify-between p-auto mx-2 md:px-2 border-b border-blue-500 dark:border-blue-700">
     <div id="logo" class="flex items-center">
         <img src="/seminar.png" class="w-16 h-16 p-2" alt="">
-        <div class="mx-2 px-2 font-serif">
+        <div class="mx-2 px-2 font-serif dark:text-white">
             Kelas Yuk
         </div>
     </div>
     <div class="flex justify-center">
         <a href="/guru/" class="flex mx-2 hidden md:flex items-center transition-all hover:bg-gray-100 hover:bg-opacity-25 md:p-2 transition-all hover:bg-gray-100 hover:bg-opacity-25 border-b-2 border-blue-700">
-            <p class="">Home</p>
+            <p class=" dark:text-white">Home</p>
         </a>
     </div>
     <div class="flex flex-row flex-wrap justify-center gap-2 items-center">

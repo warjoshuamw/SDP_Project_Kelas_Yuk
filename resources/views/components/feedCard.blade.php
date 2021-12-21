@@ -1,5 +1,5 @@
-<div class="bg-white rounded-md p-2 lg:p-4 dark:bg-ocean-light dark:bg-opacity-50">
-    <div class="flex flex-row justify-between gap-2 font-semibold border-b mb-1">
+<div class="bg-white rounded-md p-2 lg:p-4 dark:bg-ocean-light dark:bg-opacity-75">
+    <div class="flex flex-row justify-between gap-2 font-semibold border-b border-black mb-1">
         <div class="text-lg">{{$feed_creator}}</div>
         <div class="text-lg">{{$feed_waktu}}</div>
     </div>
@@ -8,13 +8,13 @@
     </div>
     @foreach ($dataComment->get() as $comment)
     <div class="ml-8">
-        <div class=" flex justify-between border-t">
+        <div class=" flex justify-between border-t border-black mt-1">
             <div><div class="font-semibold text-base">{{$comment->comment_creator}}</div><div class="text-base">{{$comment->keterangan}}</div></div>
             <div class="font-semibold">{{date('d M Y, H:i', strtotime($comment->created_at))}}</div>
         </div>
         <div>
             @foreach ($comment->Reply as $reply)
-                <div class="ml-4 flex justify-between border-t" >
+                <div class="ml-4 flex justify-between border-t border-black mt-1" >
                     <div><div class="font-semibold text-base">{{$reply->reply_creator}}</div><div class="text-base">{{$reply->keterangan}}</div></div>
                     <div class="font-semibold">{{date('d M Y, H:i', strtotime($reply->created_at))}}</div>
                 </div>
