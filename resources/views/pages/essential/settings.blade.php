@@ -7,12 +7,12 @@
     @endif
 @endsection
 @section('content')
-<div class="flex flex-col items-center px-2 my-2">
-    <div class="text-2xl font-bold bg-white dark:text-black dark:bg-ocean-light dark:bg-opacity-75 md:w-1/2 text-center rounded-md shadow-md py-4">
+<div class="flex flex-col items-center px-2 my-2 w-full">
+    <div class="text-2xl font-bold bg-white dark:text-black dark:bg-ocean-light dark:bg-opacity-75 w-full lg:w-1/2 text-center rounded-md shadow-md py-4">
         Settings
     </div>
-    <div class="bg-white dark:text-black dark:bg-ocean-light dark:bg-opacity-75 px-5 w-1/2 shadow-md rounded-md py-3 backdrop-filter backdrop-blur flex flex-col gap-2 my-2 items-center w-auto">
-        <form action="/settings/update" method="" class="flex flex-col space-y-4 mt-10 xl:w-1/2 md:w-full">
+    <div class="bg-white dark:text-black dark:bg-ocean-light dark:bg-opacity-75 px-5 w-full lg:w-1/2 shadow-md rounded-md py-3 backdrop-filter backdrop-blur flex flex-col gap-2 my-2 items-center w-auto">
+        <form action="/settings/update" method="" class="flex flex-col my-4 xl:w-1/2 w-full gap-2">
             <div class="flex flex-col">
                 <label class="font-bold text-lg">Foto profile</label>
                 <img src="" alt="." class="w-64 h-64 self-center my-2" style="object-fit: cover">
