@@ -416,7 +416,6 @@ class GuruController extends Controller
                         }
                     }
                     $dataNilai[$value->kuis_id]['nilai'] = $nilai;
-
                 }
             }
         }else{

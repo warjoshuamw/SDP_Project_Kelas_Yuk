@@ -32,7 +32,7 @@
                         Tugas
                     </option>
                 @else
-                    <option value="quiz">
+                    <option value="kuis">
                         Kuis
                     </option>
                     <option value="tugas" >
