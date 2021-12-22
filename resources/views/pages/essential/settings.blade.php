@@ -20,7 +20,7 @@
             </div>
             <div class="flex flex-col">
                 <label class="font-bold text-lg">Email</label>
-                <input type="text" placeholder="Email" name="pengguna_email" class="border rounded-lg py-3 px-3 border-black dark:bg-ocean-light dark:bg-opacity-100" value="{{Auth::guard('satpam_pengguna')->user()->pengguna_email}}">
+                <input type="text" placeholder="Email" name="pengguna_email" class="border rounded-lg py-3 px-3 border-black dark:bg-ocean-light dark:bg-opacity-100" value="{{Auth::guard('satpam_pengguna')->user()->pengguna_email}}" readonly>
             </div>
             <div class="flex flex-col">
                 <label class="font-bold text-lg">Password</label>
